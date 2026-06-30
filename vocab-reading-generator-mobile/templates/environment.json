@@ -1,0 +1,327 @@
+{
+  "topic": "environment",
+  "description": "环境类 - 适用于气候变化、环境保护、能源等话题",
+  "skeletons": [
+    {
+      "text": "The {adj} impact of human activities on the natural environment has become a {adj} concern.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Climate change {v} a {adj} threat to ecosystems and biodiversity across the globe.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} consumption of natural {n} has {v} at an alarming rate in recent decades.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Efforts to {v} environmental damage through {adj} development have gained {adj} momentum.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of renewable energy sources is {v} a key strategy in the fight against climate change.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "Environmental {n} policies aim to {v} the {adj} effects of industrial pollution.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} destruction of natural habitats has {v} to a marked decline in wildlife populations.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "International cooperation is essential to {v} global environmental {n} effectively.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Deforestation rates in the Amazon region have {v} {adj} concerns about biodiversity loss.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} management of water {n} is critical for sustainable {adj} in arid regions.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Greenhouse gas emissions {v} to the {adj} warming of the Earth\\'s atmosphere.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} transition to a low-carbon economy {v} substantial investment in green {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Ocean acidification, caused by {adj} carbon dioxide absorption, {v} marine {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} benefits of preserving natural {n} extend beyond environmental protection to human health.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Sustainable agricultural {n} can {v} food security while {v} environmental impact.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} interdependence of ecological systems {v} that environmental {n} must be addressed comprehensively.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Pollution {n} have been {v} to reduce the release of harmful substances into the environment.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} depletion of the ozone layer {v} the importance of international environmental agreements.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        }
+      ]
+    },
+    {
+      "text": "Ecosystem {n} provides {adj} services that are essential for human {n} and well-being.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} adoption of environmentally friendly {n} is crucial for achieving sustainability goals.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Biodiversity loss {v} the {adj} of ecosystems to {v} to changing environmental conditions.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of the circular economy aims to {v} waste and promote resource {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Environmental education plays a {adj} role in raising public {n} about ecological issues.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} effects of urbanization on the natural environment require {adj} planning.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "By {v} sustainable practices, businesses can contribute to environmental {n} while maintaining profitability.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

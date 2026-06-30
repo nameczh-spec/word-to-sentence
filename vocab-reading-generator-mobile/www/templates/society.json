@@ -1,0 +1,314 @@
+{
+  "topic": "society",
+  "description": "社会类 - 适用于社会现象、公共政策、人口等话题",
+  "skeletons": [
+    {
+      "text": "Social {n} has undergone {adj} transformation in response to globalization and technological change.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The widening gap between the rich and poor {v} a {adj} challenge for modern societies.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Community-based {n} have been shown to {v} social cohesion and collective {adj}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} {n} of social media on public opinion cannot be underestimated.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Demographic shifts in the population {v} significant changes in the social {n}.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "A {adj} society depends on the {adj} participation of its citizens in public {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The role of {n} in shaping social {n} has become a topic of increasing {adj} debate.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Social mobility is {v} influenced by factors such as education, family background, and economic {n}.",
+      "slots": [
+        {
+          "pos": "adv"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} distribution of resources across different social groups {v} a complex issue.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Policymakers need to {v} the {adj} needs of diverse populations when designing social {n}.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Volunteer {n} plays a vital role in {v} social bonds and community {adj}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Urbanization has {v} {adj} changes in family structure and social relationships.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The concept of social {n} has {v} to encompass a broader range of human activities.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "There is a {adj} correlation between education levels and social {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} consequences of social {n} extend far beyond the individual to affect entire communities.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Effective social {n} requires {adj} cooperation among government, businesses, and civil society.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} {n} of cultural diversity enriches the social fabric of modern {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Social norms and values {v} the way individuals {n} and interact with each other.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The digital divide {v} into a {adj} barrier to equal social participation.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Discussions about social {n} must {v} issues of equity, justice, and human {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} integration of marginalized groups into mainstream society {v} sustained effort.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Social networks serve as {adj} channels for the {n} of information and cultural values.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The aging population {v} a {adj} challenge to social welfare systems worldwide.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Civil society {n} are increasingly {v} in addressing complex social problems.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "By fostering {adj} dialogue across different {n}, societies can {v} mutual understanding.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    }
+  ]
+}

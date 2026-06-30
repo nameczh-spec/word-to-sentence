@@ -1,0 +1,303 @@
+{
+  "topic": "psychology",
+  "description": "心理类 - 适用于心理机制、认知、行为等话题",
+  "skeletons": [
+    {
+      "text": "Cognitive {n} plays a fundamental role in {v} how individuals process information and make decisions.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} factors influencing human {n} have been the subject of extensive psychological research.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Social {n} theory suggests that individuals {v} their {n} through interaction with others.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} effects of stress on cognitive {n} are well-documented in the literature.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Emotional {n} is increasingly recognized as a {adj} predictor of success in various domains.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} development of children\\'s cognitive {n} follows a {adj} sequence of stages.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Motivational {n} examines the {adj} forces that drive human behavior and goal pursuit.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of personality {n} helps psychologists understand individual differences in behavior.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Memory {n} involves complex processes of encoding, storage, and {n} of information.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} relationship between early childhood {n} and adult psychological well-being is {adj}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Behavioral {n} techniques are {v} used in clinical settings to treat various mental health conditions.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adv"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} {n} of unconscious processes on conscious thought has been a {adj} topic of debate.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Positive psychology {v} the {n} of human flourishing and optimal functioning.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} impact of social media on adolescent {n} has raised {adj} concerns among researchers.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Perceptual {n} investigates how individuals {n} and interpret sensory information from their environment.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of attention {n} has important implications for educational practices and workplace design.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Emotional {n} strategies help individuals {v} with {adj} experiences and maintain mental health.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} approach to psychology emphasizes the role of {n} in shaping behavior.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Attachment {n} between infants and caregivers has {adj} implications for social and emotional development.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of learned {n} provides insights into the formation and modification of habits.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Group {n} studies examine how individuals\\' {n} and attitudes are influenced by social contexts.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} dimension of psychological {n} encompasses both subjective well-being and life satisfaction.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Psychotherapy {n} have evolved significantly over the years, {v} diverse theoretical perspectives.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} processing of emotional {n} involves multiple brain regions and neural pathways.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "By {v} the psychological mechanisms underlying behavior, researchers can develop more effective {n}.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

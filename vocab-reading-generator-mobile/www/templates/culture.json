@@ -1,0 +1,315 @@
+{
+  "topic": "culture",
+  "description": "文化类 - 适用于文化差异、文化传承、交流等话题",
+  "skeletons": [
+    {
+      "text": "Cultural {n} reflects the values, beliefs, and {n} of a particular society at a given time.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} exchange between different cultures {v} mutual understanding and global {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The preservation of cultural {n} is essential for maintaining a society\\'s unique {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Globalization has {v} both opportunities and challenges for cultural {n} worldwide.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Traditional cultural {n} continue to {v} contemporary artistic expression and creative {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} diversity of cultural {n} enriches the social fabric of multicultural societies.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Cultural {n} are transmitted from one generation to the next through language and {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} study of cultural {n} provides insights into the development of human civilizations.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Popular culture {v} a {adj} influence on the attitudes and {n} of young people.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} revival of traditional {n} crafts {v} a growing appreciation for cultural authenticity.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Language serves not only as a means of {n} but also as a carrier of cultural {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} interaction between local traditions and global influences {v} dynamic cultural {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Cultural {n} can {v} social integration or, conversely, become sources of tension.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} dimension of cultural {n} is often overlooked in discussions about economic development.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Museums and cultural {n} play a vital role in {v} cultural heritage and educating the public.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The digital age has {v} the way cultural {n} is produced, distributed, and consumed.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Cultural {n} in the workplace can {v} team {n} and organizational effectiveness.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} significance of cultural {n} extends beyond entertainment to shape social {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Cross-cultural {n} skills are increasingly important in our {adj} interconnected world.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of cultural {n} from different historical periods provides a window into past societies.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Cultural policy must {v} the {adj} interests of various stakeholders in society.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} appropriation of cultural {n} raises challenging questions about ownership and respect.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Artistic {n} both {v} and challenges prevailing cultural {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Cultural tourism has {v} as a significant {n} of economic revenue for many regions.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "By {v} cultural diversity, societies can {n} more inclusive and vibrant communities.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    }
+  ]
+}

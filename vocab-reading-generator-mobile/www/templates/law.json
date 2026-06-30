@@ -1,0 +1,323 @@
+{
+  "topic": "law",
+  "description": "法律类 - 适用于法律理论、司法实践、权利等话题",
+  "skeletons": [
+    {
+      "text": "The {adj} framework of {n} serves as the foundation for maintaining social order and {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} interpretation of legal {n} can have far-reaching consequences for society.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Intellectual property {n} {v} the rights of creators and {v} innovation.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of law is a {adj} principle in democratic societies around the world.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Contractual {n} must be clearly {v} to avoid disputes between the parties involved.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} system has evolved over centuries to {v} changing social {n} and values.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Judicial {n} plays a vital role in {v} that laws are applied fairly and consistently.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "Privacy {n} are being {v} in response to the {adj} collection of personal data.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} implications of the court\\'s decision {v} far beyond the parties involved.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Legal {n} is essential for {v} that all citizens have equal {n} under the law.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} regulation of financial {n} aims to prevent fraud and protect consumers.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Laws governing {n} property rights {v} {adj} differences across various legal systems.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} process of legislative {n} involves multiple stages of debate and revision.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "International {n} {v} the conduct of nations in areas such as trade and human rights.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} enforcement of anti-corruption {n} is essential for good governance.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Criminal {n} {v} a broad range of offenses, from minor violations to serious crimes.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "The right to a fair trial is a {adj} human {n} recognized in international law.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Legal {n} must carefully {v} the {adj} circumstances of each case before rendering a decision.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} development of cyber law {v} the unique challenges posed by digital {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Constitutional {n} {v} the fundamental rights and {n} of citizens.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} implementation of environmental {n} has led to {adj} improvements in air and water quality.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Arbitration serves as an {adj} alternative to litigation in resolving commercial {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of legal {n} is an important right that ensures access to {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Data protection {n} impose {adj} obligations on organizations that collect personal information.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "By establishing clear legal {n}, societies can {v} orderly {n} and resolve conflicts.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

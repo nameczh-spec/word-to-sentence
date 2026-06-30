@@ -1,0 +1,59 @@
+{
+  "name": "vocab-reading-generator",
+  "version": "1.0.0",
+  "description": "考研英语背词助手",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "node start.js",
+    "electron": "electron .",
+    "electron:build": "electron-builder",
+    "electron:build:win": "electron-builder --win",
+    "capacitor:init": "npx cap init 背词助手 com.vocab.mobile",
+    "capacitor:add-android": "npx cap add android",
+    "capacitor:copy": "npx cap copy",
+    "capacitor:sync": "npx cap sync",
+    "capacitor:open": "npx cap open android",
+    "capacitor:build": "npx cap build android"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.vocab.desktop",
+    "productName": "考研英语背词助手",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron-main.js",
+      "www/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "www/favicon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

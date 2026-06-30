@@ -1,0 +1,23 @@
+{
+  "name": "单词段落生成 - 考研英语背词助手",
+  "short_name": "背词助手",
+  "description": "考研英语单词段落生成工具，AI智能生成阅读段落，高效背词",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007aff",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

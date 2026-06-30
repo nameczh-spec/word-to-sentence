@@ -1,0 +1,195 @@
+/* 高亮按钮样式 - 参考 React 组件效果 */
+
+/* ============================================
+   高亮按钮容器
+   ============================================ */
+.highlight-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   高亮按钮基础样式
+   ============================================ */
+.highlight-btn {
+    position: relative;
+    overflow: hidden;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    transform: translateZ(0);
+    /* 自定义属性用于光晕位置 */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --click-x: 50%;
+    --click-y: 50%;
+}
+
+.highlight-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: scale(1.02);
+}
+
+.highlight-btn:active {
+    transform: scale(0.96);
+}
+
+/* 激活状态 */
+.highlight-btn.active {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+.highlight-btn.active:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+/* ============================================
+   鼠标跟随光晕效果（模拟 React 组件的 hover 效果）
+   ============================================ */
+.highlight-btn .glow-effect {
+    position: absolute;
+    top: var(--mouse-y);
+    left: var(--mouse-x);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 122, 255, 0.55) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    filter: blur(24px);
+    transition: opacity 0.15s ease;
+    z-index: 1;
+}
+
+.highlight-btn:hover .glow-effect {
+    opacity: 1;
+}
+
+.highlight-btn.active .glow-effect {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+}
+
+/* 背景微光层 */
+.highlight-btn .subtle-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.2s ease;
+}
+
+.highlight-btn:hover .subtle-bg {
+    opacity: 0.04;
+}
+
+/* ============================================
+   点击涟漪效果
+   ============================================ */
+.highlight-btn .ripple-effect {
+    position: absolute;
+    top: var(--click-y);
+    left: var(--click-x);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 122, 255, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.highlight-btn.active .ripple-effect {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.highlight-btn.clicked .ripple-effect {
+    animation: highlight-ripple 0.6s ease-out forwards;
+}
+
+@keyframes highlight-ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   按钮文字层
+   ============================================ */
+.highlight-btn .btn-text {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* ============================================
+   不同颜色的高亮按钮变体
+   ============================================ */
+.highlight-btn.variant-blue {
+    --btn-color: #007AFF;
+    --btn-color-light: rgba(0, 122, 255, 0.1);
+    --btn-glow: rgba(0, 122, 255, 0.55);
+}
+
+.highlight-btn.variant-purple {
+    --btn-color: #A855F7;
+    --btn-color-light: rgba(168, 85, 247, 0.1);
+    --btn-glow: rgba(168, 85, 247, 0.55);
+}
+
+.highlight-btn.variant-green {
+    --btn-color: #22C55E;
+    --btn-color-light: rgba(34, 197, 94, 0.1);
+    --btn-glow: rgba(34, 197, 94, 0.55);
+}
+
+.highlight-btn.variant-orange {
+    --btn-color: #F97316;
+    --btn-color-light: rgba(249, 115, 22, 0.1);
+    --btn-glow: rgba(249, 115, 22, 0.55);
+}
+
+/* 应用变体颜色 */
+.highlight-btn[class*="variant-"]:hover {
+    border-color: var(--btn-color);
+    color: var(--btn-color);
+}
+
+.highlight-btn[class*="variant-"] .glow-effect {
+    background: radial-gradient(circle, var(--btn-glow) 0%, transparent 70%);
+}
+
+.highlight-btn[class*="variant-"].active {
+    background: var(--btn-color);
+    border-color: var(--btn-color);
+}
+
+.highlight-btn[class*="variant-"].active:hover {
+    background: var(--btn-color);
+    filter: brightness(1.1);
+}

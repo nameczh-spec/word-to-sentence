@@ -1,0 +1,320 @@
+{
+  "topic": "education",
+  "description": "教育类 - 适用于教育改革、教学模式、学习等话题",
+  "skeletons": [
+    {
+      "text": "The {adj} reform of the educational system aims to {v} students with {adj} skills for the future.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "A {adj} education goes beyond the mere transmission of {n} to the development of critical thinking.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} gap in educational {n} between urban and rural areas {v} a significant challenge.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Innovative teaching {n} have been {v} to enhance student engagement and learning outcomes.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Standardized testing has {v} {adj} debate among educators, parents, and policymakers.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Lifelong learning has become a {adj} {n} in a rapidly changing job market.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} integration of technology into the classroom {v} how students {n} information.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Early childhood education is {adj} {v} to a child\\'s cognitive and social {n}.",
+      "slots": [
+        {
+          "pos": "adv"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The curriculum should be designed to {v} students for the {adj} demands of the 21st century.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Higher education {n} face {adj} pressure to {v} relevance in the digital age.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} approach to teaching language {v} communicative competence over grammatical accuracy.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Educational {n} play a key role in {v} students\\' academic performance and personal growth.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of educational resources through online platforms has {v} access to learning.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "A {adj} approach to education emphasizes both academic achievement and personal {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} development of {n} skills is increasingly emphasized in educational {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Teachers must {v} their instructional strategies to meet the {adj} needs of diverse learners.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} {n} in education has been {v} by the global movement toward personalized learning.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Educational {n} serve as a foundation for {adj} economic development and social progress.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Collaborative learning environments {v} students to {n} from diverse perspectives.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The integration of {adj} content across the curriculum {v} deeper understanding of complex {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Assessment methods should {v} not only knowledge {n} but also critical thinking abilities.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} education system must {v} to the changing needs of society and the economy.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Educational {n} have been shown to {v} the cycle of poverty and promote social mobility.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The role of {n} in {v} educational outcomes cannot be overstated.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "By {v} critical thinking skills, education empowers individuals to {n} informed {n}.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "topic": "example",
+  "description": "示例文件 - 展示骨架的格式，用户可参考此文件创建自己的模板",
+  "skeletons": [
+    {
+      "text": "The {adj} discovery of {n} has {v} the existing paradigm.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Researchers have {v} that this {adj} {n} plays a crucial role.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

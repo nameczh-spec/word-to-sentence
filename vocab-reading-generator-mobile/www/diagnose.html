@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>数据诊断</title></head>
+<body style="font-family: monospace; background: #1a1a1a; color: #e0e0e0; padding: 20px; line-height: 1.6;">
+<h2>📊 localStorage 诊断</h2>
+<pre id="output">加载中...</pre>
+<button onclick="runDiagnose()" style="padding: 8px 16px; background: #007AFF; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">运行诊断</button>
+<script>
+function runDiagnose() {
+    const out = document.getElementById('output');
+    let html = '';
+    
+    // 1. 当前用户
+    const uid = localStorage.getItem('vocab_current_user');
+    const users = localStorage.getItem('vocab_users');
+    html += '=== 用户信息 ===\n';
+    html += 'vocab_current_user: ' + (uid || '❌ 未登录') + '\n';
+    html += 'vocab_users: ' + (users || '[]') + '\n\n';
+    
+    // 2. 旧的无前缀键
+    const oldKeys = ['vocab_words', 'vocab_history', 'vocab_current_text', 'vocab_config', 'vocab_wordbooks', 'vocab_query_history'];
+    html += '=== 旧键（无前缀） ===\n';
+    for (const k of oldKeys) {
+        const v = localStorage.getItem(k);
+        html += k + ': ' + (v ? '✅ 存在 (' + v.length + ' chars)' : '❌ 不存在') + '\n';
+    }
+    
+    // 3. 带前缀的新键
+    html += '\n=== 新键（带用户前缀） ===\n';
+    if (uid) {
+        for (const k of oldKeys) {
+            const nk = k + '_' + uid;
+            const v = localStorage.getItem(nk);
+            if (v) {
+                try {
+                    const parsed = JSON.parse(v);
+                    if (k === 'vocab_words') {
+                        const rc = parsed.reviewWords ? parsed.reviewWords.length : 0;
+                        const nc = parsed.newWords ? parsed.newWords.length : 0;
+                        html += nk + ': ✅ (' + rc + ' 复习词, ' + nc + ' 新词)\n';
+                    } else if (k === 'vocab_history') {
+                        const cnt = parsed.records ? parsed.records.length : 0;
+                        html += nk + ': ✅ (' + cnt + ' 条记录)\n';
+                    } else if (k === 'vocab_config') {
+                        html += nk + ': ✅ (keys: ' + Object.keys(parsed).join(', ') + ')\n';
+                    } else if (k === 'vocab_wordbooks') {
+                        const cnt = parsed.books ? parsed.books.length : 0;
+                        html += nk + ': ✅ (' + cnt + ' 个词本)\n';
+                    } else if (k === 'vocab_query_history') {
+                        html += nk + ': ✅ (' + parsed.length + ' 条)\n';
+                    } else {
+                        html += nk + ': ✅ (' + v.substring(0, 80) + '...)\n';
+                    }
+                } catch(e) {
+                    html += nk + ': ⚠️ 数据解析失败\n';
+                }
+            } else {
+                html += nk + ': ❌ 不存在\n';
+            }
+        }
+        // migration key
+        const mk = localStorage.getItem('vocab_migrated_' + uid);
+        html += '\nvocab_migrated_' + uid + ': ' + (mk || '❌ 未迁移') + '\n';
+    } else {
+        html += '请先登录后再运行诊断\n';
+    }
+    
+    // 4. 列出所有 vocab_ 开头的键
+    html += '\n=== 所有 vocab_ 开头的键 ===\n';
+    const allKeys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('vocab_')) allKeys.push(key);
+    }
+    html += allKeys.length ? allKeys.join('\n') : '(无)';
+    
+    out.textContent = html;
+}
+runDiagnose();
+</script>
+</body>
+</html>

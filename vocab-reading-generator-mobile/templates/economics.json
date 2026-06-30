@@ -1,0 +1,323 @@
+{
+  "topic": "economics",
+  "description": "经济类 - 适用于经济趋势、市场分析、金融等话题",
+  "skeletons": [
+    {
+      "text": "The {adj} fluctuation of global markets {v} a {adj} impact on national economies.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Economic {n} is measured by the total value of goods and services {v} within a country.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} policies implemented by the central bank aim to {v} inflation and promote stable growth.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Trade {n} between nations {v} economic growth by {v} the exchange of goods and capital.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} recession had a {adj} effect on employment rates across multiple sectors.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Investors are {v} {adj} opportunities in emerging markets to {v} their returns.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {n} of supply and demand {v} the {adj} of prices in a market economy.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Fiscal {n} plays a crucial role in {v} economic stability during periods of uncertainty.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} growth of the digital economy has {v} traditional business models and {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Global economic {n} has become increasingly {adj} due to interconnected financial systems.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The government {v} a series of {adj} measures to stimulate economic recovery.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Income {n} has been {v} as a {adj} indicator of overall economic health.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} cost of living in urban areas has {v} a growing concern for policymakers.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Economic {n} and innovation are closely linked, with each {v} the other in a positive feedback loop.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} analysis of market {n} suggests that {adj} changes are on the horizon.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Small and medium-sized {n} contribute significantly to employment and economic {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} management of public {n} is essential for long-term fiscal {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Globalization has {v} the {n} of goods, services, and capital across national borders.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} gap between developed and developing economies continues to {v} debate among economists.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Monetary policy tools are used to {v} interest rates and {n} the money supply.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} shift toward sustainable {n} reflects changing consumer values and regulatory {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Labor market {n} have undergone {adj} changes in the wake of technological disruption.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} distribution of wealth {v} a central {n} in economic discourse.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "By {v} international trade barriers, countries can {n} economic growth and development.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} {n} of economic indicators provides valuable insights into future market {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}
