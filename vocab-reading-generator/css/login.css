@@ -1,0 +1,225 @@
+/* 登录界面与用户头像样式 */
+
+/* ============================================
+   登录界面 - 全屏覆盖
+   ============================================ */
+.login-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 背景图片 */
+.login-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover no-repeat;
+    filter: blur(2px);
+}
+
+/* 背景暗色遮罩 */
+.login-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+/* 容器 */
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* 卡片 - 磨砂玻璃效果 */
+.login-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    padding: 32px;
+    animation: loginSlideIn 0.4s ease;
+}
+
+@keyframes loginSlideIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 头部 */
+.login-header { text-align: center; margin-bottom: 28px; }
+.login-title { font-size: 24px; font-weight: 700; color: #1D1D1F; margin: 0 0 6px; }
+.login-subtitle { font-size: 13px; color: #86868B; margin: 0; }
+
+/* 表单字段 */
+.login-field { margin-bottom: 16px; }
+.login-label { display: block; font-size: 12px; font-weight: 500; color: #86868B; margin-bottom: 6px; }
+.login-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.6);
+    font-size: 14px;
+    color: #1D1D1F;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+.login-input:focus { border-color: #007AFF; box-shadow: 0 0 0 3px rgba(0,122,255,0.15); }
+.login-input[readonly] { background: rgba(0,0,0,0.03); cursor: default; }
+
+/* 进入按钮 */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #007AFF;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+}
+.login-btn:hover { background: #0066D6; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,122,255,0.3); }
+.login-btn:active { transform: translateY(0); }
+
+/* 已有账号区 */
+.login-users { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06); }
+.login-users-title { font-size: 12px; color: #86868B; margin-bottom: 12px; font-weight: 500; }
+.login-users-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* 用户芯片 */
+.login-user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    color: #1D1D1F;
+}
+.login-user-chip:hover { background: rgba(0,122,255,0.08); border-color: rgba(0,122,255,0.2); }
+.login-user-chip .chip-avatar {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #007AFF; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600;
+}
+
+/* ============================================
+   用户头像按钮 - 右上角固定
+   ============================================ */
+.user-avatar-btn {
+    position: fixed;
+    top: 8px;
+    right: 12px;
+    z-index: 150;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.2s;
+}
+.user-avatar-btn:hover { transform: scale(1.1); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+
+/* ============================================
+   用户信息弹窗（Popover）
+   ============================================ */
+.user-popover {
+    position: fixed;
+    top: 52px;
+    right: 12px;
+    z-index: 151;
+    width: 260px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    overflow: hidden;
+    animation: popoverFadeIn 0.2s ease;
+}
+@keyframes popoverFadeIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.user-popover-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.user-popover-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #007AFF; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 600; flex-shrink: 0;
+}
+.user-popover-name { font-size: 14px; font-weight: 600; color: #1D1D1F; }
+.user-popover-id { font-size: 11px; color: #86868B; margin-top: 2px; }
+
+.user-popover-body { padding: 8px; }
+
+.user-popover-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #1D1D1F;
+    transition: background 0.15s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+.user-popover-item:hover { background: rgba(0,0,0,0.04); }
+
+.user-popover-footer {
+    padding: 8px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+.user-popover-logout {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background: transparent;
+    color: #FF3B30;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.user-popover-logout:hover { background: rgba(255,59,48,0.08); }
+
+/* 隐藏主应用容器 */
+.app-container.hidden { display: none !important; }

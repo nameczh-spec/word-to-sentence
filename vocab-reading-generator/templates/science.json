@@ -1,0 +1,369 @@
+{
+  "topic": "science",
+  "description": "科学研究类 - 适用于实验、发现、理论等学术话题",
+  "skeletons": [
+    {
+      "text": "The {adj} discovery has {v} the conventional understanding of {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Recent {adj} research {v} that the underlying {n} is more complex than previously assumed.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "A {adj} analysis of the experimental data {v} a {adj} correlation between the two variables.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Scientists have {v} that this {adj} {n} plays a crucial role in the process.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} findings from the study {v} the hypothesis proposed by earlier researchers.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Further investigation {v} that the {n} may be influenced by multiple {adj} factors simultaneously.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "This {adj} breakthrough in {n} has the potential to {v} the direction of future inquiry.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} accumulation of empirical evidence {v} the validity of the theoretical framework.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "Researchers across {adj} disciplines have {v} similar {n} in their respective fields.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The experiment was designed to {v} whether the {adj} {n} could be replicated under controlled conditions.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "A {adj} examination of the data {v} a pattern that had previously gone unnoticed.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        }
+      ]
+    },
+    {
+      "text": "The results {v} that the {adj} effects of the treatment are more {adj} than expected.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "It has been {v} that this {n} operates through a {adj} mechanism involving multiple pathways.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} nature of the {n} requires interdisciplinary approaches to {v} comprehensive understanding.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "By {v} the underlying principles, scientists can better {n} the complex interactions within the system.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The study {v} that {adj} changes in environmental conditions can {v} the behavior of the {n}.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "These {adj} observations {v} the importance of {adj} methodology in scientific research.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The research team {v} a {adj} approach to analyzing the {n} at the molecular level.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "One of the most {adj} aspects of the discovery is its potential to {v} the existing paradigm.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {n} was {v} through a series of {adj} experiments that {n} the primary mechanism.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        }
+      ]
+    },
+    {
+      "text": "Despite the {adj} results, further studies are needed to {v} the {adj} implications of the findings.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} advancements in {n} have enabled researchers to {v} the structure with unprecedented precision.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "It remains to be seen whether this {adj} {n} can be {v} to larger-scale applications.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} analysis {v} that the {n} is {adj} influenced by external factors.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adv"
+        }
+      ]
+    },
+    {
+      "text": "Through {adj} observation and experimentation, scientists {v} the fundamental laws governing the {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    }
+  ]
+}

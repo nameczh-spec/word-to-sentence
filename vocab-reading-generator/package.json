@@ -1,0 +1,19 @@
+{
+  "name": "vocab-reading-generator",
+  "version": "1.0.0",
+  "description": "考研英语背词助手 - 单词段落生成工具",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js",
+    "proxy": "node youdao-proxy.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mammoth": "^1.12.0",
+    "request": "^2.88.2"
+  }
+}

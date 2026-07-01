@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词段落生成工具 - 考研英语背词助手</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pastPapers.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/highlight-button.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="light-theme">
+    <!-- 用户头像按钮 -->
+    <button class="user-avatar-btn" id="userAvatarBtn" style="display:none;"></button>
+    <div class="user-popover" id="userPopover" style="display:none;">
+        <div class="user-popover-header">
+            <div class="user-popover-avatar" id="popoverAvatar"></div>
+            <div>
+                <div class="user-popover-name" id="popoverName"></div>
+                <div class="user-popover-id" id="popoverId"></div>
+            </div>
+        </div>
+        <div class="user-popover-body">
+            <button class="user-popover-item" id="popoverSwitchUser">切换账号</button>
+        </div>
+        <div class="user-popover-footer">
+            <button class="user-popover-logout" id="popoverLogout">退出登录</button>
+        </div>
+    </div>
+    <!-- 顶部导航栏 -->
+    <nav class="nav-bar">
+        <span class="nav-title">单词段落生成</span>
+        <button class="nav-back-btn" id="backToTodayBtn" title="回到当天" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </button>
+        <span class="history-mode-label" id="historyModeLabel" style="display:none;"></span>
+                <div class="nav-actions">
+            <button class="nav-btn" id="pastPapersBtn" title="真题练习">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>真题练习</span>
+            </button>
+            <button class="nav-btn" id="openReviewBtn" title="复习历史">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <span>复习</span>
+            </button>
+            <button class="nav-btn" id="openSettingsBtn" title="设置">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span>设置</span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- 主容器 -->
+    <div class="app-container">
+        <!-- 左侧区域：历史记录 + 词单管理 -->
+        <aside class="sidebar-left" id="sidebarLeft">
+            <!-- 历史记录区 -->
+            <section class="history-section">
+                <div class="section-header">
+                    <span>历史记录</span>
+                </div>
+                <div class="history-list" id="historyList">
+                    <div class="history-empty">暂无历史记录</div>
+                </div>
+            </section>
+            
+            <!-- 词单管理区 -->
+            <section class="word-list-section">
+                <div class="section-header">
+                    <span>词单管理</span>
+                </div>
+                
+                <!-- 统计信息 -->
+                <div class="word-stats">
+                    <span>总计: <strong id="totalWordCount">0</strong> 词</span>
+                    <span>复习: <strong id="reviewWordCount">0</strong></span>
+                    <span>新词: <strong id="newWordCount">0</strong></span>
+                </div>
+                
+                <!-- 分组切换 -->
+                <div class="group-tabs">
+                    <button class="tab-btn active" data-group="all">全部</button>
+                    <button class="tab-btn" data-group="review">复习词</button>
+                    <button class="tab-btn" data-group="new">新词</button>
+                </div>
+                
+                <!-- 状态筛选 -->
+                <div class="status-filter">
+                    <button class="filter-btn active" data-status="all">全部状态</button>
+                    <button class="filter-btn" data-status="待复习">待复习</button>
+                    <button class="filter-btn" data-status="难点词">难点词</button>
+                    <button class="filter-btn" data-status="已掌握">已掌握</button>
+                </div>
+                
+                <!-- 单词导入区 -->
+                <div class="word-import">
+                    <!-- 批量导入 -->
+                    <div class="import-section">
+                        <div class="import-label">批量导入 <button class="copy-icon-btn" id="copyPromptBtn" title="复制提示词"><img src="assets/copy-icon.svg" class="copy-svg-icon" alt="复制"></button></div>
+                        <textarea id="batchInput" placeholder="粘贴单词（空格或换行分隔）" rows="3"></textarea>
+                        <div class="batch-import-group">
+                            <label class="batch-import-radio">
+                                <input type="radio" name="batchGroup" value="review" checked> 复习词
+                            </label>
+                            <label class="batch-import-radio">
+                                <input type="radio" name="batchGroup" value="new"> 新词
+                            </label>
+                        </div>
+                        <button class="btn btn-primary btn-sm btn-block" id="batchImportBtn">批量导入</button>
+                        <button class="btn btn-primary btn-sm btn-block" id="wordbookBtn" style="margin-top:6px;"><img src="assets/doc-icon.svg" class="btn-svg-icon" alt=""> 词本</button>
+                    </div>
+                    
+                    <!-- 单个单词导入（带词库检索） -->
+                    <div class="import-section">
+                        <div class="import-label">单个添加</div>
+                        <div class="single-input-wrapper">
+                            <input type="text" id="singleInput" placeholder="输入单词检索词库" autocomplete="off">
+                            <!-- 下拉建议列表 -->
+                            <div class="word-suggest-list" id="wordSuggestList" style="display: none;">
+                                <div class="suggest-empty">输入单词开始检索</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 单词列表 -->
+                <div class="word-list" id="wordList">
+                    <div class="word-empty">请导入单词</div>
+                </div>
+                
+                <!-- 快捷操作 -->
+                <div class="quick-actions">
+                    <button class="btn btn-outline btn-sm btn-block" id="clearAllBtn">清空词单</button>
+                </div>
+            </section>
+        </aside>
+        
+        <!-- 中间主区域：文本展示 -->
+        <main class="main-content" id="mainContent">
+            <!-- 功能按钮组 -->
+            <div class="action-bar">
+                <div class="source-toggle" id="sourceToggle">
+                    <button class="source-toggle-btn active" data-source="daily"><img src="assets/doc-icon.svg" class="btn-svg-icon" alt=""> 导入词单</button>
+                    <button class="source-toggle-btn" data-source="custom"><img src="assets/edit-icon.svg" class="btn-svg-icon" alt=""> 自建词本</button>
+                </div>
+                <div class="mode-select">
+                    <label>生成引擎：</label>
+                    <select id="generateEngine">
+                        <option value="local">⚡ 极速模式（离线·无配置）</option>
+                        <option value="api">🤖 AI智能模式（需API）</option>
+                    </select>
+                </div>
+                <div class="mode-select">
+                    <label>输出格式：</label>
+                    <select id="generateMode">
+                        <option value="english">纯英文段落</option>
+                        <option value="chinese">中文主线叙事</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-lg" id="generateBtn">生成文本</button>
+                <button class="btn btn-secondary" id="regenerateBtn">重新生成</button>
+                <button class="btn btn-outline" id="copyTextBtn">复制文本</button>
+                <button class="btn btn-outline" id="saveArchiveBtn">保存归档</button>
+            </div>
+            
+            <!-- 文本展示区 -->
+            <div class="text-display-wrapper">
+                <!-- 星标收藏按钮 -->
+                <button class="star-btn" id="starBtn" title="收藏此文本（收藏后才会归档）" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <span class="star-text">收藏</span>
+                </button>
+                <div class="text-display" id="textDisplay">
+                    <div class="text-empty">
+                        <p>请先导入单词，然后点击"生成文本"</p>
+                        <p class="text-tip">AI将根据您的单词生成连贯的阅读段落</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 分页控制 -->
+            <div class="pagination" id="pagination" style="display: none;">
+                <button class="btn btn-sm" id="prevPageBtn">上一页</button>
+                <span class="page-info">第 <span id="currentPage">1</span> 页 / 共 <span id="totalPages">1</span> 页</span>
+                <button class="btn btn-sm" id="nextPageBtn">下一页</button>
+            </div>
+            
+            <!-- 生僻词汇总栏 -->
+            <div class="rare-words-section" id="rareWordsSection" style="display: none;">
+                <h4 class="rare-title">生僻词汇总</h4>
+                <div class="rare-words-list" id="rareWordsList"></div>
+            </div>
+            
+            <!-- 历史句子导航（查看历史时切换不同句子） -->
+            <div class="sentence-nav" id="sentenceNav" style="display: none;">
+                <button class="btn btn-sm" id="prevSentenceBtn" disabled>← 上一句</button>
+                <span class="sentence-info">第 <span id="sentenceIndex">1</span> 句 / 共 <span id="sentenceTotal">1</span> 句</span>
+                <button class="btn btn-sm" id="nextSentenceBtn" disabled>下一句 →</button>
+            </div>
+            
+            <!-- 版本信息 -->
+            <div class="version-info" id="versionInfo" style="display: none;">
+                当前版本: <span id="currentVersion">1</span>
+            </div>
+        </main>
+        
+        <!-- 设置面板遮罩 -->
+        <div class="settings-overlay" id="settingsOverlay"></div>
+        
+        <!-- 右侧设置面板 -->
+        <aside class="settings-panel" id="settingsPanel">
+            <div class="settings-header">
+                <span class="settings-title">设置</span>
+                <button class="settings-close-btn" id="closeSettingsBtn">×</button>
+            </div>
+            <div class="settings-content">
+                <!-- API配置区 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">API配置</h3>
+                    <div class="config-item">
+                        <label>模型提供商</label>
+                        <select id="modelPreset">
+                            <option value="deepseek">DeepSeek</option>
+                            <option value="zhipu">智谱清言 (GLM-4.7-Flash)</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label>API地址</label>
+                        <input type="text" id="apiUrl" placeholder="https://api.deepseek.com/v1/chat/completions">
+                    </div>
+                    <div class="config-item config-item-api-key">
+                        <label>API密钥</label>
+                        <div class="api-key-wrapper">
+                            <input type="password" id="apiKey" placeholder="输入您的API密钥">
+                            <button class="api-key-toggle-btn" id="apiKeyToggleBtn" type="button" title="显示/隐藏密钥">
+                                <svg class="eye-icon eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <svg class="eye-icon eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="display:none;">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <label>超时时间 (ms)</label>
+                        <input type="number" id="apiTimeout" value="30000" min="5000" max="120000">
+                    </div>
+                    <div class="config-actions">
+                        <button class="btn btn-outline btn-sm" id="testApiBtn">测试连接</button>
+                        <button class="btn btn-primary btn-sm" id="saveApiBtn">保存配置</button>
+                    </div>
+                </section>
+                
+                <!-- 外观设置区 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">外观设置</h3>
+                    <div class="config-item">
+                        <label>单词高亮样式</label>
+                        <div class="highlight-options">
+                            <button class="highlight-btn active" data-style="background">
+                                <span class="subtle-bg"></span>
+                                <span class="glow-effect"></span>
+                                <span class="ripple-effect"></span>
+                                <span class="btn-text">底色</span>
+                            </button>
+                            <button class="highlight-btn" data-style="bold">
+                                <span class="subtle-bg"></span>
+                                <span class="glow-effect"></span>
+                                <span class="ripple-effect"></span>
+                                <span class="btn-text">加粗</span>
+                            </button>
+                            <button class="highlight-btn" data-style="color">
+                                <span class="subtle-bg"></span>
+                                <span class="glow-effect"></span>
+                                <span class="ripple-effect"></span>
+                                <span class="btn-text">变色</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 保存设置区 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">保存设置</h3>
+                    <div class="config-item">
+                        <label>保存路径</label>
+                        <input type="text" id="savePath" placeholder="默认下载到浏览器默认路径">
+                    </div>
+                    <p class="save-tip">文件命名规则：年月日_复习词+新词_版本号.txt</p>
+                </section>
+                
+                <!-- 查询设置区 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">查询设置</h3>
+                    <div class="config-item">
+                        <label>查询历史上限</label>
+                        <input type="number" id="queryHistoryLimit" value="200" min="50" max="1000" step="50">
+                    </div>
+                    <p class="save-tip">非导入单词查询记录最大条数（50~1000）</p>
+                </section>
+                
+                <!-- 模板管理区 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">模板管理</h3>
+                    <div class="config-item">
+                        <label>导入自定义模板</label>
+                        <div class="template-import-area">
+                            <button class="tl-btn tl-btn-primary" id="importTemplateBtn">选择模板文件</button>
+                            <input type="file" id="templateFileInput" accept=".json" multiple style="display:none">
+                            <span class="template-import-hint">支持选择多个 .json 文件批量导入</span>
+                        </div>
+                        <p class="save-tip" style="margin-top:6px; color:#888;">提示：请选择主题模板文件（如 science.json），不要选择 _files.json</p>
+                    </div>
+                    <div class="config-item" id="importedTemplatesSection" style="display:none">
+                        <label>已导入模板</label>
+                        <div class="imported-template-list" id="importedTemplateList"></div>
+                        <p class="save-tip" id="templateListEmptyHint">暂无导入的模板</p>
+                    </div>
+                    <p class="save-tip">导入的模板会保存在浏览器中，重启无需重新导入</p>
+                </section>
+                
+                <!-- 词书管理 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">词书管理</h3>
+                    <div class="vocab-book-list" id="vocabBookList">
+                        <!-- 动态加载已导入词书 -->
+                    </div>
+                    <div class="vocab-book-actions">
+                        <button class="btn btn-sm btn-secondary" id="downloadTemplateBtn">
+                            <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            下载模板
+                        </button>
+                        <button class="btn btn-sm btn-primary" id="importVocabBookBtn">
+                            <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            导入词书
+                        </button>
+                    </div>
+                    <input type="file" id="vocabBookFileInput" accept=".json" style="display: none;">
+                </section>
+                
+                <!-- 数据管理 -->
+                <section class="config-section">
+                    <h3 class="config-section-title">数据管理</h3>
+                    <div class="data-management-actions">
+                        <button class="btn btn-sm btn-secondary" id="exportDataBtn">
+                            <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            导出数据
+                        </button>
+                        <button class="btn btn-sm btn-secondary" id="importDataBtn">
+                            <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            导入数据
+                        </button>
+                    </div>
+                    <div class="data-management-actions" style="margin-top: var(--spacing-sm);">
+                        <button class="btn btn-sm btn-danger" id="clearDataBtn" style="width: 100%;">
+                            <svg class="btn-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            清除所有数据
+                        </button>
+                    </div>
+                    <input type="file" id="dataFileInput" accept=".json" style="display: none;">
+                    <p class="save-tip">导出文件可用于备份或在其他设备上恢复数据</p>
+                    <p class="save-tip" style="color: var(--danger-color);">清除数据将删除所有单词、历史记录和设置，但保留账号信息</p>
+                </section>
+                
+                <!-- 退出登录 -->
+                <div class="settings-footer">
+                    <button class="settings-logout-btn" id="settingsLogoutBtn">退出登录</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- 复习历史弹窗 -->
+    <aside class="review-panel" id="reviewPanel">
+        <div class="review-header">
+            <h2 class="review-title">复习历史</h2>
+            <button class="review-close" id="closeReviewBtn">&times;</button>
+        </div>
+        <div class="review-content" id="reviewContent">
+            <div class="review-empty">
+                <p>暂无历史记录</p>
+                <p class="review-tip">每天学习的内容会自动归档到这里</p>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- 加载遮罩 -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">AI正在生成文本...</p>
+        </div>
+    </div>
+    
+    <!-- 单词简易卡片 -->
+    <div class="word-card" id="wordCard" style="display: none;">
+        <div class="card-content">
+            <span class="card-pos" id="cardPos"></span>
+            <span class="card-translation" id="cardTranslation"></span>
+            <button class="card-more-btn" id="cardMoreBtn">⋮</button>
+        </div>
+    </div>
+    
+    <!-- 单词详情弹窗 -->
+    <div class="detail-popup" id="detailPopup" style="display: none;">
+        <div class="popup-content">
+            <div class="popup-header">
+                <span class="popup-word" id="popupWord"></span>
+                <span class="popup-phonetic" id="popupPhonetic"></span>
+                <button class="popup-close" id="popupClose">×</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-section">
+                    <h4>词性与释义</h4>
+                    <div class="popup-translations" id="popupTranslations"></div>
+                </div>
+                <div class="popup-section">
+                    <h4>拓展补充</h4>
+                    <div class="popup-extra" id="popupExtra"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 提示弹窗 -->
+    <div class="toast-popup" id="toastPopup" style="display: none;">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon"></span>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
+    
+    <!-- 词本管理弹窗 -->
+    <div class="wordbook-overlay" id="wordbookOverlay" style="display:none;">
+        <div class="wordbook-modal">
+            <div class="wordbook-header">
+                <span class="wordbook-title">词本管理</span>
+                <div class="wordbook-header-actions">
+                    <button class="wordbook-history-btn" id="wordbookHistoryBtn">
+                    <span class="wordbook-history-glow"></span>
+                    <span class="wordbook-history-inner">查询历史</span>
+                </button>
+                    <button class="wordbook-close" id="wordbookClose">×</button>
+                </div>
+            </div>
+            <div class="wordbook-body" id="wordbookBody">
+                <div class="wordbook-toolbar">
+                    <input class="wordbook-input" id="wordbookNewName" placeholder="输入新词本名称..." />
+                    <button class="wordbook-create-btn" id="wordbookCreateBtn">+ 新建</button>
+                </div>
+                <div class="wordbook-list" id="wordbookList"></div>
+            </div>
+            <div class="wordbook-detail" id="wordbookDetail" style="display:none;">
+                <div class="wordbook-detail-header">
+                    <button class="wordbook-back-btn" id="wordbookBackBtn">← 返回</button>
+                    <button class="wordbook-detail-delete" id="wordbookDetailDelete" title="删除此词本">🗑️</button>
+                </div>
+                <h4 class="wordbook-detail-title" id="wordbookDetailTitle"></h4>
+                <div class="wordbook-word-list" id="wordbookWordList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 查询历史弹窗 -->
+    <div class="history-overlay" id="queryHistoryOverlay" style="display:none;">
+        <div class="history-modal">
+            <div class="history-header">
+                <span class="history-title">查询历史</span>
+                <button class="history-close" id="queryHistoryClose">×</button>
+            </div>
+            <div class="history-body" id="queryHistoryBody"></div>
+        </div>
+    </div>
+
+    <!-- 登录界面 -->
+    <div class="login-overlay" id="loginOverlay" style="display:none;">
+        <div class="login-bg"></div>
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h2 class="login-title">欢迎使用</h2>
+                    <p class="login-subtitle">考研英语背词助手</p>
+                </div>
+                <div class="login-form">
+                    <div class="login-field">
+                        <label class="login-label">用户名</label>
+                        <input type="text" id="loginUsername" class="login-input" placeholder="输入你的名字" autocomplete="off">
+                    </div>
+                    <div class="login-field">
+                        <label class="login-label">账号编号</label>
+                        <input type="text" id="loginUserId" class="login-input" placeholder="自动生成" readonly>
+                    </div>
+                    <button class="login-btn" id="loginBtn">进 入</button>
+                </div>
+                <div class="login-users" id="loginUsers" style="display:none;">
+                    <div class="login-users-title">已有账号</div>
+                    <div class="login-users-list" id="loginUsersList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript模块 -->
+    <script src="js/userManager.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/dataStore.js"></script>
+    <script src="js/vocabSearch.js"></script>
+    <script src="js/wordManage.js"></script>
+    <script src="js/apiRequest.js"></script>
+    <script src="js/textRender.js"></script>
+    <script src="js/interaction.js"></script>
+    <script src="js/fileExport.js"></script>
+    <script src="js/localGenerator.js"></script>
+    <script src="js/templateManager.js"></script>
+    <script src="js/vocabBook.js"></script>
+    <script src="js/dataManager.js"></script>
+    <script src="js/settingsManager.js"></script>
+    <script src="js/pastPapers.js"></script>
+    <script src="js/translation.js"></script>
+    <script src="js/writing.js"></script>
+    <script src="js/pastPaperReader.js"></script>
+    <script src="js/clozeExercise.js"></script>
+    <script src="js/longSentence.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- 释义弹窗 -->
+    <div class="meaning-modal-overlay" id="meaningModalOverlay" style="display: none;">
+        <div class="meaning-modal" id="meaningModal">
+            <!-- 弹窗头部 -->
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <span class="modal-word" id="modalWord"></span>
+                    <span class="modal-phonetic" id="modalPhonetic"></span>
+                </div>
+                <button class="modal-close-btn" id="modalCloseBtn">×</button>
+            </div>
+            
+            <!-- 弹窗内容区 -->
+            <div class="modal-body">
+                <!-- 词库释义 -->
+                <div class="modal-section">
+                    <div class="section-hd">
+                        <span class="section-hd-icon">📚</span>
+                        <span class="section-hd-title">词库释义</span>
+                        <div class="source-filter-bar" id="sourceFilterBar"></div>
+                        <span class="section-hd-tip">勾选要导入的释义</span>
+                    </div>
+                    <div class="meaning-list" id="meaningList"></div>
+                </div>
+
+                <!-- 在线释义 -->
+                <div class="modal-section">
+                    <div class="section-hd">
+                        <span class="section-hd-icon">🔍</span>
+                        <span class="section-hd-title">权威释义</span>
+                    </div>
+                    <div id="apiMeaningSection"></div>
+                </div>
+            </div>
+            
+            <!-- 弹窗底部 -->
+            <div class="modal-footer">
+                <div class="footer-row">
+                    <div class="import-group-select">
+                        <label>导入到：</label>
+                        <select id="importGroup">
+                            <option value="review">复习词</option>
+                            <option value="new">新词</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="singleAddBtn" disabled>添加到词单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

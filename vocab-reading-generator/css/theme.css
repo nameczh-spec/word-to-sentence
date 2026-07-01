@@ -1,0 +1,142 @@
+/* 主题样式 - 苹果风极简 + 磨砂玻璃半透明设计（仅亮色主题） */
+
+/* ============================================
+   亮色主题 - Apple Light Mode
+   ============================================ */
+.light-theme {
+    /* 主色调 - 苹果系统蓝 */
+    --accent-color: #007AFF;
+    --accent-hover: #0066D6;
+    --accent-light: rgba(0, 122, 255, 0.1);
+    --accent-subtle: rgba(0, 122, 255, 0.08);
+    
+    /* 背景色 - 干净通透 */
+    --bg-primary: #F5F7FA;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --bg-card-hover: rgba(255, 255, 255, 0.9);
+    --bg-elevated: rgba(255, 255, 255, 0.85);
+    
+    /* 文字色 */
+    --text-primary: #1D1D1F;
+    --text-secondary: #86868B;
+    --text-tertiary: #AEAEB2;
+    
+    /* 边框色 - 极细同色系 */
+    --border-color: rgba(0, 0, 0, 0.06);
+    --border-light: rgba(0, 0, 0, 0.04);
+    
+    /* 磨砂玻璃效果 */
+    --glass-blur: blur(10px);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-bg-hover: rgba(255, 255, 255, 0.85);
+    
+    /* 交互状态 */
+    --hover-bg: rgba(0, 0, 0, 0.04);
+    --active-bg: rgba(0, 122, 255, 0.1);
+    
+    /* 功能色 */
+    --success-color: #34C759;
+    --warning-color: #FF9500;
+    --danger-color: #FF3B30;
+    
+    /* 阴影 - 轻柔 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+    
+    /* 单词高亮 */
+    --highlight-bg: #E5F1FF;
+    --highlight-color: #007AFF;
+    
+    /* 弹窗背景 */
+    --popup-bg: rgba(255, 255, 255, 0.9);
+    --popup-overlay: rgba(0, 0, 0, 0.2);
+    
+    /* 考研高频释义高亮 */
+    --kaoyan-highlight: #007AFF;
+    
+    /* 复习词/新词标签色 */
+    --bg-secondary: rgba(0, 0, 0, 0.04);
+    --review-word-bg: rgba(0, 122, 255, 0.08);
+    --review-word-text: #007AFF;
+    --new-word-bg: rgba(52, 199, 89, 0.08);
+    --new-word-text: #34C759;
+}
+
+.light-theme body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* ============================================
+   磨砂玻璃效果类
+   ============================================ */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.glass-elevated {
+    background: var(--bg-elevated);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* ============================================
+   单词高亮样式
+   ============================================ */
+.highlight-word.style-background {
+    background-color: var(--highlight-bg);
+}
+
+.highlight-word.style-color {
+    color: var(--highlight-color);
+}
+
+/* ============================================
+   主题切换平滑过渡
+   ============================================ */
+body,
+.app-container,
+.sidebar-left,
+.sidebar-right,
+.main-content,
+.config-section,
+.word-import,
+.word-list,
+.history-section,
+.nav-bar,
+.action-bar,
+.word-card,
+.popup-content,
+.toast-content,
+.word-suggest-list,
+.word-meaning-panel {
+    transition: 
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* ============================================
+   覆盖webkit浏览器滚动条样式
+   ============================================ */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.5);
+}

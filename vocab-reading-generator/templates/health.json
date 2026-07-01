@@ -1,0 +1,316 @@
+{
+  "topic": "health",
+  "description": "健康类 - 适用于医疗、公共卫生、疾病等话题",
+  "skeletons": [
+    {
+      "text": "Public health {n} are essential for {v} disease outbreaks and protecting community {adj}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} burden of chronic {n} has increased significantly in recent decades.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "A {adj} diet and regular exercise are {adj} factors in maintaining good health.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} system faces {adj} challenges in providing affordable healthcare to all citizens.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Mental health {n} has gained increased {adj} recognition as a critical component of overall well-being.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Advances in medical {n} have {v} the {n} of many previously untreatable conditions.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} impact of lifestyle {n} on long-term health outcomes is well-documented.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Vaccination programs have {v} {adj} reductions in the incidence of infectious diseases.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of healthcare {n} remains a {adj} issue in many developing countries.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Preventive {n} plays a crucial role in reducing the {n} of chronic diseases.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} relationship between sleep quality and health {n} has been {v} by numerous studies.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Healthcare {n} must {v} to the {adj} demographics of an aging population.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of health information technology has {v} patient care and medical record management.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Environmental {n} have a {adj} effect on respiratory health and overall well-being.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of genetic {n} has opened up new possibilities for personalized medicine.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Health {n} campaigns aim to {v} awareness about the {adj} of healthy living.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} crisis has {v} the {n} in healthcare infrastructure across the globe.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Access to {adj} healthcare services is a fundamental human {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of health {n} is closely linked to social and economic factors.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Workplace health {n} programs have been shown to {v} employee well-being and {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} use of antibiotics has {v} to the emergence of drug-resistant {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Global health {n} between nations is essential for addressing {adj} health threats.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Nutritional {n} plays a critical role in supporting {adj} development and immune function.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} of health equity requires {v} the social determinants of health.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "By promoting {adj} health behaviors, communities can {v} the {n} of preventable diseases.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

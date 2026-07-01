@@ -1,0 +1,568 @@
+{
+  "topic": "chinese",
+  "description": "中文叙事类 - 中文躯干嵌入英文单词模式",
+  "skeletons": [
+    {
+      "text": "近年来，一项{adj}的科学研究{v}了{adj}成果，揭示了{n}背后隐藏的复杂机制。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "通过{adj}方法{v}数据后发现，{n}与传统认知存在显著差异。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "该{adj}发现{v}了学术界对{n}的{adj}理解，为后续研究奠定了坚实基础。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "研究者{v}指出，{n}在{adj}过程中发挥了{adj}作用。",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "随着{n}技术的快速发展，{adj}应用正在{v}人们的生活方式。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "人工智能在{n}领域的{adj}突破，{v}了{adj}的社会关注。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "该{adj}技术能够{v}数据处理{n}，从而{v}整体系统性能。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "技术创新{v}了{n}的发展，同时{v}了新的就业机会。",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "在当代社会中，{n}问题日益{adj}，需要政府{v}有效措施来应对。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "教育{n}的{adj}改革{v}了全社会的广泛关注和讨论。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        }
+      ]
+    },
+    {
+      "text": "社会{n}的{adj}程度{v}了一个国家的整体发展水平。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        }
+      ]
+    },
+    {
+      "text": "城乡之间的{n}差距仍然{adj}，需要更多{n}来缩小这一鸿沟。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "全球{n}市场{adj}波动{v}了各国经济的{n}发展。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "该{adj}政策旨在{v}经济{n}，促进可持续{adj}增长。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "经济学家{v}认为，{n}是推动{adj}发展的核心动力之一。",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "通过{v}贸易{n}，各国可以实现资源{adj}配置和互利共赢。",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "教育的{adj}改革{v}于培养学生的{n}和{adj}思维能力。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "教师通过{adj}教学方法{v}学生的{n}和学习兴趣。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "在{adj}教育体系中，{n}的{adj}越来越受到重视。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "气候{n}已经成为全球面临的最{adj}挑战之一，需要各国共同{v}。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "通过{v}可再生能源，可以有效{n}温室气体排放，保护生态{n}。",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "环境{n}问题{v}了人类对{adj}发展的{adj}思考。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "完善的法律{n}是维护社会{n}和公平正义的{adj}保障。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "知识{adj}保护{v}了创新者的{n}，{v}了社会创造力。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "该{adj}法规的{adj}实施{v}了市场{n}和消费者权益。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "文化{n}的{adj}多样性{v}了人类文明的{adj}发展。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "在全球{n}的背景下，{v}文化{adj}成为{adj}课题。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "传统{n}的{adj}保护与{v}需要全社会的共同努力。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        }
+      ]
+    },
+    {
+      "text": "公共{n}体系的{adj}建设对于{v}人民{adj}至关重要。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "{adj}饮食和规律运动是维护{adj}健康的{n}。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "心理{n}的{adj}重要性日益凸显，{v}了社会的广泛{adj}。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "认知{n}领域的研究{v}了人类{n}和{adj}的复杂关系。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "{adj}体验对个体的{n}发展产生{adj}影响。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "研究者发现，{n}在儿童{adj}发展中扮演{adj}角色。",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "通过{adj}干预措施，可以{v}个体的{n}和情感调节能力。",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "topic": "technology",
+  "description": "科技类 - 适用于人工智能、数字化、自动化等技术话题",
+  "skeletons": [
+    {
+      "text": "The rapid {n} of digital technology has {v} virtually every {adj} of modern life.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Artificial intelligence is {v} the way we {n} complex problems in the {adj} sector.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} development of {n} has raised {adj} questions about privacy and security.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Engineers have {v} a {adj} system that can {v} large amounts of data in real time.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "pp"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The integration of {n} into everyday devices {v} a {adj} shift in technological {n}.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "This {adj} technology {v} users to {v} their workflow and improve overall efficiency.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} potential of {n} has attracted {adj} investment from both public and private sectors.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "By leveraging {n}, companies can {v} their operations in previously unattainable ways.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The emergence of {n} has {v} the boundaries between the physical and digital worlds.",
+      "slots": [
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v",
+          "form": "pp"
+        }
+      ]
+    },
+    {
+      "text": "Critics argue that {adj} technological advancements may {v} existing social {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The implementation of this {adj} system {v} a thorough understanding of the underlying {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "3sg"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Developers are {v} new applications that {v} the power of {n} to solve everyday problems.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} growth of the {n} industry has created new opportunities for {adj} innovation.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "It is essential to {v} the {adj} impact of technology on human {adj} and social relationships.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} {n} developed by the research team can {v} data with remarkable {n}.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Machine learning algorithms {v} patterns in the data that would otherwise {v} human detection.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "The company {v} a {adj} platform that integrates multiple {adj} technologies.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "past"
+        },
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Automation technologies have the potential to {v} the workforce structure {adj}.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adv"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} adoption of {n} varies significantly across different regions and industries.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "Policymakers must {v} the {adj} implications of emerging technologies to ensure responsible development.",
+      "slots": [
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The {adj} nature of technological change makes it difficult to {v} long-term {n} accurately.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        }
+      ]
+    },
+    {
+      "text": "Through {adj} design and engineering, the team was able to {v} a {adj} prototype.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "The convergence of multiple {adj} technologies is {v} entirely new {n} for innovation.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "n"
+        }
+      ]
+    },
+    {
+      "text": "This {adj} approach to {n} development emphasizes {adj} user experience above all else.",
+      "slots": [
+        {
+          "pos": "adj"
+        },
+        {
+          "pos": "n"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    },
+    {
+      "text": "Researchers are {v} ways to {v} the security of {adj} digital infrastructure.",
+      "slots": [
+        {
+          "pos": "v",
+          "form": "gerund"
+        },
+        {
+          "pos": "v"
+        },
+        {
+          "pos": "adj"
+        }
+      ]
+    }
+  ]
+}
