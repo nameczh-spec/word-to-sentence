@@ -277,6 +277,38 @@
       ]
     },
     {
+      "type": "translation",
+      "title": "翻译",
+      "passage": "Governments throughout the world act on the assumption that the welfare of their people depends largely on the economic strength and wealth of the community.",
+      "sentences": [
+        {
+          "num": 31,
+          "original": "Under modern conditions, this requires varying measures of centralized control and hence the help of specialized scientists such as economists and operational research experts.",
+          "translation": "在现代条件下，这需要程度不同的中央控制，从而就需要获得诸如经济学和运筹学等领域专家的协助。"
+        },
+        {
+          "num": 32,
+          "original": "Furthermore, it is obvious that the strength of a country's economy is directly bound up with the efficiency of its agriculture and industry, and that this in turn rests upon the efforts of scientists and technologists of all kinds.",
+          "translation": "再者，显而易见的是一个国家的经济实力与其工农业生产效率密切相关，而效率的提高则又有赖于各种科技人员的努力。"
+        },
+        {
+          "num": 33,
+          "original": "Owing to the remarkable development in mass-communications, people everywhere are feeling new wants and are being exposed to new customs and ideas, while governments are often forced to introduce still further innovations for the reasons given above.",
+          "translation": "大众通讯的显著发展使各地的人们不断感到有新的需求，不断接触到新的习俗和思想，由于上述原因，政府常常得推出更多的革新。"
+        },
+        {
+          "num": 34,
+          "original": "in the early industrialized countries of Europe the process of industrialization—with all the far-reaching changes in social patterns that followed—was spread over nearly a century, whereas nowadays a developing nation may undergo the same process in a decade or so.",
+          "translation": "在先期实现工业化的欧洲国家中，其工业化进程以及随之而来的各种深刻的社会结构变革，持续了大约一个世纪之久，而如今一个发展中国家在十年左右就可能完成这个过程。"
+        },
+        {
+          "num": 35,
+          "original": "Additional social stresses may also occur because of the population explosion or problems arising from mass migration movements—themselves made relatively easy nowadays by modern means of transport.",
+          "translation": "由于人口的猛增或大量人口流动（现代交通工具使这种流动相对容易）造成的种种问题也会对社会造成新的压力。"
+        }
+      ]
+    },
+    {
       "type": "writing",
       "title": "作文",
       "content": "Part B\nDirections:\nStudy the following two pictures carefully and write an essay of at least 150 words.\n\nYour essay must be written neatly on ANSWER SHEET 2.\n\nYour essay should meet the requirements below:\n1) Describe the pictures.\n2) Deduce the purpose of the painter of the pictures.\n3) Suggest counter-measures."
