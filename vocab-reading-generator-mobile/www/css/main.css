@@ -818,6 +818,7 @@ body {
 .section-hd {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 6px;
     margin-bottom: 8px;
 }
@@ -828,6 +829,7 @@ body {
 /* 词源筛选按钮 */
 .source-filter-bar {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
     margin-left: 8px;
     flex-shrink: 0;
@@ -1116,6 +1118,18 @@ body {
     background: var(--hover-bg);
     color: var(--text-secondary);
     transition: all var(--transition-fast);
+}
+
+/* 移动端：操作按钮始终可见并增大触控区域 */
+@media (max-width: 900px) {
+    .word-item-actions {
+        opacity: 1;
+    }
+    .word-item-actions button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
 }
 
 .word-item-actions button:hover {
@@ -2005,6 +2019,7 @@ body {
 /* 辅助按钮组基础 flex 布局（全局） */
 .action-bar-aux {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: var(--spacing-sm);
     width: 100%;
@@ -2317,7 +2332,7 @@ body {
         padding-left: 16px;
         gap: 4px;
     }
-    .group-tab {
+    .tab-btn {
         padding: 6px 10px;
         font-size: 12px;
     }
@@ -2346,6 +2361,50 @@ body {
     .section-header {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: 11px;
+    }
+}
+
+/* ============================================
+   平板端参数区域横向布局 (768px ~ 900px)
+   让生成引擎和输出格式下拉框横向并排
+   ============================================ */
+@media (min-width: 768px) and (max-width: 900px) {
+    /* 操作栏：词源切换+参数区+生成按钮紧凑排列 */
+    .action-bar {
+        gap: var(--spacing-sm);
+    }
+    /* 参数卡片：两个下拉框横向并排 */
+    .action-bar-params {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    .action-bar-params .mode-select {
+        flex: 1;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    .action-bar-params .mode-select label {
+        white-space: nowrap;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+    .action-bar-params .mode-select .custom-dropdown {
+        flex: 1;
+        min-width: 0;
+    }
+    /* 生成按钮自适应宽度 */
+    .action-bar-generate {
+        width: auto;
+        min-width: 120px;
+        flex-shrink: 0;
+    }
+    /* 词源切换栏适当宽度 */
+    .action-bar-source .source-toggle {
+        min-width: 200px;
     }
 }
 
@@ -2804,6 +2863,38 @@ button:active,
     .btn-sm {
         min-height: 36px;
         font-size: 14px;
+    }
+    /* 导航栏按钮增大触控 */
+    .nav-settings-btn, .nav-review-btn, .nav-back-btn, .nav-hamburger {
+        width: 40px;
+        height: 40px;
+    }
+    /* 弹窗关闭按钮增大触控 */
+    .settings-close-btn, .modal-close-btn, .review-close, .wordbook-close, .history-close {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+    /* 分页按钮增大 */
+    .pagination .btn {
+        min-height: 40px;
+    }
+    /* 状态筛选按钮增大 */
+    .filter-btn {
+        min-height: 36px;
+        font-size: 12px;
+    }
+
+    /* iOS 输入框防缩放：font-size >= 16px */
+    .word-import textarea,
+    .single-input-wrapper input,
+    .import-group-select select,
+    .config-item input,
+    .config-item select,
+    .mode-select select,
+    .wordbook-input,
+    .dropdown-trigger {
+        font-size: 16px;
     }
 
     /* 操作栏间距 */
