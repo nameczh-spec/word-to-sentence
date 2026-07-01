@@ -352,7 +352,55 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part A\n47. Directions:\nYou have just come back from the U.S. as a member of a Sino-American cultural exchange program. Write a letter to your American colleague to\n1) express your thanks for his/her warm reception;\n2) welcome him/her to visit China in due course.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Zhang Wei\" instead.\nDo not write your address. (10 points)\n\nPart B\n48. Directions:\nIn this section, you are asked to write an essay based on the following chart.\nIn your writing, you should\n1) interpret the chart and\n2) give your comments.\nYou should write at least 150 words.\nWrite your essay on ANSWER SHEET 2. (15 points)"
+      "content": "Part A\n47. Directions:\nYou have just come back from the U.S. as a member of a Sino-American cultural exchange program. Write a letter to your American colleague to\n1) express your thanks for his/her warm reception;\n2) welcome him/her to visit China in due course.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Zhang Wei\" instead.\nDo not write your address. (10 points)\n\nPart B\n48. Directions:\nIn this section, you are asked to write an essay based on the following chart.\nIn your writing, you should\n1) interpret the chart and\n2) give your comments.\nYou should write at least 150 words.\nWrite your essay on ANSWER SHEET 2. (15 points)",
+      "partA": {
+        "title": "回复教授关于课程安排的邮件",
+        "translation": "假设你的教授来信询问课程安排的建议。请写一封回信。",
+        "samples": [
+          {
+            "text": "Dear Professor Zhang,\\n\\nThank you for your email. I am writing to share my thoughts on the course schedule.\\n\\nI would suggest scheduling the lecture on Wednesday afternoons, as most students are free during that time. Additionally, it would be helpful to have a tutorial session on Fridays for students to discuss the lecture content and ask questions.\\n\\nI hope these suggestions are helpful. Please let me know if you need any further input.\\n\\nYours sincerely,\\nLi Ming",
+            "note": "范文简洁明了，给出具体的时间安排建议。"
+          }
+        ],
+        "tips": {
+          "type": "email",
+          "structure": [
+            "首段：致谢",
+            "中段：给出建议",
+            "末段：表示愿意进一步帮助"
+          ],
+          "commonPhrases": [
+            "I would suggest...",
+            "I hope these suggestions are helpful."
+          ],
+          "notes": "建议要具体可行。"
+        }
+      },
+      "partB": {
+        "title": "手机用户增长",
+        "translation": "根据图表写一篇约150词的短文。",
+        "type": "chart",
+        "samples": [
+          {
+            "text": "The chart illustrates the growth of mobile phone users in both developed and developing countries over a certain period. As can be seen, developing countries have experienced a more dramatic increase in mobile phone adoption compared to developed countries.\\n\\nThis trend reflects the rapid technological advancement and economic growth in developing nations. Mobile phones have become essential tools for communication, commerce, and access to information, particularly in areas where traditional infrastructure is limited.\\n\\nThe narrowing gap between developed and developing countries in mobile phone usage is a positive sign of global technological convergence. It suggests that technology is playing an increasingly important role in bridging the development divide.",
+            "note": "范文描述数据，分析原因，展望趋势。"
+          }
+        ],
+        "tips": {
+          "type": "chart",
+          "structure": [
+            "首段：描述数据趋势",
+            "中段：分析原因",
+            "末段：展望趋势"
+          ],
+          "keyExpressions": [
+            "The chart illustrates...",
+            "This trend reflects...",
+            "The narrowing gap is a positive sign of..."
+          ],
+          "notes": "对比类图表要突出差异和趋势。"
+        }
+      }
     }
   ]
 }

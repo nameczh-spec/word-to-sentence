@@ -353,7 +353,34 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part B\n66. Directions:\nStudy the following picture carefully and write an essay entitled \"Cultures -- National and International\".\nIn the essay you should\n1) describe the picture and interpret its meaning, and\n2) give your comment on the phenomenon.\nYou should write about 200 words neatly on ANSWER SHEET 2. (20 points)\n\nAn American girl in traditional Chinese costume（服装）"
+      "content": "Part B\n66. Directions:\nStudy the following picture carefully and write an essay entitled \"Cultures -- National and International\".\nIn the essay you should\n1) describe the picture and interpret its meaning, and\n2) give your comment on the phenomenon.\nYou should write about 200 words neatly on ANSWER SHEET 2. (20 points)\n\nAn American girl in traditional Chinese costume（服装）",
+      "partB": {
+        "title": "中国女孩与美国女孩——文化融合",
+        "translation": "根据图画写一篇160-200词的短文。图画描绘了一个穿着中国传统服饰的外国女孩。",
+        "type": "picture",
+        "samples": [
+          {
+            "text": "The picture depicts a young American girl dressed in traditional Chinese clothing, smiling happily. She is wearing a Chinese silk dress with delicate embroidery and holding a Chinese fan. This image symbolizes the growing cultural exchange between China and the world.\\n\\nIn today's globalized world, cultural boundaries are becoming increasingly blurred. People from different countries are embracing each other's traditions and customs with enthusiasm. This exchange is mutually beneficial: it promotes mutual understanding and respect, and enriches the cultural lives of all involved.\\n\\nHowever, true cultural exchange should go beyond surface-level adoption of foreign customs. It requires genuine interest in understanding the history, values, and beliefs behind different cultural practices. Only through such deep engagement can we build meaningful bridges between cultures and foster a more harmonious world.",
+            "note": "范文描述图画中的文化融合场景，分析文化交流的意义，强调深度理解的重要性。"
+          }
+        ],
+        "tips": {
+          "type": "picture",
+          "structure": [
+            "首段：描述图画场景",
+            "中段：分析文化交流的意义",
+            "末段：强调深度理解的重要性"
+          ],
+          "keyExpressions": [
+            "The picture depicts...",
+            "In today\\s globalized world",
+            "...",
+            "However",
+            "true cultural exchange should go beyond..."
+          ],
+          "notes": "文化交流类图画作文要积极正面，强调 mutual understanding。"
+        }
+      }
     }
   ]
 }

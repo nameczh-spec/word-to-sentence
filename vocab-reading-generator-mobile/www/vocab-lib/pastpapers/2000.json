@@ -311,7 +311,32 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part B\nDirections:\nStudy the following two pictures carefully and write an essay of at least 150 words.\n\nYour essay must be written neatly on ANSWER SHEET 2.\n\nYour essay should meet the requirements below:\n1) Describe the pictures.\n2) Deduce the purpose of the painter of the pictures.\n3) Suggest counter-measures."
+      "content": "Part B\nDirections:\nStudy the following two pictures carefully and write an essay of at least 150 words.\n\nYour essay must be written neatly on ANSWER SHEET 2.\n\nYour essay should meet the requirements below:\n1) Describe the pictures.\n2) Deduce the purpose of the painter of the pictures.\n3) Suggest counter-measures.",
+      "partB": {
+        "title": "世界商业捕鱼——从丰富到枯竭",
+        "translation": "根据图画写一篇160-200词的短文。图画描绘了商业捕鱼从过去鱼类丰富到如今资源枯竭的对比。",
+        "type": "picture",
+        "samples": [
+          {
+            "text": "The picture presents a stark contrast between the past and present of commercial fishing. In the first image, dated 1900, the ocean is teeming with fish of all sizes. In the second, dated 1995, a single small fish remains while countless fishing boats crowd the waters above. This dramatic visual contrast highlights the devastating impact of overfishing on marine ecosystems.\\n\\nOver the past century, advances in fishing technology have enabled humans to harvest fish at an unprecedented rate. This has led to the depletion of many fish species and the degradation of marine habitats. The consequences extend beyond the environment—millions of people who depend on fishing for their livelihoods are also affected.\\n\\nAddressing this crisis requires urgent action. Governments must implement and enforce sustainable fishing practices, establish marine protected areas, and invest in aquaculture research. Consumers can also play a role by choosing sustainably sourced seafood. Only through collective effort can we restore the health of our oceans and ensure that future generations can enjoy the bounty of the sea.",
+            "note": "范文描述图画中的强烈对比，分析过度捕捞的危害，提出可持续发展建议。"
+          }
+        ],
+        "tips": {
+          "type": "picture",
+          "structure": [
+            "首段：描述图画中的时间对比",
+            "中段：分析过度捕捞的危害",
+            "末段：提出可持续发展建议"
+          ],
+          "keyExpressions": [
+            "The picture presents a stark contrast...",
+            "This dramatic visual contrast highlights...",
+            "Addressing this crisis requires urgent action."
+          ],
+          "notes": "环保类图画作文要突出问题的严重性，提出切实可行的建议。"
+        }
+      }
     }
   ]
 }

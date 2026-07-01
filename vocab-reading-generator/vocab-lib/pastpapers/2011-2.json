@@ -352,7 +352,59 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part A\n47. Directions:\nSuppose your cousin Li Ming has just been admitted to a university. Write him/her a letter to\n1) congratulate him/her, and\n2) give him/her suggestions on how to get prepared for university life.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Zhang Wei\" instead.\nDo not write the address. (10 points)\n\nPart B\n48. Directions:\nWrite an essay based on the following chart.\nIn your writing, you should\n1) interpret the chart and\n2) give your comments.\nYou should write at least 150 words.\nWrite your essay on ANSWER SHEET 2. (15 points)"
+      "content": "Part A\n47. Directions:\nSuppose your cousin Li Ming has just been admitted to a university. Write him/her a letter to\n1) congratulate him/her, and\n2) give him/her suggestions on how to get prepared for university life.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Zhang Wei\" instead.\nDo not write the address. (10 points)\n\nPart B\n48. Directions:\nWrite an essay based on the following chart.\nIn your writing, you should\n1) interpret the chart and\n2) give your comments.\nYou should write at least 150 words.\nWrite your essay on ANSWER SHEET 2. (15 points)",
+      "partA": {
+        "title": "回复同学关于报考研究生的建议邮件",
+        "translation": "假设你的同学来信询问是否应该报考研究生。请写一封回信给出建议。",
+        "samples": [
+          {
+            "text": "Dear Li Hua,\\n\\nThank you for your email. Regarding your question about whether to pursue a postgraduate degree, I would like to share my perspective.\\n\\nI think the decision depends on your career goals. If you aspire to work in academia or research, a postgraduate degree is essential. However, if you plan to enter the job market immediately, gaining practical work experience may be more beneficial in the short term.\\n\\nMy suggestion is to carefully consider your long-term goals and consult with professionals in your field of interest. Whatever you decide, make sure it aligns with your passions and aspirations.\\n\\nYours,\\nLi Ming",
+            "note": "范文辩证分析，给出个性化建议。"
+          }
+        ],
+        "tips": {
+          "type": "email",
+          "structure": [
+            "首段：引入话题",
+            "中段：辩证分析利弊",
+            "末段：给出个性化建议"
+          ],
+          "commonPhrases": [
+            "Regarding your question about...",
+            "...",
+            "I think the decision depends on...",
+            "Whatever you decide",
+            "..."
+          ],
+          "notes": "建议要个性化，不要一刀切。"
+        }
+      },
+      "partB": {
+        "title": "汽车品牌市场份额调查",
+        "translation": "根据饼状图写一篇约150词的短文。",
+        "type": "chart",
+        "samples": [
+          {
+            "text": "The pie chart illustrates the market share of different car brands in a certain region. Brand A leads with 35%, followed by Brand B at 25% and Brand C at 20%. Other brands collectively account for the remaining 20%.\\n\\nThe dominance of Brand A may be attributed to its strong reputation for reliability and after-sales service. Brand B and Brand C have carved out their niches through competitive pricing and innovative features respectively.\\n\\nAs the automotive market becomes increasingly competitive, brands must continue to innovate and adapt to changing consumer preferences. Those that prioritize quality, sustainability, and customer experience will be best positioned to maintain or expand their market share.",
+            "note": "范文描述数据，分析原因，提出展望。"
+          }
+        ],
+        "tips": {
+          "type": "chart",
+          "structure": [
+            "首段：描述饼状图数据",
+            "中段：分析品牌优势",
+            "末段：展望市场趋势"
+          ],
+          "keyExpressions": [
+            "The pie chart illustrates...",
+            "The dominance of...may be attributed to...",
+            "As...becomes increasingly competitive",
+            "..."
+          ],
+          "notes": "市场份额类图表要分析品牌竞争力。"
+        }
+      }
     }
   ]
 }

@@ -355,26 +355,83 @@
         },
         {
           "num": 47,
-          "text": "while we may be able to sustain the illusion of control through the conscious mind alone, in reality we are continually faced with a question: “Why cannot I make myself do this or achieve that?” Since desire and will are damaged by the presence of thoughts that do not accord with desire, Allen concluded: “We do not attract what we want, but what we are.” Achievement happens because you as a person embody the external achievement; you don't “get” success but become it. There is no gap between mind and matter. Part of the fame of Allen's book is its contention that “Circumstances do not make a person, they reveal him.”"
+          "text": "while we may be able to sustain the illusion of control through the conscious mind alone, in reality we are continually faced with a question: “Why cannot I make myself do this or achieve that?” Since desire and will are damaged by the presence of thoughts that do not accord with desire, Allen concluded: “We do not attract what we want, but what we are.” Achievement happens because you as a person embody the external achievement; you don't “get” success but become it. There is no gap between mind and matter. Part of the fame of Allen's book is its contention that “Circumstances do not make a person, they reveal him.”",
+          "translation": "艾伦的贡献在于抓住了一个我们都认同的假设——因为我们不是机器人，所以我们能控制自己的思想——并揭示了其错误本质。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>assumption</strong>：n. 假设。</li><li><strong>erroneous</strong>：adj. 错误的。</li></ul>"
         },
         {
           "num": 48,
-          "text": "This seems a justification for neglect of those in need, and a rationalization of exploitation, of the superiority of those at the top and the inferiority of those at the bottom. This, however, would be a knee-jerk reaction to a subtle argument. Each set of circumstances, however bad, offers a unique opportunity for growth. If circumstances always determined the life and prospects of people, then humanity would never have progressed. In fact,"
+          "text": "This seems a justification for neglect of those in need, and a rationalization of exploitation, of the superiority of those at the top and the inferiority of those at the bottom. This, however, would be a knee-jerk reaction to a subtle argument. Each set of circumstances, however bad, offers a unique opportunity for growth. If circumstances always determined the life and prospects of people, then humanity would never have progressed. In fact,",
+          "translation": "我们可以选择将其视为积极的经历或消极的经历，这取决于我们如何看待这种情况。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>depending on</strong>：取决于。</li></ul>"
         },
         {
           "num": 49,
-          "text": "circumstances seem to be designed to bring out the best in us, and if we feel that we have been “wronged” then we are unlikely to begin a conscious effort to escape from our situation. Nevertheless, as any biographer knows, a person's early life and its conditions are often the greatest gift to an individual. The sobering aspect of Allen's book is that we have no one else to blame for our present condition except ourselves."
+          "text": "circumstances seem to be designed to bring out the best in us, and if we feel that we have been “wronged” then we are unlikely to begin a conscious effort to escape from our situation. Nevertheless, as any biographer knows, a person's early life and its conditions are often the greatest gift to an individual. The sobering aspect of Allen's book is that we have no one else to blame for our present condition except ourselves.",
+          "translation": "这是因为我们不是经验的被动接受者，而是自身现实的主动创造者。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>passive recipients</strong>：被动接受者。</li><li><strong>active creators</strong>：主动创造者。</li></ul>"
         },
         {
           "num": 50,
-          "text": "The upside is the possibilities contained in knowing that everything is up to us; where before we were experts in the array of limitations, now we become authorities of what is possible.."
+          "text": "The upside is the possibilities contained in knowing that everything is up to us; where before we were experts in the array of limitations, now we become authorities of what is possible..",
+          "translation": "驾驭这种力量的关键在于理解：我们的思想塑造了我们的现实，而我们有能力选择自己的思想。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>harnessing</strong>：v. 驾驭，利用。</li><li><strong>shape</strong>：v. 塑造。</li></ul>"
         }
       ]
     },
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part A\n51. Directions:\nWrite a letter to a friend of yours to\n1) recommend one of your favorite movies and\n2) give reasons for your recommendation.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Li Ming\" instead.\nDo not write the address. (10 points)\n\nPart B\n52. Directions:\nWrite an essay of 160-200 words based on the following drawing.\nIn your essay, you should\n1) describe the drawing briefly,\n2) explain its intended meaning, and\n3) give your comments.\nYou should write neatly on ANSWER SHEET 2. (20 points)\n\n旅程之\"余\""
+      "content": "Part A\n51. Directions:\nWrite a letter to a friend of yours to\n1) recommend one of your favorite movies and\n2) give reasons for your recommendation.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Li Ming\" instead.\nDo not write the address. (10 points)\n\nPart B\n52. Directions:\nWrite an essay of 160-200 words based on the following drawing.\nIn your essay, you should\n1) describe the drawing briefly,\n2) explain its intended meaning, and\n3) give your comments.\nYou should write neatly on ANSWER SHEET 2. (20 points)\n\n旅程之\"余\"",
+      "partA": {
+        "title": "推荐一部电影给外国朋友",
+        "translation": "假设你的外国朋友想看一部中国电影。请写一封邮件推荐。",
+        "samples": [
+          {
+            "text": "Dear David,\\n\\nI am glad to hear that you are interested in Chinese films. I would like to recommend \"Farewell My Concubine\" directed by Chen Kaige.\\n\\nThis film tells the story of two Peking Opera performers whose lives span several decades of Chinese history. It beautifully captures the essence of traditional Chinese art and the impact of historical change on individual lives. The performances are outstanding, and the cinematography is breathtaking.\\n\\nI believe this film will give you a deeper understanding of Chinese culture and history. I hope you enjoy it!\\n\\nYours,\\nLi Ming",
+            "note": "范文简洁介绍了影片内容和文化价值。"
+          }
+        ],
+        "tips": {
+          "type": "email",
+          "structure": [
+            "首段：引入推荐",
+            "中段：介绍影片内容",
+            "末段：说明推荐理由"
+          ],
+          "commonPhrases": [
+            "I would like to recommend...",
+            "I believe...will give you a deeper understanding of..."
+          ],
+          "notes": "电影推荐要突出文化价值。"
+        }
+      },
+      "partB": {
+        "title": "旅途中的\"倒水\"——人与人之间的关爱",
+        "translation": "根据图画写一篇160-200词的短文。",
+        "type": "picture",
+        "samples": [
+          {
+            "text": "The picture depicts a heartwarming scene on a train. A young man is pouring water from his cup into an elderly woman's cup, while she smiles gratefully. This simple act of kindness conveys a powerful message: small gestures of care can make a big difference in people's lives.\\n\\nIn our fast-paced modern society, people often overlook the importance of showing kindness to strangers. However, it is precisely these small acts of compassion that strengthen the fabric of our communities. Whether it is offering a seat on the bus, helping someone carry their luggage, or simply sharing a smile, these gestures create a ripple effect of positivity.\\n\\nWe should all strive to be more mindful of the people around us and look for opportunities to help. As the saying goes, \"A candle loses nothing by lighting another candle.\" Let us spread kindness wherever we go.",
+            "note": "范文采用\"描述图画—分析意义—引用名言\"的结构，情感真挚。"
+          }
+        ],
+        "tips": {
+          "type": "picture",
+          "structure": [
+            "首段：描述图画场景",
+            "中段：分析善举的意义",
+            "末段：引用名言，呼吁行动"
+          ],
+          "keyExpressions": [
+            "The picture depicts a heartwarming scene...",
+            "It is precisely these small acts of compassion that...",
+            "As the saying goes",
+            "..."
+          ],
+          "notes": "善举类图画作文要情感真挚，引用恰当。"
+        }
+      }
     }
   ]
 }

@@ -353,7 +353,32 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part B\n66. Directions:\nStudy the following set of drawings carefully and write an essay in which you should\n1) describe the set of drawings, interpret its meaning, and\n2) point out its implications in our life.\nYou should write about 200 words neatly on ANSWER SHEET 2. (20 points)"
+      "content": "Part B\n66. Directions:\nStudy the following set of drawings carefully and write an essay in which you should\n1) describe the set of drawings, interpret its meaning, and\n2) point out its implications in our life.\nYou should write about 200 words neatly on ANSWER SHEET 2. (20 points)",
+      "partB": {
+        "title": "温室花朵经不起风雨",
+        "translation": "根据图画写一篇160-200词的短文。图画描绘了温室中的花朵在风雨中凋零的场景。",
+        "type": "picture",
+        "samples": [
+          {
+            "text": "The picture presents two contrasting images. In the first, a flower grows beautifully in a greenhouse, protected from harsh weather. In the second, the same flower, once removed from the greenhouse and exposed to a storm, withers and dies. This powerful metaphor conveys an important warning: those who are overprotected cannot withstand challenges.\\n\\nThis is particularly relevant to the education of young people. Parents who shield their children from all difficulties may inadvertently weaken their ability to cope with adversity. Just as plants need exposure to wind and rain to develop strong roots, young people need to face challenges and overcome obstacles to build resilience and character.\\n\\nThe solution is not to eliminate all protection but to gradually prepare young people for the realities of life. We should provide guidance and support while allowing them to experience setbacks and learn from their mistakes. Only through this balanced approach can we cultivate individuals who are capable of thriving in an unpredictable world.",
+            "note": "范文描述图画中的对比，分析过度保护的危害，提出平衡教育的建议。"
+          }
+        ],
+        "tips": {
+          "type": "picture",
+          "structure": [
+            "首段：描述图画中的对比",
+            "中段：分析过度保护的危害",
+            "末段：提出平衡教育的建议"
+          ],
+          "keyExpressions": [
+            "The picture presents two contrasting images...",
+            "This is particularly relevant to...",
+            "The solution is not to...but to..."
+          ],
+          "notes": "教育类图画作文要结合实际，提出建设性意见。"
+        }
+      }
     }
   ]
 }

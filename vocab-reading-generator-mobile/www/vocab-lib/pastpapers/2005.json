@@ -351,19 +351,27 @@
       "sentences": [
         {
           "num": 46,
-          "text": "Television is one of the means by which these feelings are created and conveyed – and perhaps never before has it served so much to connect different peoples and nations as in the recent events in Europe. The Europe that is now forming cannot be anything other than its peoples, their cultures and national identities. With this in mind we can begin to analyze the European television scene."
+          "text": "Television is one of the means by which these feelings are created and conveyed – and perhaps never before has it served so much to connect different peoples and nations as in the recent events in Europe. The Europe that is now forming cannot be anything other than its peoples, their cultures and national identities. With this in mind we can begin to analyze the European television scene.",
+          "translation": "要谈论大众媒体在欧洲历史上这一极其重要的阶段中所扮演的角色，并非易事。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>mass media</strong>：大众媒体。</li><li><strong>overwhelmingly</strong>：adv. 极其。</li></ul>"
         },
         {
           "num": 47,
-          "text": "In Europe, as elsewhere, multi-media groups have been increasingly successful; groups which bring together television, radio, newspapers, magazines and publishing houses that work in relation to one another. One Italian example would be the Berlusconi group, while abroad Maxwell and Murdoch come to mind. Clearly, only the biggest and most flexible television companies are going to be able to compete in such a rich and hotly-contested market."
+          "text": "In Europe, as elsewhere, multi-media groups have been increasingly successful; groups which bring together television, radio, newspapers, magazines and publishing houses that work in relation to one another. One Italian example would be the Berlusconi group, while abroad Maxwell and Murdoch come to mind. Clearly, only the biggest and most flexible television companies are going to be able to compete in such a rich and hotly-contested market.",
+          "translation": "正是在这一点上，媒体及其角色的问题 becomes central to 对公共生活本质的任何思考。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>central to</strong>：对……至关重要的。</li><li><strong>public life</strong>：公共生活。</li></ul>"
         },
         {
           "num": 48,
-          "text": "This alone demonstrates that the television business is not an easy world to survive in, a fact underlined by statistics that show that out of eighty European television networks, no less than 50% took a loss in 1989. Moreover, the integration of the European community will oblige television companies to cooperate more closely in terms of both production and distribution."
+          "text": "This alone demonstrates that the television business is not an easy world to survive in, a fact underlined by statistics that show that out of eighty European television networks, no less than 50% took a loss in 1989. Moreover, the integration of the European community will oblige television companies to cooperate more closely in terms of both production and distribution.",
+          "translation": "在欧洲，如同其他地方一样，多媒体集团越来越成功：这些集团将 television、radio、newspapers、magazines 和 publishing houses 整合在一起，相互协作。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>multi-media groups</strong>：多媒体集团。</li><li><strong>in relation to one another</strong>：相互之间。</li></ul>"
         },
         {
           "num": 49,
-          "text": "Creating a “European identity” that respects the different cultures and traditions which go to make up the connecting fabric of the Old Continent is no easy task and demands a strategic choice – that of producing programs in Europe for Europe. This entails reducing our dependence on the North American market, whose programs relate to experiences and cultural traditions which are different from our own. In order to achieve these objectives, we must concentrate more on co-productions, the exchange of news, documentary services and training. This also involves the agreements between European countries for the creation of a European bank for Television Production which, on the model of the European Investments Bank, will handle the finances necessary for production costs."
+          "text": "Creating a “European identity” that respects the different cultures and traditions which go to make up the connecting fabric of the Old Continent is no easy task and demands a strategic choice – that of producing programs in Europe for Europe. This entails reducing our dependence on the North American market, whose programs relate to experiences and cultural traditions which are different from our own. In order to achieve these objectives, we must concentrate more on co-productions, the exchange of news, documentary services and training. This also involves the agreements between European countries for the creation of a European bank for Television Production which, on the model of the European Investments Bank, will handle the finances necessary for production costs.",
+          "translation": "仅此一点就表明，电视行业不是一个容易生存的世界，统计数据 further underlined 这一事实：在80个欧洲电视网络中，不少于50%在1989年出现了亏损。",
+          "analysis": "<p><strong>重点词汇：</strong></p><ul><li><strong>demonstrates</strong>：v. 表明。</li><li><strong>underlined</strong>：v. 强调。</li><li><strong>took a loss</strong>：出现亏损。</li></ul>"
         },
         {
           "num": 50,
@@ -374,7 +382,34 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part A\n51. Directions:\nTwo months ago you got a job as an editor for the magazine Designs & Fashions. But now you find that the work is not what you expected. You decide to quit.\nWrite a letter to your boss, Mr. Wang, telling him your decision, stating your reason(s), and making an apology.\nWrite your letter with no less than 100 words.\nWrite it neatly on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter; use \"Li Ming\" instead.\nYou do not need to write the address. (10 points)\n\nPart B\n52. Directions:\nWrite an essay of 160-200 words based on the following drawing.\nIn your essay, you should first describe the drawing, then interpret its meaning, and give your comment on it.\nYou should write neatly on ANSWER SHEET 2. (20 points)"
+      "content": "Part A\n51. Directions:\nTwo months ago you got a job as an editor for the magazine Designs & Fashions. But now you find that the work is not what you expected. You decide to quit.\nWrite a letter to your boss, Mr. Wang, telling him your decision, stating your reason(s), and making an apology.\nWrite your letter with no less than 100 words.\nWrite it neatly on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter; use \"Li Ming\" instead.\nYou do not need to write the address. (10 points)\n\nPart B\n52. Directions:\nWrite an essay of 160-200 words based on the following drawing.\nIn your essay, you should first describe the drawing, then interpret its meaning, and give your comment on it.\nYou should write neatly on ANSWER SHEET 2. (20 points)",
+      "partB": {
+        "title": "养老\"足球赛\"",
+        "translation": "根据图画写一篇160-200词的短文。图画描绘了子女互相推卸赡养老人责任的场景。",
+        "type": "picture",
+        "samples": [
+          {
+            "text": "The picture depicts a disturbing scene: four adult children are playing a \"football match\" with their elderly father as the ball. Each child kicks the old man toward the others, refusing to take responsibility for his care. This satirical image highlights the problem of elder neglect in modern society.\\n\\nIn Chinese culture, filial piety has always been considered a fundamental virtue. However, as society becomes more materialistic and individualistic, some people have begun to shirk their responsibility to care for aging parents. This is not only morally wrong but also socially harmful, as it undermines the traditional family values that have sustained Chinese society for thousands of years.\\n\\nWe must remember that our parents sacrificed much to raise us. Caring for them in their old age is not merely a duty but a privilege. Let us honor our parents and ensure that they spend their twilight years with dignity and love. As the saying goes, \"A tree may grow a thousand feet high, but its leaves will always return to their roots.\"",
+            "note": "范文描述图画中的讽刺场景，分析养老问题的社会根源，引用古训呼吁孝道。"
+          }
+        ],
+        "tips": {
+          "type": "picture",
+          "structure": [
+            "首段：描述图画中的讽刺场景",
+            "中段：分析问题的社会根源",
+            "末段：引用名言，呼吁孝道"
+          ],
+          "keyExpressions": [
+            "The picture depicts a disturbing scene...",
+            "In Chinese culture",
+            "...",
+            "As the saying goes",
+            "..."
+          ],
+          "notes": "社会责任类图画作文要情感真挚，引用恰当。"
+        }
+      }
     }
   ]
 }

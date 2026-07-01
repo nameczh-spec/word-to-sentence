@@ -352,7 +352,58 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part A\n47. Directions:\nSuppose you have found something wrong with the electronic dictionary that you bought from an online store the other day. Write an email to the customer service center to\n1) make a complaint, and\n2) demand a prompt solution.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Zhang Wei\" instead.\nDo not write the address. (10 points)\n\nPart B\n48. Directions:\nWrite an essay based on the following table.\nIn your writing, you should\n1) describe the table, and\n2) give your comments.\nYou should write at least 150 words.\nWrite your essay on ANSWER SHEET 2. (15 points)\n\n某公司员工工作满意度调查\n\n满意度\n年龄组    满意    不清楚    不满意\n≤40岁    16.7%   50.0%    33.3%\n41~50岁  0.0%    36.0%    64.0%\n＞50岁   40.0%   50.0%    10.0%"
+      "content": "Part A\n47. Directions:\nSuppose you have found something wrong with the electronic dictionary that you bought from an online store the other day. Write an email to the customer service center to\n1) make a complaint, and\n2) demand a prompt solution.\nYou should write about 100 words on ANSWER SHEET 2.\nDo not sign your own name at the end of the letter. Use \"Zhang Wei\" instead.\nDo not write the address. (10 points)\n\nPart B\n48. Directions:\nWrite an essay based on the following table.\nIn your writing, you should\n1) describe the table, and\n2) give your comments.\nYou should write at least 150 words.\nWrite your essay on ANSWER SHEET 2. (15 points)\n\n某公司员工工作满意度调查\n\n满意度\n年龄组    满意    不清楚    不满意\n≤40岁    16.7%   50.0%    33.3%\n41~50岁  0.0%    36.0%    64.0%\n＞50岁   40.0%   50.0%    10.0%",
+      "partA": {
+        "title": "回复同学关于英语学习的建议邮件",
+        "translation": "假设你的同学来信询问如何提高英语水平。请写一封回信给出建议。",
+        "samples": [
+          {
+            "text": "Dear Wang Ming,\\n\\nI am glad to receive your email. Here are some suggestions for improving your English.\\n\\nFirst, I recommend reading English newspapers and magazines regularly, such as The Economist or China Daily. This will help you expand your vocabulary and improve your reading comprehension. Second, try to watch English movies or TV shows with subtitles, which can enhance your listening skills. Third, practice speaking with your classmates or join an English corner to build your confidence.\\n\\nConsistency is key. Even 30 minutes of daily practice can make a significant difference over time.\\n\\nYours,\\nLi Ming",
+            "note": "范文从阅读、听力、口语三个方面给出具体建议，实用性强。"
+          }
+        ],
+        "tips": {
+          "type": "email",
+          "structure": [
+            "首段：引入话题",
+            "中段：分点给出建议",
+            "末段：强调坚持的重要性"
+          ],
+          "commonPhrases": [
+            "Here are some suggestions for...",
+            "I recommend...",
+            "Consistency is key."
+          ],
+          "notes": "学习建议要具体可操作。"
+        }
+      },
+      "partB": {
+        "title": "某公司员工工作满意度调查",
+        "translation": "根据图表写一篇约150词的短文。",
+        "type": "chart",
+        "samples": [
+          {
+            "text": "The chart presents the results of a survey on job satisfaction among employees at a certain company. According to the data, 50% of employees expressed satisfaction with their jobs, while 30% felt neutral and 20% reported dissatisfaction.\\n\\nThe fact that half of the employees are satisfied suggests that the company has created a generally positive work environment. However, the 20% dissatisfaction rate indicates room for improvement. Common factors affecting job satisfaction include salary, work-life balance, career development opportunities, and workplace relationships.\\n\\nTo improve overall satisfaction, the company should consider conducting regular feedback sessions, offering competitive compensation packages, and providing clear career advancement paths. Addressing these areas would likely boost morale and productivity across the organization.",
+            "note": "范文遵循\"描述数据—分析原因—提出建议\"的结构。"
+          }
+        ],
+        "tips": {
+          "type": "chart",
+          "structure": [
+            "首段：描述调查数据",
+            "中段：分析满意度因素",
+            "末段：提出改进建议"
+          ],
+          "keyExpressions": [
+            "The chart presents the results of...",
+            "According to the data",
+            "...",
+            "To improve...",
+            "..."
+          ],
+          "notes": "调查类图表作文要分析深层原因。"
+        }
+      }
     }
   ]
 }

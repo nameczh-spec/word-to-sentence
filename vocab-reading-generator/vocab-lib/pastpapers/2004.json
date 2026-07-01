@@ -353,7 +353,33 @@
     {
       "type": "writing",
       "title": "作文",
-      "content": "Part B\n66. Directions:\nStudy the following drawing carefully and write an essay in which you should\n1) describe the drawing,\n2) interpret its meaning, and\n3) support your view with examples.\nYou should write about 200 words neatly on ANSWER SHEET 2. (20 points)"
+      "content": "Part B\n66. Directions:\nStudy the following drawing carefully and write an essay in which you should\n1) describe the drawing,\n2) interpret its meaning, and\n3) support your view with examples.\nYou should write about 200 words neatly on ANSWER SHEET 2. (20 points)",
+      "partB": {
+        "title": "终点又是新起点",
+        "translation": "根据图画写一篇160-200词的短文。图画描绘了一个人到达终点后又面临新起点的场景。",
+        "type": "picture",
+        "samples": [
+          {
+            "text": "The picture illustrates a runner who has just crossed a finish line, only to discover that it is also a new starting point ahead. The image conveys a profound message: in life, every ending marks a new beginning, and success is not a final destination but a continuous journey.\\n\\nThis idea is particularly relevant in today's fast-paced world, where change is the only constant. Those who rest on their laurels after achieving a goal risk being left behind. Instead, we should view each accomplishment as a stepping stone to greater heights. The pursuit of excellence is an ongoing process that requires constant effort and adaptation.\\n\\nAs students, we should embrace this mindset. Whether it is passing an exam, graduating from university, or landing a job, each milestone is merely a checkpoint on a longer journey. Let us celebrate our achievements briefly, then set our sights on new horizons. As T.S. Eliot wrote, \"What we call the beginning is often the end. And to make an end is to make a beginning.\"",
+            "note": "范文描述图画中的起点与终点关系，分析持续进步的重要性，引用名言升华主题。"
+          }
+        ],
+        "tips": {
+          "type": "picture",
+          "structure": [
+            "首段：描述图画中的哲理",
+            "中段：分析持续进步的重要性",
+            "末段：引用名言，联系实际"
+          ],
+          "keyExpressions": [
+            "The picture illustrates...",
+            "This idea is particularly relevant in...",
+            "As...wrote",
+            "..."
+          ],
+          "notes": "哲理类图画作文要深入分析，引用名言增强说服力。"
+        }
+      }
     }
   ]
 }
