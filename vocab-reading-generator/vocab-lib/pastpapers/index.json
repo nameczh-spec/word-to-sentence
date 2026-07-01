@@ -210,6 +210,13 @@
     "source": "2007.pdf"
   },
   {
+    "id": "2006",
+    "year": "2006",
+    "type": "考研英语",
+    "source": "2006.docx",
+    "earlyExam": true
+  },
+  {
     "id": "2005",
     "year": "2005",
     "type": "英语一",
