@@ -34,28 +34,52 @@ function initDrawToolbarDrag(toolbarWrapId) {
     const wrap = document.getElementById(toolbarWrapId);
     if (!wrap) return;
 
-    let offsetX, offsetY, isDragging = false;
+    const toolbar = wrap.querySelector('.pp-draw-toolbar');
+    if (!toolbar) return;
 
-    wrap.addEventListener('mousedown', (e) => {
+    let offsetX = 0, offsetY = 0;
+    let isDragging = false;
+    let hasMoved = false;
+    let startX = 0, startY = 0;
+
+    toolbar.style.cursor = 'grab';
+
+    toolbar.addEventListener('mousedown', (e) => {
         if (e.target.closest('.pp-draw-tool-btn')) return;
         isDragging = true;
-        // 先获取当前位置，再切换到 fixed 并设置坐标，避免跳位
-        const rect = wrap.getBoundingClientRect();
-        wrap.classList.add('draggable');
-        wrap.style.left = rect.left + 'px';
-        wrap.style.top = rect.top + 'px';
-        offsetX = e.clientX - rect.left;
-        offsetY = e.clientY - rect.top;
+        hasMoved = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        toolbar.style.cursor = 'grabbing';
         e.preventDefault();
     });
 
     document.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        wrap.style.left = (e.clientX - offsetX) + 'px';
-        wrap.style.top = (e.clientY - offsetY) + 'px';
+
+        if (!hasMoved) {
+            const dx = Math.abs(e.clientX - startX);
+            const dy = Math.abs(e.clientY - startY);
+            if (dx < 3 && dy < 3) return;
+            hasMoved = true;
+            const rect = toolbar.getBoundingClientRect();
+            offsetX = startX - rect.left;
+            offsetY = startY - rect.top;
+            toolbar.style.position = 'fixed';
+            toolbar.style.zIndex = '1000';
+            toolbar.style.left = rect.left + 'px';
+            toolbar.style.top = rect.top + 'px';
+            wrap.classList.add('draggable');
+        }
+
+        toolbar.style.left = (e.clientX - offsetX) + 'px';
+        toolbar.style.top = (e.clientY - offsetY) + 'px';
     });
 
     document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            toolbar.style.cursor = 'grab';
+        }
         isDragging = false;
     });
 }
