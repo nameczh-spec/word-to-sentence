@@ -59,6 +59,9 @@ const VocabLearning = {
                 <button class="vl-action-btn vl-btn-secondary" id="vlStartNewBtn">
                     ✨ 学习新词
                 </button>
+                <button class="vl-action-btn vl-btn-secondary" id="vlPracticeBtn">
+                    🎯 多种练习
+                </button>
                 <button class="vl-action-btn vl-btn-secondary" id="vlDictationBtn">
                     ✍️ 默写练习
                 </button>
@@ -73,6 +76,9 @@ const VocabLearning = {
         });
         document.getElementById('vlDictationBtn').addEventListener('click', () => {
             this._startDictation();
+        });
+        document.getElementById('vlPracticeBtn').addEventListener('click', () => {
+            this._startPractice();
         });
     },
 
@@ -250,6 +256,53 @@ const VocabLearning = {
             return;
         }
         this._showQuickReview(newWords);
+    },
+
+    _startPractice() {
+        const words = LearningEngine.getWordList();
+        if (words.length === 0) {
+            InteractionManager && InteractionManager.showToast('还没有添加单词，请先在词库中添加单词', 'info');
+            return;
+        }
+        const container = document.getElementById('vlHomeContent');
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="vl-section-card">
+                <div class="vl-section-title" style="margin-bottom:16px;">🎯 练习模式</div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button class="vl-action-btn vl-btn-primary" id="psModeSpelling" style="justify-content:flex-start;">
+                        🔤 <span style="flex:1;text-align:left;">拼写练习</span>
+                        <span style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.7);">看释义拼写单词</span>
+                    </button>
+                    <button class="vl-action-btn vl-btn-secondary" id="psModeContext" style="justify-content:flex-start;">
+                        📝 <span style="flex:1;text-align:left;">语境选择</span>
+                        <span style="font-size:12px;font-weight:400;color:var(--vl-text-secondary);">根据语境选词填空</span>
+                    </button>
+                    <button class="vl-action-btn vl-btn-secondary" id="psModeMatching" style="justify-content:flex-start;">
+                        🔗 <span style="flex:1;text-align:left;">单词配对</span>
+                        <span style="font-size:12px;font-weight:400;color:var(--vl-text-secondary);">匹配单词和释义</span>
+                    </button>
+                </div>
+            </div>
+            <button class="vl-action-btn vl-btn-secondary vl-btn-sm" id="psModeBack" style="margin-top:16px;">返回</button>
+        `;
+
+        document.getElementById('psModeSpelling').addEventListener('click', () => {
+            PracticeModes.init(container, { mode: 'spelling', words: [...words] });
+            PracticeModes.start();
+        });
+        document.getElementById('psModeContext').addEventListener('click', () => {
+            PracticeModes.init(container, { mode: 'context', words: [...words] });
+            PracticeModes.start();
+        });
+        document.getElementById('psModeMatching').addEventListener('click', () => {
+            PracticeModes.init(container, { mode: 'matching', words: [...words] });
+            PracticeModes.start();
+        });
+        document.getElementById('psModeBack').addEventListener('click', () => {
+            this._renderHomeTab();
+        });
     },
 
     _startDictation() {

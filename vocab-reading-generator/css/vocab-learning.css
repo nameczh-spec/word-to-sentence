@@ -729,6 +729,210 @@
     margin-left: auto;
 }
 
+.ps-card {
+    background: var(--vl-card);
+    border-radius: var(--vl-radius);
+    padding: 24px;
+    border: 0.5px solid var(--vl-border);
+    text-align: center;
+}
+
+.ps-hint {
+    font-size: 13px;
+    color: var(--vl-text-secondary);
+    margin-bottom: 16px;
+}
+
+.ps-meaning {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--vl-text);
+    margin-bottom: 8px;
+}
+
+.ps-phonetic {
+    font-size: 13px;
+    color: var(--vl-text-tertiary);
+    margin-bottom: 16px;
+}
+
+.ps-input-area {
+    margin-bottom: 12px;
+}
+
+.ps-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 14px;
+    border: 1px solid var(--vl-border);
+    border-radius: var(--vl-radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--vl-text);
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+    font-family: 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    transition: border-color 0.2s;
+}
+
+.ps-input:focus {
+    border-color: var(--vl-primary);
+}
+
+.ps-result {
+    margin-bottom: 12px;
+    min-height: 24px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.ps-correct {
+    color: var(--vl-success);
+}
+
+.ps-wrong {
+    color: var(--vl-danger);
+}
+
+.ps-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.ps-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--vl-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--vl-text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ps-btn:hover {
+    border-color: var(--vl-primary);
+    color: var(--vl-primary);
+}
+
+.ps-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.ps-btn-hint:hover {
+    border-color: var(--vl-warning);
+    color: var(--vl-warning);
+}
+
+.ps-sentence {
+    font-size: 15px;
+    color: var(--vl-text);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.ps-blank {
+    color: var(--vl-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+.ps-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.ps-option-btn {
+    padding: 10px 16px;
+    border: 1px solid var(--vl-border);
+    border-radius: var(--vl-radius-sm);
+    background: transparent;
+    color: var(--vl-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    font-family: 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.ps-option-btn:hover {
+    border-color: var(--vl-primary);
+    background: var(--vl-hover);
+}
+
+.ps-option-btn:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.ps-option-correct {
+    border-color: var(--vl-success) !important;
+    background: rgba(52, 199, 89, 0.15) !important;
+    color: var(--vl-success) !important;
+}
+
+.ps-option-wrong {
+    border-color: var(--vl-danger) !important;
+    background: rgba(255, 59, 48, 0.15) !important;
+    color: var(--vl-danger) !important;
+}
+
+.pm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.pm-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pm-item {
+    padding: 10px 14px;
+    border: 1px solid var(--vl-border);
+    border-radius: var(--vl-radius-sm);
+    background: var(--vl-card);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    font-size: 13px;
+}
+
+.pm-item:hover {
+    border-color: var(--vl-primary);
+}
+
+.pm-selected {
+    border-color: var(--vl-primary) !important;
+    background: var(--vl-hover) !important;
+}
+
+.pm-matched {
+    border-color: var(--vl-success) !important;
+    background: rgba(52, 199, 89, 0.1) !important;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.pm-wrong {
+    border-color: var(--vl-danger) !important;
+    background: rgba(255, 59, 48, 0.1) !important;
+}
+
+.pm-text {
+    color: var(--vl-text);
+    word-break: break-word;
+}
+
 @media (max-width: 600px) {
     .vl-body {
         padding: 16px;
