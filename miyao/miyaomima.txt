@@ -1,0 +1,82 @@
+# 一、路径修正（当前填写有问题）
+你现在只填了后半段相对路径，**完整绝对路径必须写全**，正确路径：
+```
+H:\IT\单词化句\vocab-reading-generator-mobile\miyao\vocab-app-key.jks
+```
+缺少开头 `H:\IT\单词化句\`，系统会找不到这个密钥文件。
+
+## 正确操作方式（推荐，避免路径写错）
+1. 点击窗口中间的 **Create new...** 按钮
+2. 在弹出的新建密钥窗口里，顶部地址栏手动定位到文件夹：
+`H:\IT\单词化句\vocab-reading-generator-mobile\miyao`
+3. 文件名输入框填写：`vocab-app-key.jks`，点确定
+这样软件会自动把完整路径填入 `Key store path`，不会出错。
+
+---
+# 二、新建密钥弹窗里的信息填写（直接复制这套）
+### 1. 密码设置（记下来，后面要填）
+- Key store password（密钥库密码）：`VocabStore2026!`
+- Key password（单个密钥密码）：`VocabKey2026!`
+
+### 2. 开发者信息（对应APP单词阅读工具）
+- Name：Vocab Reader Dev
+- Organizational Unit：Language Tools
+- Organization：Vocab Reading Studio
+- City：Shanghai
+- State/Province：Shanghai
+- Country Code：CN
+
+### 3. Key alias（密钥别名）
+填：`vocab-app-release`
+
+---
+# 三、填完新建弹窗后，回到当前页面的填写项
+1. Key store path：自动补全完整 `H:\IT\...\vocab-app-key.jks`
+2. Key store password：输入刚才设置的 `VocabStore2026!`
+3. Key alias：`vocab-app-release`
+4. Key password：输入刚才设置的 `VocabKey2026!`
+5. 可以勾选 `Remember passwords` 方便下次打包
+
+全部填好再点 `Next` 继续构建签名安装包。
+
+---
+# 重要提醒
+1. 密钥文件 `vocab-app-key.jks` 一定要备份，丢失后新版本APP不能覆盖旧版
+2. 两组密码单独存好，每次生成正式包都需要输入
+3. 不要手动复制路径文本，优先点 `Create new...` 选择文件夹，防止路径残缺报错
+
+
+# 一、先修正路径（关键错误）
+当前路径缺少盘符 `H:\IT\单词化句\`，软件无法生成文件。
+1. 点击输入框右侧文件夹图标
+2. 依次进入：`H:\IT\单词化句\vocab-reading-generator-mobile\miyao`
+3. 文件名填 `vocab-app-key.jks`，确认后完整路径会自动补全为：
+`H:\IT\单词化句\vocab-reading-generator-mobile\miyao\vocab-app-key.jks`
+
+---
+# 二、分区域填写内容（直接复制使用）
+## 1. Key store 密钥库密码（两组保持一致）
+- Password：`VocabStore@2026`
+- Confirm：`VocabStore@2026`
+
+## 2. Key 单密钥配置
+- Alias：`vocab-release-key`（把默认key0替换掉，方便识别）
+- Password：`VocabKey@2026`
+- Confirm：`VocabKey@2026`
+- Validity (years)：25（默认无需修改，有效期足够长期更新）
+
+## 3. Certificate 证书信息（适配单词APP）
+- First and Last Name：Vocab Reader Dev
+- Organizational Unit：Language Tools Lab
+- Organization：Vocab Reading Studio
+- City or Locality：Shanghai
+- State or Province：Shanghai
+- Country Code (XX)：CN
+
+---
+# 三、填写完成操作
+全部输入无误后，点击右下角 **OK**，即可生成 `.jks` 密钥文件，自动返回上一级签名弹窗，填充好路径、别名，输入两组密码就能继续打包正式APK。
+
+# ⚠️ 重要保存提醒
+1. 两组密码、密钥文件 `vocab-app-key.jks` 务必备份，丢失后APP无法更新覆盖旧版本
+2. 不要修改miyao文件夹内的密钥文件，移动、重命名都会导致签名失效

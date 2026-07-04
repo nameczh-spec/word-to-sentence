@@ -1,0 +1,42 @@
+1999: 未找到作文部分
+2000: 未找到作文部分
+2001: 未找到作文部分
+2002: 未找到作文部分
+2003: 未找到作文部分
+2004: 未找到作文部分
+2005: JSON=True, 图片=1, PartB含图片
+2006: JSON=True, 图片=1, PartB含图片
+2007: JSON=True, 图片=1, PartB含图片
+2008: JSON=True, 图片=1, PartB含图片
+2009: JSON=True, 图片=1, PartB含图片
+2010-1: JSON=True, 图片=4, PartB含表格, PartB含图片
+2010-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2011-1: JSON=True, 图片=4, PartB含表格, PartB含图片
+2011-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2012-2: JSON=True, 图片=0, PartB含表格
+2013-1: JSON=True, 图片=1, PartB含表格, PartB含图片
+2013-2: JSON=True, 图片=2, PartB含表格, PartB含图片
+2014-1: JSON=True, 图片=6, PartB含表格, PartB含图片
+2014-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2015-1: JSON=True, 图片=1, PartB含表格, PartB含图片
+2015-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2016-1: JSON=True, 图片=1, PartB含表格, PartB含图片
+2016-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2017-1: JSON=True, 图片=4, PartB含图片
+2017-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2018-1: JSON=True, 图片=1, PartB含图片
+2018-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2019-1: JSON=True, 图片=1, PartB含表格, PartB含图片
+2019-2: JSON=True, 图片=1, PartB含表格, PartB含图片
+2020-1: JSON=True, 图片=1, PartB含图片
+2020-2: JSON=True, 图片=2, PartB含图片
+2021-1: JSON=True, 图片=1, PartB含图片
+2021-2: JSON=True, 图片=1, PartB含图片
+2022-1: JSON=True, 图片=1, PartB含图片
+2022-2: JSON=True, 图片=1, PartB含图片
+2023-1: JSON=True, 图片=1, PartB含图片
+2023-2: JSON=True, 图片=1, PartB含图片
+2024-1: JSON=True, 图片=1, PartB含图片
+2024-2: JSON=True, 图片=1, PartB含图片
+2025-1: JSON=True, 图片=0, PartB含表格
+2025-2: JSON=True, 图片=0

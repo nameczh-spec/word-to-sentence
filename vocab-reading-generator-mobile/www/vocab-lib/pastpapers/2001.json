@@ -354,27 +354,32 @@
         {
           "num": 31,
           "original": "There will be television chat shows hosted by robots, and cars with pollution monitors that will disable them when they offend.",
-          "translation": "届时，将出现由机器人主持的电视谈话节目以及装有污染监控器的汽车，一旦这些汽车排污超标（违规），监控器就会使其停驶。"
+          "translation": "届时，将出现由机器人主持的电视谈话节目以及装有污染监控器的汽车，一旦这些汽车排污超标（违规），监控器就会使其停驶。",
+          "analysis": "<p><strong>句型结构：</strong></p><ol><li>\"There will be\"为There be句型，表\"将存在\"。</li><li>两个并列主语：\"television chat shows\"和\"cars\"。</li><li>\"hosted by robots\"为过去分词短语作后置定语修饰shows。</li><li>\"that will disable them\"为定语从句修饰pollution monitors。</li><li>\"when they offend\"为时间状语从句。</li></ol><p><strong>重点词汇：</strong></p><ul><li><strong>hosted by</strong>：由……主持。</li><li><strong>pollution monitors</strong>：污染监测器。</li><li><strong>disable</strong>：v. 使停驶，使瘫痪。</li><li><strong>offend</strong>：v. 违规，超标。</li></ul><p><strong>翻译技巧：</strong></p><ol><li>\"when they offend\"译为\"一旦排污超标\"，offend在此处取\"违规\"义，需结合语境翻译。</li><li>\"disable them\"中的them指代cars，译为\"使其停驶\"比\"使瘫痪\"更具体。</li></ol>"
         },
         {
           "num": 32,
           "original": "Children will play with dolls equipped with personality chips, computers with in-built personalities will be regarded as workmates rather than tools, relaxation will be in front of smell-television, and digital age will have arrived.",
-          "translation": "儿童将与装有个性化芯片的玩具娃娃玩耍，具有个性内置的计算机将被视为工作伙伴而不是工具，人们将在气味电视机前休闲，届时数字时代就来到了。"
+          "translation": "儿童将与装有个性化芯片的玩具娃娃玩耍，具有个性内置的计算机将被视为工作伙伴而不是工具，人们将在气味电视机前休闲，届时数字时代就来到了。",
+          "analysis": "<p><strong>句型结构：</strong></p><ol><li>本句为四个并列分句。</li><li>\"equipped with personality chips\"为过去分词短语作后置定语修饰dolls。</li><li>\"with in-built personalities\"为介词短语作后置定语修饰computers。</li><li>\"rather than\"为比较结构，表\"而不是\"。</li><li>\"will have arrived\"为将来完成时。</li></ol><p><strong>重点词汇：</strong></p><ul><li><strong>personality chips</strong>：个性芯片。</li><li><strong>in-built</strong>：adj. 内置的。</li><li><strong>rather than</strong>：而非，而不是。</li><li><strong>smell-television</strong>：气味电视机。</li></ul><p><strong>翻译技巧：</strong></p><ol><li>\"rather than\"译为\"而不是\"，连接两个并列名词workmates和tools。</li><li>\"relaxation will be in front of smell-television\"译为\"人们将在气味电视机前休闲\"，补充主语\"人们\"使译文通顺。</li></ol>"
         },
         {
           "num": 33,
           "original": "Pearson has pieced together the work of hundreds of researchers around the world to produce a unique millennium technology calendar that gives the latest dates when we can expect hundreds of key breakthroughs and discoveries to take place.",
-          "translation": "皮尔森汇集世界各地数百位研究人员的成果，编制了一个独特的新技术千年历，它列出了人们有望看到数百项重大突破和发现的最迟日期。"
+          "translation": "皮尔森汇集世界各地数百位研究人员的成果，编制了一个独特的新技术千年历，它列出了人们有望看到数百项重大突破和发现的最迟日期。",
+          "analysis": "<p><strong>句型结构：</strong></p><ol><li>主句为\"Pearson has pieced together the work\"。</li><li>\"of hundreds of researchers around the world\"为介词短语作后置定语修饰work。</li><li>\"to produce a unique millennium technology calendar\"为不定式短语作目的状语。</li><li>\"that gives the latest dates\"为定语从句修饰calendar。</li><li>\"when we can expect...to take place\"为定语从句修饰dates。</li></ol><p><strong>重点词汇：</strong></p><ul><li><strong>pieced together</strong>：汇集，拼合。</li><li><strong>millennium</strong>：n. 千禧年，千年。</li><li><strong>breakthroughs</strong>：n. 突破。</li><li><strong>latest dates</strong>：最迟日期。</li></ul><p><strong>翻译技巧：</strong></p><ol><li>\"pieced together\"译为\"汇集\"，比\"拼凑\"更正式。</li><li>\"when we can expect...to take place\"译为\"人们有望看到……发生\"，将expect译为\"有望\"更贴切。</li></ol>"
         },
         {
           "num": 34,
           "original": "But that, Pearson points out, is only the start of man-machine integration: \"It will be the beginning of the long process of integration that will ultimately lead to a fully electronic human before the end of the next century.\"",
-          "translation": "但皮尔森指出，这个突破仅仅是人机一体化的开始："它是人机一体化漫长之路的第一步，最终会使人们在下世纪末之前就研制出完全电子化的仿真人。""
+          "translation": "但皮尔森指出，这个突破仅仅是人机一体化的开始：\"它是人机一体化漫长之路的第一步，最终会使人们在下世纪末之前就研制出完全电子化的仿真人。\"",
+          "analysis": "<p><strong>句型结构：</strong></p><ol><li>主句为\"But that...is only the start of man-machine integration\"。</li><li>\"Pearson points out\"为插入语。</li><li>冒号后为直接引语，引语中\"that will ultimately lead to...\"为定语从句修饰the long process of integration。</li><li>\"before the end of the next century\"为时间状语。</li></ol><p><strong>重点词汇：</strong></p><ul><li><strong>man-machine integration</strong>：人机一体化。</li><li><strong>ultimately</strong>：adv. 最终。</li><li><strong>fully electronic human</strong>：完全电子化的人，仿真人。</li></ul><p><strong>翻译技巧：</strong></p><ol><li>\"Pearson points out\"作为插入语，翻译时可前置为\"皮尔森指出\"。</li><li>\"fully electronic human\"译为\"完全电子化的仿真人\"，补充\"仿真\"更符合语境。</li><li>直接引语保留原格式，用引号标出。</li></ol>"
         },
         {
           "num": 35,
           "original": "And home appliances will also become so smart that controlling and operating them will result in the breakout of a new psychological disorder—kitchen rage.",
-          "translation": "家用电器将会变得如此智能化，以至于控制和操作它们会引发一种新的心理疾病——厨房狂躁。"
+          "translation": "家用电器将会变得如此智能化，以至于控制和操作它们会引发一种新的心理疾病——厨房狂躁。",
+          "analysis": "<p><strong>句型结构：</strong></p><ol><li>\"so...that...\"为结果状语从句结构。</li><li>\"controlling and operating them\"为动名词短语作从句主语。</li><li>\"will result in\"为谓语。</li><li>\"the breakout of a new psychological disorder\"为宾语。</li><li>破折号后\"kitchen rage\"为同位语补充说明disorder。</li></ol><p><strong>重点词汇：</strong></p><ul><li><strong>home appliances</strong>：家用电器。</li><li><strong>so smart that</strong>：如此智能以至于。</li><li><strong>psychological disorder</strong>：心理障碍，心理疾病。</li><li><strong>kitchen rage</strong>：厨房狂躁。</li></ul><p><strong>翻译技巧：</strong></p><ol><li>\"so...that...\"译为\"如此……以至于\"，保持原结构。</li><li>\"kitchen rage\"译为\"厨房狂躁\"，比直译\"厨房愤怒\"更符合医学名词风格。</li><li>\"breakout\"译为\"引发\"，比\"爆发\"更搭配\"疾病\"。</li></ol>"
         }
       ]
     },

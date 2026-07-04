@@ -1,0 +1,51 @@
+=== 2025-1 作文内容 ===
+
+--- Part A ---
+Part A
+Directions:
+Read the following email from your classmate Paul and write him a reply.
+Write your answer in about 100 words on the ANSWER SHEET.
+Do not use your own name in your email; use “Li Ming” instead. (10 points)
+
+--- Part B ---
+Part B
+Directions:
+Write an essay of 160-200 based on the following table. In your essay, you should
+describe the table briefly,
+explain its intended meaning, and
+give your comments.
+You should write neatly on the ANSWER SHEET. (20 points)
+[TABLE]
+<table class="writing-table">
+  <tr>
+    <th>年份</th>
+    <th>空调（台）</th>
+    <th>洗衣机（台）</th>
+    <th>电冰箱（台）</th>
+  </tr>
+  <tr>
+    <td>2014</td>
+    <td>75.2</td>
+    <td>83.7</td>
+    <td>85.5</td>
+  </tr>
+  <tr>
+    <td>2017</td>
+    <td>96.1</td>
+    <td>91.7</td>
+    <td>95.3</td>
+  </tr>
+  <tr>
+    <td>2020</td>
+    <td>117.7</td>
+    <td>96.7</td>
+    <td>101.8</td>
+  </tr>
+  <tr>
+    <td>2023</td>
+    <td>145.9</td>
+    <td>98.2</td>
+    <td>103.4</td>
+  </tr>
+</table>
+近年来全国居民平均每百户年末主要耐用消费品拥有量
