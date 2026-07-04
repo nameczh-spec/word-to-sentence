@@ -114,6 +114,10 @@
   - 发现Part B完全错误（原"倒水/关爱"主题），修正为"旅途之'余'"旅游环保主题
   - 更新2011-1.md sampleData、2011-1.json partB、3个writing.js
   - 3目录哈希一致，语法校验通过
+- [x] **真题精读撤销功能修复**：在pastPaperReader.js的handleTouchStart和startDrawing函数中添加saveCanvasState()调用，确保绘制前保存状态到撤销栈
+- [x] **完形填空清除按钮修复**：修改clozeExercise.js，将清除按钮data-action从clearAnswers改为clearAll，事件处理改为saveCanvasState()+clearCanvas()，清除画布涂鸦而非答题选项
+- [x] **真题模块移动端响应式样式补充**：在pastPapers.css中新增@media (max-width: 768px)和@media (max-width: 480px)断点，调整内边距、字体大小、按钮尺寸
+- [x] **主页面移动端适配优化**：在main.css中新增768px断点，优化导航栏按钮和参数区域布局；480px断点导航栏按钮只显示图标
 
 ### 已完成（2026-07-01更新）
 - [x] 项目全面审计（结构、代码、数据、UI、移动端、安全）
