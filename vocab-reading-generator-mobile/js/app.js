@@ -34,6 +34,10 @@ const App = {
         // 初始化词库检索模块
         await VocabSearch.init();
 
+        // 初始化学习引擎
+        LearningEngine.init();
+        VocabLearning.init();
+
         // 绑定主要事件
         this.bindMainEvents();
 
@@ -213,6 +217,11 @@ const App = {
      * 绑定主要事件
      */
     bindMainEvents() {
+        // 单词学习导航
+        document.getElementById('vocabLearningBtn').addEventListener('click', () => {
+            VocabLearning.show();
+        });
+
         // 批量导入
         document.getElementById('batchImportBtn').addEventListener('click', () => {
             const input = document.getElementById('batchInput').value;

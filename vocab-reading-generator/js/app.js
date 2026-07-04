@@ -34,6 +34,10 @@ const App = {
         // 初始化词库检索模块
         await VocabSearch.init();
 
+        // 初始化学习引擎
+        LearningEngine.init();
+        VocabLearning.init();
+
         // 绑定主要事件
         this.bindMainEvents();
 
@@ -328,6 +332,16 @@ database /ˈdeɪtəbeɪs/ n. 数据库；资料库
         // 生成引擎切换
         document.getElementById('generateEngine').addEventListener('change', () => {
             ConfigManager.setDefaultEngine(document.getElementById('generateEngine').value);
+        });
+
+        // 单词学习导航
+        document.getElementById('vocabLearningBtn').addEventListener('click', () => {
+            VocabLearning.show();
+        });
+
+        // 真题练习导航
+        document.getElementById('pastPapersBtn').addEventListener('click', () => {
+            PastPapers.show();
         });
 
         // 输出格式切换
