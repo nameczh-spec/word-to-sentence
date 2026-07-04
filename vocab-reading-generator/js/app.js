@@ -38,6 +38,9 @@ const App = {
         LearningEngine.init();
         VocabLearning.init();
 
+        // 初始化词典模块
+        VocabDictionary.init();
+
         // 绑定主要事件
         this.bindMainEvents();
 

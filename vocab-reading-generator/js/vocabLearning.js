@@ -117,6 +117,15 @@ const VocabLearning = {
         }).join('');
 
         container.innerHTML = `<div class="vl-word-list">${listHtml}</div>`;
+
+        container.querySelectorAll('.vl-word-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const word = item.dataset.word;
+                if (word && window.VocabDictionary) {
+                    VocabDictionary.show(word);
+                }
+            });
+        });
     },
 
     _renderSettingsTab() {
