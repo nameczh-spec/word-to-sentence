@@ -370,6 +370,7 @@ const PastPaperReader = (() => {
                 }
 
                 if (action === 'clearAll') {
+                    saveCanvasState();
                     clearCanvas();
                     if (window.InteractionManager) {
                         window.InteractionManager.showToast('已清除涂鸦', 'success');
@@ -652,6 +653,7 @@ const PastPaperReader = (() => {
 
     function handleTouchStart(e) {
         e.preventDefault();
+        saveCanvasState();
         const touch = e.touches[0];
         const rect = drawingCanvas.getBoundingClientRect();
         lastX = touch.clientX - rect.left;
@@ -673,6 +675,7 @@ const PastPaperReader = (() => {
     }
 
     function startDrawing(e) {
+        saveCanvasState();
         const rect = drawingCanvas.getBoundingClientRect();
         lastX = e.clientX - rect.left;
         lastY = e.clientY - rect.top;
