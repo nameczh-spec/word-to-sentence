@@ -253,7 +253,105 @@ const VocabLearning = {
     },
 
     _startDictation() {
-        InteractionManager && InteractionManager.showToast('默写练习将在后续版本实现', 'info');
+        const words = LearningEngine.getWordList();
+        if (words.length === 0) {
+            InteractionManager && InteractionManager.showToast('还没有添加单词，请先在词库中添加单词', 'info');
+            return;
+        }
+        this._showDictationSettings(words);
+    },
+
+    _showDictationSettings(words) {
+        const container = document.getElementById('vlHomeContent');
+        if (!container) return;
+
+        const settings = DictationPractice.getSettingsForDictation();
+        const totalWords = words.length;
+
+        container.innerHTML = `
+            <div class="vl-section-card">
+                <div class="vl-section-title" style="margin-bottom:16px;">✍️ 默写设置</div>
+                <div class="vl-settings-row">
+                    <div>
+                        <div class="vl-settings-label">输入方式</div>
+                        <div class="vl-settings-desc">键盘自动判定 / 手写对照</div>
+                    </div>
+                    <select class="vl-select" id="dictInputMode">
+                        <option value="keyboard">⌨️ 键盘输入</option>
+                        <option value="handwriting">✍️ 手写输入</option>
+                    </select>
+                </div>
+                <div class="vl-settings-row">
+                    <div>
+                        <div class="vl-settings-label">默写模式</div>
+                        <div class="vl-settings-desc">默写单词 / 释义 / 音标</div>
+                    </div>
+                    <select class="vl-select" id="dictMode">
+                        <option value="word">默写单词</option>
+                        <option value="meaning">默写释义</option>
+                        <option value="phonetic">默写音标</option>
+                    </select>
+                </div>
+                <div class="vl-settings-row">
+                    <div>
+                        <div class="vl-settings-label">默写数量</div>
+                        <div class="vl-settings-desc">最多 ${totalWords} 个单词可用</div>
+                    </div>
+                    <input type="number" class="vl-settings-input" id="dictWordCount"
+                        value="${Math.min(20, totalWords)}" min="5" max="${totalWords}">
+                </div>
+                <div class="vl-settings-row">
+                    <div>
+                        <div class="vl-settings-label">词源</div>
+                        <div class="vl-settings-desc">选择要默写的单词范围</div>
+                    </div>
+                    <select class="vl-select" id="dictWordSource">
+                        <option value="all">所有单词 (${totalWords})</option>
+                        <option value="learning">学习中 (${LearningEngine.getLearningCount()})</option>
+                        <option value="due">待复习 (${LearningEngine.getDueCount()})</option>
+                    </select>
+                </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:16px;">
+                <button class="vl-action-btn vl-btn-secondary vl-btn-sm" id="dictSettingsBack" style="flex:1;">返回</button>
+                <button class="vl-action-btn vl-btn-primary vl-btn-sm" id="dictSettingsStart" style="flex:1;">开始默写</button>
+            </div>
+        `;
+
+        document.getElementById('dictSettingsBack').addEventListener('click', () => {
+            this._renderHomeTab();
+        });
+
+        document.getElementById('dictSettingsStart').addEventListener('click', () => {
+            const inputMode = document.getElementById('dictInputMode').value;
+            const mode = document.getElementById('dictMode').value;
+            const count = parseInt(document.getElementById('dictWordCount').value) || 20;
+            const source = document.getElementById('dictWordSource').value;
+
+            let selectedWords;
+            if (source === 'due') {
+                selectedWords = LearningEngine.getTodayReviewWords();
+            } else if (source === 'learning') {
+                const allWords = LearningEngine.getWordList();
+                selectedWords = allWords.filter(w => w.status === 'learning' || w.status === 'reviewing');
+            } else {
+                selectedWords = words;
+            }
+
+            selectedWords = selectedWords.slice(0, count);
+            if (selectedWords.length === 0) {
+                InteractionManager && InteractionManager.showToast('没有符合条件的单词', 'info');
+                return;
+            }
+
+            DictationPractice.init(container, {
+                inputMode,
+                mode,
+                wordCount: selectedWords.length,
+                words: selectedWords
+            });
+            DictationPractice.start();
+        });
     },
 
     _showQuickReview(words) {
