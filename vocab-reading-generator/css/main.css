@@ -126,6 +126,95 @@ body {
     height: 18px;
 }
 
+.nav-hamburger {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    margin-right: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.nav-hamburger:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.nav-hamburger svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-back-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    margin-right: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.nav-back-btn:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.nav-back-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-history-entry-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-history-entry-btn:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 40;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* ============================================
    左侧词单管理区 - 磨砂玻璃面板
    ============================================ */
@@ -1915,6 +2004,7 @@ body {
     
     .action-bar-source {
         width: 100%;
+        order: 1;
     }
     
     .source-toggle {
@@ -1927,18 +2017,47 @@ body {
     
     .action-bar-params {
         width: 100%;
+        order: 2;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+    }
+    
+    .mode-select {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .mode-select label {
+        flex-shrink: 0;
+        min-width: 70px;
+    }
+    
+    .custom-dropdown {
+        flex: 1;
+    }
+    
+    .dropdown-trigger {
+        width: 100%;
         justify-content: space-between;
     }
     
     .action-bar-generate {
         order: 3;
-        width: 100%;
+        flex: 1;
+        min-width: 120px;
     }
     
     .action-bar-aux {
         order: 4;
-        width: 100%;
-        justify-content: space-around;
+        flex: 2;
+        justify-content: flex-end;
+        gap: var(--spacing-xs);
+    }
+    
+    .action-bar-aux .btn {
+        padding: 8px 10px;
+        font-size: 12px;
     }
 }
 
@@ -1949,6 +2068,10 @@ body {
     
     .nav-bar {
         padding: 0 var(--spacing-sm);
+    }
+    
+    .nav-hamburger {
+        margin-right: var(--spacing-xs);
     }
     
     .nav-title {
@@ -1978,25 +2101,49 @@ body {
         gap: 8px;
     }
     
+    .action-bar-params {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-xs);
+    }
+    
     .mode-select {
         width: 100%;
         justify-content: space-between;
+        gap: var(--spacing-sm);
     }
     
     .mode-select label {
         font-size: 13px;
         white-space: nowrap;
         flex-shrink: 0;
+        min-width: 70px;
     }
     
     .custom-dropdown {
         flex: 1;
-        max-width: 200px;
     }
     
     .dropdown-trigger {
         width: 100%;
         justify-content: space-between;
+    }
+    
+    .action-bar-generate {
+        width: 100%;
+        order: 3;
+    }
+    
+    .action-bar-aux {
+        width: 100%;
+        order: 4;
+        justify-content: space-between;
+    }
+    
+    .action-bar-aux .btn {
+        flex: 1;
+        padding: 8px 6px;
+        font-size: 12px;
     }
     
     .btn {
