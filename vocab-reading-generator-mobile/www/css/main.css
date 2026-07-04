@@ -100,7 +100,8 @@ body {
 }
 
 .nav-settings-btn,
-.nav-review-btn {
+.nav-review-btn,
+.nav-pastpapers-btn {
     width: 32px;
     height: 32px;
     border: none;
@@ -115,13 +116,15 @@ body {
 }
 
 .nav-settings-btn:hover,
-.nav-review-btn:hover {
+.nav-review-btn:hover,
+.nav-pastpapers-btn:hover {
     background: var(--hover-bg);
     color: var(--text-primary);
 }
 
 .nav-settings-btn svg,
-.nav-review-btn svg {
+.nav-review-btn svg,
+.nav-pastpapers-btn svg {
     width: 18px;
     height: 18px;
 }
@@ -1710,6 +1713,50 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: var(--spacing-md);
+}
+
+.settings-review-section .review-entry-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-xs);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.settings-review-section .review-entry-row:hover {
+    background: var(--hover-bg);
+}
+
+.review-entry-svg-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    color: var(--accent-color);
+}
+
+.review-entry-text {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.review-entry-arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-tertiary);
+}
+
+.desktop-only {
+    display: none !important;
+}
+
+@media (min-width: 901px) {
+    .desktop-only {
+        display: block !important;
+    }
 }
 
 .config-item {
