@@ -1672,6 +1672,40 @@ body {
     padding: var(--spacing-lg);
 }
 
+.settings-user-avatar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 0.5px solid var(--border-light);
+}
+
+.settings-user-avatar .avatar-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--accent-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.settings-user-avatar .avatar-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+}
+
 /* 配置区块 */
 .config-section {
     margin-bottom: var(--spacing-xl);
