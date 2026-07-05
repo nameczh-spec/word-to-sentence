@@ -134,6 +134,14 @@ const PastPapers = (() => {
         isActive = true;
         currentView = 'home';
 
+        // 互斥：如果单词学习处于活动状态，先退出
+        const vocabRoot = document.getElementById('vocabLearningRoot');
+        if (vocabRoot && vocabRoot.classList.contains('active')) {
+            if (window.VocabLearning && VocabLearning.hide) {
+                VocabLearning.hide();
+            }
+        }
+
         // 隐藏侧边栏
         const sidebar = document.getElementById('sidebarLeft');
         if (sidebar) sidebar.style.display = 'none';

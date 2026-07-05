@@ -99,6 +99,7 @@ body {
     margin-right: 48px; /* 为用户头像留出空间 */
 }
 
+.nav-btn,
 .nav-settings-btn,
 .nav-review-btn,
 .nav-pastpapers-btn {
@@ -113,8 +114,10 @@ body {
     justify-content: center;
     color: var(--text-secondary);
     transition: all var(--transition-fast);
+    flex-shrink: 0;
 }
 
+.nav-btn:hover,
 .nav-settings-btn:hover,
 .nav-review-btn:hover,
 .nav-pastpapers-btn:hover {
@@ -122,6 +125,7 @@ body {
     color: var(--text-primary);
 }
 
+.nav-btn svg,
 .nav-settings-btn svg,
 .nav-review-btn svg,
 .nav-pastpapers-btn svg {

@@ -1,16 +1,21 @@
 .vocab-learning-root {
-    --vl-bg: #1a1a2e;
-    --vl-card: #16213e;
-    --vl-primary: #e94560;
-    --vl-text: #eaeaea;
-    --vl-text-secondary: #a0a0b0;
-    --vl-text-tertiary: #6b6b80;
-    --vl-accent: #0f3460;
-    --vl-border: rgba(255, 255, 255, 0.06);
-    --vl-hover: rgba(233, 69, 96, 0.1);
-    --vl-success: #34C759;
-    --vl-warning: #FF9500;
-    --vl-danger: #FF3B30;
+    --vl-accent: var(--accent-color, #007AFF);
+    --vl-accent-hover: var(--accent-hover, #0066D6);
+    --vl-accent-light: var(--accent-light, rgba(0,122,255,0.1));
+    --vl-bg: var(--bg-primary, #F5F7FA);
+    --vl-card: var(--glass-bg, rgba(255,255,255,0.75));
+    --vl-card-hover: var(--glass-bg-hover, rgba(255,255,255,0.9));
+    --vl-text: var(--text-primary, #1D1D1F);
+    --vl-text-secondary: var(--text-secondary, #86868B);
+    --vl-text-tertiary: var(--text-tertiary, #AEAEB2);
+    --vl-border: var(--border-color, rgba(0,0,0,0.06));
+    --vl-border-light: var(--border-light, rgba(0,0,0,0.04));
+    --vl-hover: var(--hover-bg, rgba(0,0,0,0.04));
+    --vl-active: var(--active-bg, rgba(0,122,255,0.1));
+    --vl-success: var(--success-color, #34C759);
+    --vl-warning: var(--warning-color, #FF9500);
+    --vl-danger: var(--danger-color, #FF3B30);
+    --vl-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.06));
     --vl-radius: 14px;
     --vl-radius-sm: 10px;
     position: fixed;
@@ -37,6 +42,8 @@
     justify-content: space-between;
     padding: 16px 24px;
     background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     border-bottom: 0.5px solid var(--vl-border);
     flex-shrink: 0;
 }
@@ -96,22 +103,25 @@
 
 .vl-stat-card {
     background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     border-radius: var(--vl-radius);
     padding: 16px;
     text-align: center;
     border: 0.5px solid var(--vl-border);
     transition: all 0.2s;
+    box-shadow: var(--vl-shadow);
 }
 
 .vl-stat-card:hover {
     transform: translateY(-2px);
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .vl-stat-number {
     font-size: 28px;
     font-weight: 700;
-    color: var(--vl-primary);
+    color: var(--vl-accent);
     line-height: 1.2;
 }
 
@@ -125,11 +135,11 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 10px;
-    background: rgba(233, 69, 96, 0.15);
+    padding: 4px 12px;
+    background: var(--vl-accent-light);
     border-radius: 20px;
     font-size: 12px;
-    color: var(--vl-primary);
+    color: var(--vl-accent);
     font-weight: 500;
 }
 
@@ -151,7 +161,7 @@
     font-size: 12px;
     font-weight: 400;
     color: var(--vl-text-secondary);
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--vl-hover);
     padding: 2px 8px;
     border-radius: 10px;
 }
@@ -169,6 +179,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    font-family: inherit;
 }
 
 .vl-action-btn:hover {
@@ -180,24 +191,27 @@
 }
 
 .vl-btn-primary {
-    background: var(--vl-primary);
+    background: var(--vl-accent);
     color: white;
-    box-shadow: 0 4px 14px rgba(233, 69, 96, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 122, 255, 0.3);
 }
 
 .vl-btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.45);
+    background: var(--vl-accent-hover);
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
 }
 
 .vl-btn-secondary {
     background: var(--vl-card);
     color: var(--vl-text);
     border: 0.5px solid var(--vl-border);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
 }
 
 .vl-btn-secondary:hover {
-    border-color: var(--vl-primary);
-    background: var(--vl-hover);
+    border-color: var(--vl-accent);
+    background: var(--vl-card-hover);
 }
 
 .vl-btn-sm {
@@ -217,9 +231,12 @@
 
 .vl-section-card {
     background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     border-radius: var(--vl-radius);
     padding: 20px;
     border: 0.5px solid var(--vl-border);
+    box-shadow: var(--vl-shadow);
 }
 
 .vl-input {
@@ -227,7 +244,7 @@
     padding: 10px 14px;
     border: 1px solid var(--vl-border);
     border-radius: var(--vl-radius-sm);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary, rgba(0,0,0,0.04));
     color: var(--vl-text);
     font-size: 14px;
     outline: none;
@@ -236,7 +253,7 @@
 }
 
 .vl-input:focus {
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .vl-input::placeholder {
@@ -247,7 +264,7 @@
     padding: 8px 12px;
     border: 1px solid var(--vl-border);
     border-radius: var(--vl-radius-sm);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-primary, #F5F7FA);
     color: var(--vl-text);
     font-size: 13px;
     outline: none;
@@ -255,7 +272,7 @@
 }
 
 .vl-select:focus {
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .vl-settings-row {
@@ -263,7 +280,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 12px 0;
-    border-bottom: 0.5px solid var(--vl-border);
+    border-bottom: 0.5px solid var(--vl-border-light);
 }
 
 .vl-settings-row:last-child {
@@ -285,7 +302,7 @@
     position: relative;
     width: 44px;
     height: 24px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--vl-border);
     border-radius: 12px;
     cursor: pointer;
     transition: background 0.2s;
@@ -294,7 +311,7 @@
 }
 
 .vl-toggle.on {
-    background: var(--vl-primary);
+    background: var(--vl-accent);
 }
 
 .vl-toggle::after {
@@ -307,6 +324,7 @@
     background: white;
     border-radius: 50%;
     transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 .vl-toggle.on::after {
@@ -318,7 +336,7 @@
     padding: 6px 10px;
     border: 1px solid var(--vl-border);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-primary, #F5F7FA);
     color: var(--vl-text);
     font-size: 14px;
     text-align: center;
@@ -326,7 +344,7 @@
 }
 
 .vl-settings-input:focus {
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .vl-word-list {
@@ -343,10 +361,16 @@
     cursor: pointer;
     transition: background 0.15s;
     gap: 10px;
+    background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
+    border: 0.5px solid var(--vl-border);
+    margin-bottom: 4px;
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.04));
 }
 
 .vl-word-item:hover {
-    background: var(--vl-hover);
+    background: var(--vl-card-hover);
 }
 
 .vl-word-text {
@@ -371,30 +395,31 @@
     padding: 2px 8px;
     border-radius: 10px;
     font-weight: 500;
+    flex-shrink: 0;
 }
 
 .vl-word-status.new {
-    background: rgba(52, 199, 89, 0.15);
+    background: rgba(52, 199, 89, 0.12);
     color: var(--vl-success);
 }
 
 .vl-word-status.learning {
-    background: rgba(255, 149, 0, 0.15);
+    background: rgba(255, 149, 0, 0.12);
     color: var(--vl-warning);
 }
 
 .vl-word-status.reviewing {
-    background: rgba(233, 69, 96, 0.15);
-    color: var(--vl-primary);
+    background: var(--vl-accent-light);
+    color: var(--vl-accent);
 }
 
 .vl-word-status.mastered {
-    background: rgba(52, 199, 89, 0.2);
+    background: rgba(52, 199, 89, 0.15);
     color: var(--vl-success);
 }
 
 .vl-word-status.difficult {
-    background: rgba(255, 59, 48, 0.2);
+    background: rgba(255, 59, 48, 0.12);
     color: var(--vl-danger);
 }
 
@@ -423,10 +448,13 @@
 .vl-nav-tabs {
     display: flex;
     gap: 4px;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     border-radius: 12px;
     padding: 4px;
     margin-bottom: 20px;
+    border: 0.5px solid var(--vl-border);
 }
 
 .vl-nav-tab {
@@ -440,12 +468,16 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .vl-nav-tab.active {
-    background: var(--vl-card);
+    background: white;
     color: var(--vl-text);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .vl-nav-tab:hover:not(.active) {
@@ -462,6 +494,8 @@
 
 .dict-card {
     background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     border-radius: var(--vl-radius);
     padding: 14px;
     margin-bottom: 10px;
@@ -470,16 +504,17 @@
     gap: 12px;
     align-items: flex-start;
     transition: all 0.2s;
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.04));
 }
 
 .dict-card.dict-correct {
-    border-color: rgba(52, 199, 89, 0.4);
-    background: rgba(52, 199, 89, 0.05);
+    border-color: var(--vl-success);
+    background: rgba(52, 199, 89, 0.06);
 }
 
 .dict-card.dict-wrong {
-    border-color: rgba(255, 59, 48, 0.4);
-    background: rgba(255, 59, 48, 0.05);
+    border-color: var(--vl-danger);
+    background: rgba(255, 59, 48, 0.06);
 }
 
 .dict-card.dict-skipped {
@@ -524,7 +559,7 @@
     padding: 8px 12px;
     border: 1px solid var(--vl-border);
     border-radius: var(--vl-radius-sm);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-primary, #F5F7FA);
     color: var(--vl-text);
     font-size: 14px;
     outline: none;
@@ -533,7 +568,7 @@
 }
 
 .dict-input:focus {
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .dict-input::placeholder {
@@ -575,8 +610,8 @@
 }
 
 .dict-show-btn:hover {
-    border-color: var(--vl-primary);
-    color: var(--vl-primary);
+    border-color: var(--vl-accent);
+    color: var(--vl-accent);
 }
 
 .dict-skip-btn:hover {
@@ -591,7 +626,7 @@
 .dict-canvas {
     width: 100%;
     height: 80px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--bg-primary, #F5F7FA);
     border-radius: var(--vl-radius-sm);
     border: 1px dashed var(--vl-border);
     cursor: crosshair;
@@ -616,8 +651,8 @@
 }
 
 .dict-tool-btn:hover {
-    border-color: var(--vl-primary);
-    background: var(--vl-hover);
+    border-color: var(--vl-accent);
+    background: var(--vl-accent-light);
 }
 
 .dict-answer-toggle {
@@ -636,16 +671,17 @@
 }
 
 .dict-show-answer-btn:hover {
-    border-color: var(--vl-primary);
-    color: var(--vl-primary);
+    border-color: var(--vl-accent);
+    color: var(--vl-accent);
 }
 
 .dict-answer-display {
     margin-top: 6px;
     padding: 6px 10px;
-    background: rgba(233, 69, 96, 0.1);
+    background: var(--vl-accent-light);
     border-radius: 6px;
     font-size: 14px;
+    color: var(--vl-text);
 }
 
 .dict-result-marker {
@@ -663,18 +699,19 @@
     cursor: pointer;
     transition: all 0.15s;
     background: transparent;
+    color: var(--vl-text-secondary);
 }
 
 .dict-mark-correct:hover {
     border-color: var(--vl-success);
     color: var(--vl-success);
-    background: rgba(52, 199, 89, 0.1);
+    background: rgba(52, 199, 89, 0.08);
 }
 
 .dict-mark-wrong:hover {
     border-color: var(--vl-danger);
     color: var(--vl-danger);
-    background: rgba(255, 59, 48, 0.1);
+    background: rgba(255, 59, 48, 0.08);
 }
 
 .dict-result-list {
@@ -693,11 +730,11 @@
 }
 
 .dict-result-wrong {
-    background: rgba(255, 59, 48, 0.08);
+    background: rgba(255, 59, 48, 0.06);
 }
 
 .dict-result-skipped {
-    background: rgba(255, 149, 0, 0.08);
+    background: rgba(255, 149, 0, 0.06);
 }
 
 .dict-result-word {
@@ -714,12 +751,12 @@
 }
 
 .dict-result-wrong .dict-result-status {
-    background: rgba(255, 59, 48, 0.15);
+    background: rgba(255, 59, 48, 0.12);
     color: var(--vl-danger);
 }
 
 .dict-result-skipped .dict-result-status {
-    background: rgba(255, 149, 0, 0.15);
+    background: rgba(255, 149, 0, 0.12);
     color: var(--vl-warning);
 }
 
@@ -731,10 +768,13 @@
 
 .ps-card {
     background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     border-radius: var(--vl-radius);
     padding: 24px;
     border: 0.5px solid var(--vl-border);
     text-align: center;
+    box-shadow: var(--vl-shadow);
 }
 
 .ps-hint {
@@ -766,7 +806,7 @@
     padding: 10px 14px;
     border: 1px solid var(--vl-border);
     border-radius: var(--vl-radius-sm);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-primary, #F5F7FA);
     color: var(--vl-text);
     font-size: 18px;
     text-align: center;
@@ -776,7 +816,7 @@
 }
 
 .ps-input:focus {
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .ps-result {
@@ -809,11 +849,12 @@
     font-size: 13px;
     cursor: pointer;
     transition: all 0.15s;
+    font-family: inherit;
 }
 
 .ps-btn:hover {
-    border-color: var(--vl-primary);
-    color: var(--vl-primary);
+    border-color: var(--vl-accent);
+    color: var(--vl-accent);
 }
 
 .ps-btn:disabled {
@@ -835,7 +876,7 @@
 }
 
 .ps-blank {
-    color: var(--vl-primary);
+    color: var(--vl-accent);
     font-weight: 600;
     text-decoration: underline;
     text-decoration-style: wavy;
@@ -853,7 +894,7 @@
     padding: 10px 16px;
     border: 1px solid var(--vl-border);
     border-radius: var(--vl-radius-sm);
-    background: transparent;
+    background: var(--vl-card);
     color: var(--vl-text);
     font-size: 14px;
     cursor: pointer;
@@ -863,8 +904,8 @@
 }
 
 .ps-option-btn:hover {
-    border-color: var(--vl-primary);
-    background: var(--vl-hover);
+    border-color: var(--vl-accent);
+    background: var(--vl-accent-light);
 }
 
 .ps-option-btn:disabled {
@@ -874,13 +915,13 @@
 
 .ps-option-correct {
     border-color: var(--vl-success) !important;
-    background: rgba(52, 199, 89, 0.15) !important;
+    background: rgba(52, 199, 89, 0.12) !important;
     color: var(--vl-success) !important;
 }
 
 .ps-option-wrong {
     border-color: var(--vl-danger) !important;
-    background: rgba(255, 59, 48, 0.15) !important;
+    background: rgba(255, 59, 48, 0.12) !important;
     color: var(--vl-danger) !important;
 }
 
@@ -901,36 +942,256 @@
     border: 1px solid var(--vl-border);
     border-radius: var(--vl-radius-sm);
     background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
     cursor: pointer;
     transition: all 0.15s;
     text-align: center;
     font-size: 13px;
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.04));
 }
 
 .pm-item:hover {
-    border-color: var(--vl-primary);
+    border-color: var(--vl-accent);
 }
 
 .pm-selected {
-    border-color: var(--vl-primary) !important;
-    background: var(--vl-hover) !important;
+    border-color: var(--vl-accent) !important;
+    background: var(--vl-active) !important;
 }
 
 .pm-matched {
     border-color: var(--vl-success) !important;
-    background: rgba(52, 199, 89, 0.1) !important;
+    background: rgba(52, 199, 89, 0.08) !important;
     opacity: 0.6;
     cursor: default;
 }
 
 .pm-wrong {
     border-color: var(--vl-danger) !important;
-    background: rgba(255, 59, 48, 0.1) !important;
+    background: rgba(255, 59, 48, 0.08) !important;
 }
 
 .pm-text {
     color: var(--vl-text);
     word-break: break-word;
+}
+
+.qs-container {
+    text-align: center;
+}
+
+.qs-progress {
+    font-size: 13px;
+    color: var(--vl-text-secondary);
+    margin-bottom: 12px;
+}
+
+.qs-card {
+    background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
+    border-radius: var(--vl-radius);
+    border: 0.5px solid var(--vl-border);
+    box-shadow: var(--vl-shadow);
+    padding: 40px 24px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qs-word {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--vl-accent);
+    font-family: 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    margin-bottom: 8px;
+}
+
+.qs-phonetic {
+    font-size: 14px;
+    color: var(--vl-text-tertiary);
+    margin-bottom: 8px;
+}
+
+.qs-meaning {
+    font-size: 16px;
+    color: var(--vl-text);
+    transition: opacity 0.25s;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 0.5px solid var(--vl-border-light);
+}
+
+.qs-hint {
+    font-size: 12px;
+    color: var(--vl-text-tertiary);
+    margin-bottom: 12px;
+}
+
+.qs-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.qs-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--vl-border);
+    border-radius: 8px;
+    background: var(--vl-card);
+    color: var(--vl-text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+}
+
+.qs-btn:hover {
+    border-color: var(--vl-accent);
+    color: var(--vl-accent);
+}
+
+.qs-btn-primary {
+    background: var(--vl-accent);
+    color: white;
+    border-color: var(--vl-accent);
+}
+
+.qs-btn-primary:hover {
+    background: var(--vl-accent-hover);
+}
+
+.qs-collocations {
+    margin-bottom: 12px;
+}
+
+.qs-colloc-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--vl-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.qs-colloc-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+}
+
+.qs-colloc-item {
+    font-size: 12px;
+    padding: 4px 10px;
+    background: var(--vl-accent-light);
+    border-radius: 8px;
+    color: var(--vl-text);
+}
+
+.tts-player {
+    text-align: center;
+}
+
+.tts-progress {
+    font-size: 13px;
+    color: var(--vl-text-secondary);
+    margin-bottom: 12px;
+}
+
+.tts-card {
+    background: var(--vl-card);
+    backdrop-filter: var(--glass-blur, blur(10px));
+    -webkit-backdrop-filter: var(--glass-blur, blur(10px));
+    border-radius: var(--vl-radius);
+    border: 0.5px solid var(--vl-border);
+    box-shadow: var(--vl-shadow);
+    padding: 32px 24px;
+    margin-bottom: 12px;
+}
+
+.tts-word {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--vl-text);
+    font-family: 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    margin-bottom: 8px;
+}
+
+.tts-meaning {
+    font-size: 15px;
+    color: var(--vl-text-secondary);
+}
+
+.tts-controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.tts-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--vl-border);
+    border-radius: 50%;
+    background: var(--vl-card);
+    color: var(--vl-text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
+
+.tts-btn:hover {
+    border-color: var(--vl-accent);
+    color: var(--vl-accent);
+}
+
+.tts-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.tts-btn-play {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+}
+
+.tts-btn-play.tts-active {
+    background: var(--vl-accent);
+    color: white;
+    border-color: var(--vl-accent);
+}
+
+.tts-mode-labels {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.tts-mode-label {
+    font-size: 13px;
+    color: var(--vl-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.tts-mode-label input[type="checkbox"] {
+    accent-color: var(--vl-accent);
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

@@ -1,3 +1,28 @@
+const VLIcon = {
+    home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+    settings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>',
+    fire: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:16px;height:16px;"><path d="M13.023 1.994c-2.488 2.12-4.402 4.575-5.296 7.036-.155.412-.32.824-.454 1.227-.104.3-.195.596-.273.886-.19.697-.285 1.339-.285 1.857 0 2.062 1.672 3.734 3.734 3.734s3.734-1.672 3.734-3.734c0-.6-.21-1.16-.56-1.65-.06-.09-.13-.17-.2-.25-.18-.2-.38-.38-.6-.52-.22-.14-.46-.24-.72-.29-.24-.05-.48-.07-.72-.05-.16.02-.32.05-.47.1l.4-1.87c.19-.89.43-1.76.73-2.62.3-.86.67-1.7 1.09-2.52.05-.1.1-.2.16-.3.81-1.47 1.8-2.84 2.96-4.08.1-.1.2-.2.3-.3-.94.52-1.83 1.12-2.66 1.8zM7.5 21.75a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5z"/></svg>',
+    practice: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>',
+    headphone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>',
+    pen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>',
+    zap: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:16px;height:16px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
+    sparkles: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M12 3l1.2 3.8a4 4 0 0 0 3 3l3.8 1.2-3.8 1.2a4 4 0 0 0-3 3L12 19l-1.2-3.8a4 4 0 0 0-3-3L4 11l3.8-1.2a4 4 0 0 0 3-3L12 3z"/></svg>',
+    target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>',
+    thumbsUp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:48px;height:48px;opacity:0.5;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>',
+    smile: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:48px;height:48px;opacity:0.5;"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>',
+    star: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:48px;height:48px;opacity:0.5;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+    bookOpen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:48px;height:48px;opacity:0.5;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>',
+    play: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:20px;height:20px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>',
+    pause: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:20px;height:20px;"><rect x="6 4" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>',
+    volume: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>',
+    arrowUp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>',
+    arrowDown: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"></polyline></svg>',
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
+    checkCircle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:48px;height:48px;opacity:0.5;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>'
+};
+
 const VocabLearning = {
     _initialized: false,
 
@@ -8,9 +33,23 @@ const VocabLearning = {
         console.log('[VocabLearning] 学习页面模块已初始化');
     },
 
+    isActive() {
+        const root = document.getElementById('vocabLearningRoot');
+        return root && root.classList.contains('active');
+    },
+
     show() {
         const root = document.getElementById('vocabLearningRoot');
         if (!root) return;
+
+        // 互斥：如果真题练习处于活动状态，先退出
+        const pastPapersContainer = document.getElementById('pastPapersContainer');
+        if (pastPapersContainer && pastPapersContainer.style.display !== 'none') {
+            if (window.PastPapers && PastPapers.exitMode) {
+                PastPapers.exitMode();
+            }
+        }
+
         const mainContent = document.querySelector('.main-content');
         if (mainContent) mainContent.style.display = 'none';
         root.classList.add('active');
@@ -50,20 +89,26 @@ const VocabLearning = {
                 </div>
             </div>
             <div style="text-align:center;margin-bottom:20px;">
-                <span class="vl-streak-badge">🔥 连续学习 ${stats.streak} 天</span>
+                <span class="vl-streak-badge">${VLIcon.fire} 连续学习 ${stats.streak} 天</span>
             </div>
             <div class="vl-action-group">
                 <button class="vl-action-btn vl-btn-primary" id="vlStartReviewBtn">
-                    📖 开始复习 (${dueCount})
+                    ${VLIcon.book} 开始复习 (${dueCount})
                 </button>
                 <button class="vl-action-btn vl-btn-secondary" id="vlStartNewBtn">
-                    ✨ 学习新词
+                    ${VLIcon.sparkles} 学习新词
+                </button>
+                <button class="vl-action-btn vl-btn-secondary" id="vlSwipeBtn">
+                    ${VLIcon.zap} 速刷模式
+                </button>
+                <button class="vl-action-btn vl-btn-secondary" id="vlTTSBtn">
+                    ${VLIcon.headphone} 随身听
                 </button>
                 <button class="vl-action-btn vl-btn-secondary" id="vlPracticeBtn">
-                    🎯 多种练习
+                    多种练习
                 </button>
                 <button class="vl-action-btn vl-btn-secondary" id="vlDictationBtn">
-                    ✍️ 默写练习
+                    默写练习
                 </button>
             </div>
         `;
@@ -80,6 +125,12 @@ const VocabLearning = {
         document.getElementById('vlPracticeBtn').addEventListener('click', () => {
             this._startPractice();
         });
+        document.getElementById('vlSwipeBtn').addEventListener('click', () => {
+            this._startSwipeMode();
+        });
+        document.getElementById('vlTTSBtn').addEventListener('click', () => {
+            this._startTTS();
+        });
     },
 
     _renderWordsTab() {
@@ -90,8 +141,8 @@ const VocabLearning = {
         if (words.length === 0) {
             container.innerHTML = `
                 <div class="vl-empty">
-                    <div class="vl-empty-icon">📚</div>
-                    <div class="vl-empty-text">还没有添加单词</div>
+                    <div class="vl-empty-icon">${VLIcon.bookOpen}</div>
+                <div class="vl-empty-text">还没有添加单词</div>
                     <div class="vl-empty-desc">从词库中选择单词开始学习</div>
                 </div>
             `;
@@ -312,6 +363,29 @@ const VocabLearning = {
         document.getElementById('psModeBack').addEventListener('click', () => {
             this._renderHomeTab();
         });
+    },
+
+    _startSwipeMode() {
+        const words = LearningEngine.getWordList();
+        if (words.length === 0) {
+            InteractionManager && InteractionManager.showToast('还没有添加单词', 'info');
+            return;
+        }
+        const container = document.getElementById('vlHomeContent');
+        if (!container) return;
+        VocabQuickSwipe.init(container, words);
+        VocabQuickSwipe.start();
+    },
+
+    _startTTS() {
+        const words = LearningEngine.getWordList();
+        if (words.length === 0) {
+            InteractionManager && InteractionManager.showToast('还没有添加单词', 'info');
+            return;
+        }
+        const container = document.getElementById('vlHomeContent');
+        if (!container) return;
+        VocabAdvanced.startTTSPlayer(container, words);
     },
 
     _startDictation() {

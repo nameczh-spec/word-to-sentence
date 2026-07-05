@@ -79,22 +79,22 @@ const VocabDictionary = {
         wrapper.className = 'dict-panel-wrapper';
         wrapper.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;display:none;';
         wrapper.innerHTML = `
-            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);" id="dictPanelOverlay"></div>
-            <div id="vocabDictPanel" style="position:absolute;top:56px;left:50%;transform:translateX(-50%);width:92%;max-width:560px;max-height:calc(100vh - 80px);background:#16213e;border-radius:16px;border:0.5px solid rgba(255,255,255,0.06);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
-                <div style="padding:16px 20px;border-bottom:0.5px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.2);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);" id="dictPanelOverlay"></div>
+            <div id="vocabDictPanel" style="position:absolute;top:56px;left:50%;transform:translateX(-50%);width:92%;max-width:560px;max-height:calc(100vh - 80px);background:var(--glass-bg,rgba(255,255,255,0.9));border-radius:16px;border:0.5px solid var(--border-color,rgba(0,0,0,0.06));overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 48px rgba(0,0,0,0.12);">
+                <div style="padding:16px 20px;border-bottom:0.5px solid var(--border-color,rgba(0,0,0,0.06));display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
                     <div>
-                        <span id="dictWord" style="font-size:20px;font-weight:700;color:#eaeaea;"></span>
-                        <span id="dictPhonetic" style="font-size:14px;color:#a0a0b0;margin-left:8px;"></span>
+                        <span id="dictWord" style="font-size:20px;font-weight:700;color:var(--text-primary,#1D1D1F);"></span>
+                        <span id="dictPhonetic" style="font-size:14px;color:var(--text-secondary,#86868B);margin-left:8px;"></span>
                     </div>
-                    <button id="dictCloseBtn" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:#a0a0b0;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
+                    <button id="dictCloseBtn" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--text-secondary,#86868B);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
                 </div>
                 <div style="padding:16px 20px;overflow-y:auto;flex:1;" id="dictBody">
                     <div id="dictMeaningsSection"></div>
-                    <div style="height:1px;background:rgba(255,255,255,0.06);margin:16px 0;"></div>
+                    <div style="height:1px;background:var(--border-color,rgba(0,0,0,0.06));margin:16px 0;"></div>
                     <div id="dictRootSection"></div>
-                    <div style="height:1px;background:rgba(255,255,255,0.06);margin:16px 0;"></div>
+                    <div style="height:1px;background:var(--border-color,rgba(0,0,0,0.06));margin:16px 0;"></div>
                     <div id="dictDerivSection"></div>
-                    <div style="height:1px;background:rgba(255,255,255,0.06);margin:16px 0;"></div>
+                    <div style="height:1px;background:var(--border-color,rgba(0,0,0,0.06));margin:16px 0;"></div>
                     <div id="dictExtraSection"></div>
                 </div>
             </div>
@@ -123,6 +123,10 @@ const VocabDictionary = {
         this._renderRoot(rootInfo);
         this._renderDerivations(word, derivations);
         this._renderExtra(word);
+
+        if (window.VocabAdvanced && VocabAdvanced.addDictionarySourceSwitcher) {
+            VocabAdvanced.addDictionarySourceSwitcher(this._panel);
+        }
 
         this._overlay.style.display = 'block';
     },
@@ -178,7 +182,7 @@ const VocabDictionary = {
     _renderMeanings(wordData) {
         const section = this._panel.querySelector('#dictMeaningsSection');
         if (!wordData) {
-            section.innerHTML = '<div style="color:#a0a0b0;font-size:13px;">未找到词库数据，请尝试在词库检索中查询</div>';
+            section.innerHTML = '<div style="color:var(--text-secondary,#86868B);font-size:13px;">未找到词库数据，请尝试在词库检索中查询</div>';
             return;
         }
 
@@ -187,16 +191,16 @@ const VocabDictionary = {
             for (const t of wordData.translations) {
                 const pos = t.type || '';
                 const meaning = t.translation || '';
-                html += `<div style="margin-bottom:4px;font-size:14px;color:#eaeaea;"><span style="color:#e94560;font-weight:600;margin-right:6px;">${pos}</span>${meaning}</div>`;
+                html += `<div style="margin-bottom:4px;font-size:14px;color:var(--text-primary,#1D1D1F);"><span style="color:var(--accent-color,#007AFF);font-weight:600;margin-right:6px;">${pos}</span>${meaning}</div>`;
             }
         } else if (wordData.content?.word?.content?.trans) {
             for (const t of wordData.content.word.content.trans) {
                 const pos = t.pos || '';
                 const meaning = t.tranCn || '';
-                html += `<div style="margin-bottom:4px;font-size:14px;color:#eaeaea;"><span style="color:#e94560;font-weight:600;margin-right:6px;">${pos}</span>${meaning}</div>`;
+                html += `<div style="margin-bottom:4px;font-size:14px;color:var(--text-primary,#1D1D1F);"><span style="color:var(--accent-color,#007AFF);font-weight:600;margin-right:6px;">${pos}</span>${meaning}</div>`;
             }
         }
-        section.innerHTML = html || '<div style="color:#a0a0b0;font-size:13px;">暂无释义数据</div>';
+        section.innerHTML = html || '<div style="color:var(--text-secondary,#86868B);font-size:13px;">暂无释义数据</div>';
     },
 
     _renderRoot(rootInfo) {
@@ -207,15 +211,15 @@ const VocabDictionary = {
         }
 
         section.innerHTML = `
-            <div style="font-size:12px;font-weight:600;color:#a0a0b0;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">词根词缀</div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary,#86868B);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">词根词缀</div>
             <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
-                <span style="background:rgba(233,69,96,0.15);color:#e94560;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:500;">${rootInfo.root}</span>
-                <span style="background:rgba(52,199,89,0.15);color:#34C759;padding:3px 10px;border-radius:12px;font-size:12px;">${rootInfo.type}</span>
+                <span style="background:var(--accent-light,rgba(0,122,255,0.1));color:var(--accent-color,#007AFF);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:500;">${rootInfo.root}</span>
+                <span style="background:rgba(52,199,89,0.12);color:var(--success-color,#34C759);padding:3px 10px;border-radius:12px;font-size:12px;">${rootInfo.type}</span>
             </div>
-            <div style="font-size:14px;color:#eaeaea;margin-bottom:4px;">${rootInfo.meaning}</div>
-            <div style="font-size:12px;color:#6b6b80;margin-bottom:8px;">来源: ${rootInfo.source}</div>
+            <div style="font-size:14px;color:var(--text-primary,#1D1D1F);margin-bottom:4px;">${rootInfo.meaning}</div>
+            <div style="font-size:12px;color:var(--text-tertiary,#AEAEB2);margin-bottom:8px;">来源: ${rootInfo.source}</div>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">
-                ${rootInfo.words.filter(w => w).map(w => `<span style="background:rgba(255,255,255,0.04);color:#a0a0b0;padding:2px 8px;border-radius:6px;font-size:12px;">${w}</span>`).join('')}
+                ${rootInfo.words.filter(w => w).map(w => `<span style="background:var(--hover-bg,rgba(0,0,0,0.04));color:var(--text-secondary,#86868B);padding:2px 8px;border-radius:6px;font-size:12px;">${w}</span>`).join('')}
             </div>
         `;
     },
@@ -228,12 +232,12 @@ const VocabDictionary = {
         }
 
         section.innerHTML = `
-            <div style="font-size:12px;font-weight:600;color:#a0a0b0;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">同根/派生词</div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary,#86868B);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">同根/派生词</div>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
                 ${derivations.map(d => `
-                    <span style="background:rgba(255,255,255,0.04);color:#eaeaea;padding:4px 10px;border-radius:8px;font-size:13px;cursor:pointer;transition:background 0.15s;"
-                        onmouseover="this.style.background='rgba(233,69,96,0.15)'"
-                        onmouseout="this.style.background='rgba(255,255,255,0.04)'"
+                    <span style="background:var(--hover-bg,rgba(0,0,0,0.04));color:var(--text-primary,#1D1D1F);padding:4px 10px;border-radius:8px;font-size:13px;cursor:pointer;transition:background 0.15s;"
+                        onmouseover="this.style.background='var(--accent-light,rgba(0,122,255,0.1)'"
+                        onmouseout="this.style.background='var(--hover-bg,rgba(0,0,0,0.04)'"
                         onclick="VocabDictionary.show('${d.word}')">${d.word}</span>
                 `).join('')}
             </div>
@@ -243,11 +247,11 @@ const VocabDictionary = {
     _renderExtra(word) {
         const section = this._panel.querySelector('#dictExtraSection');
         section.innerHTML = `
-            <div style="font-size:12px;font-weight:600;color:#a0a0b0;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">柯林斯词典</div>
-            <div style="font-size:14px;color:#a0a0b0;line-height:1.6;">
-                1. If you have an <strong style="color:#eaeaea;">${word}</strong>, you have a strong desire to do or achieve something.<br>
-                2. <strong style="color:#eaeaea;">${word}</strong> is the desire and determination to be successful, rich, or powerful.<br>
-                3. An <strong style="color:#eaeaea;">${word}</strong> is the goal or object of a person's <strong style="color:#eaeaea;">${word}</strong>.
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary,#86868B);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">柯林斯词典</div>
+            <div style="font-size:14px;color:var(--text-secondary,#86868B);line-height:1.6;">
+                1. If you have an <strong style="color:var(--accent-color,#007AFF);">${word}</strong>, you have a strong desire to do or achieve something.<br>
+                2. <strong style="color:var(--accent-color,#007AFF);">${word}</strong> is the desire and determination to be successful, rich, or powerful.<br>
+                3. An <strong style="color:var(--accent-color,#007AFF);">${word}</strong> is the goal or object of a person's <strong style="color:var(--accent-color,#007AFF);">${word}</strong>.
             </div>
         `;
     },
