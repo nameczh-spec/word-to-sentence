@@ -101,7 +101,8 @@ body {
 
 .nav-settings-btn,
 .nav-review-btn,
-.nav-pastpapers-btn {
+.nav-pastpapers-btn,
+.nav-vocab-btn {
     width: 32px;
     height: 32px;
     border: none;
@@ -117,16 +118,26 @@ body {
 
 .nav-settings-btn:hover,
 .nav-review-btn:hover,
-.nav-pastpapers-btn:hover {
+.nav-pastpapers-btn:hover,
+.nav-vocab-btn:hover {
     background: var(--hover-bg);
     color: var(--text-primary);
 }
 
 .nav-settings-btn svg,
 .nav-review-btn svg,
-.nav-pastpapers-btn svg {
+.nav-pastpapers-btn svg,
+.nav-vocab-btn svg {
     width: 18px;
     height: 18px;
+}
+
+.nav-settings-btn.active,
+.nav-review-btn.active,
+.nav-pastpapers-btn.active,
+.nav-vocab-btn.active {
+    background: var(--active-bg);
+    color: var(--accent-color);
 }
 
 .nav-hamburger {

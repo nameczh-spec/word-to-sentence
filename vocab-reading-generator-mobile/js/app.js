@@ -219,7 +219,7 @@ const App = {
     bindMainEvents() {
         // 单词学习导航
         document.getElementById('vocabLearningBtn').addEventListener('click', () => {
-            VocabLearning.show();
+            VocabLearning.toggleMode();
         });
 
         // 批量导入

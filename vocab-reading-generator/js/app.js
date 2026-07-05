@@ -336,7 +336,7 @@ database /ˈdeɪtəbeɪs/ n. 数据库；资料库
 
         // 单词学习导航
         document.getElementById('vocabLearningBtn').addEventListener('click', () => {
-            VocabLearning.show();
+            VocabLearning.toggleMode();
         });
 
         // 真题练习导航
