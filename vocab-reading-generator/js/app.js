@@ -38,6 +38,12 @@ const App = {
         LearningEngine.init();
         VocabLearning.init();
 
+        // 初始化词典模块
+        VocabDictionary.init();
+
+        // 初始化高级功能模块
+        VocabAdvanced.init();
+
         // 绑定主要事件
         this.bindMainEvents();
 
@@ -339,9 +345,11 @@ database /ˈdeɪtəbeɪs/ n. 数据库；资料库
             VocabLearning.show();
         });
 
-        // 真题练习导航
+        // 真题练习导航 - 互斥处理（实际toggle由pastPapers.js内部init处理）
         document.getElementById('pastPapersBtn').addEventListener('click', () => {
-            PastPapers.show();
+            if (window.VocabLearning && VocabLearning.isActive()) {
+                VocabLearning.hide();
+            }
         });
 
         // 输出格式切换
