@@ -42,6 +42,12 @@ const VocabLearning = {
         const root = document.getElementById('vocabLearningRoot');
         if (!root) return;
 
+        // 如果已经处于活动状态，则切换关闭
+        if (root.classList.contains('active')) {
+            this.hide();
+            return;
+        }
+
         // 互斥：如果真题练习处于活动状态，先退出
         const pastPapersContainer = document.getElementById('pastPapersContainer');
         if (pastPapersContainer && pastPapersContainer.style.display !== 'none') {
@@ -623,12 +629,6 @@ const VocabLearning = {
 
     _bindEvents() {
         document.addEventListener('click', (e) => {
-            const closeBtn = e.target.closest('#vlCloseBtn');
-            if (closeBtn) {
-                this.hide();
-                return;
-            }
-
             const navTab = e.target.closest('.vl-nav-tab');
             if (navTab) {
                 this.switchTab(navTab.dataset.tab);
