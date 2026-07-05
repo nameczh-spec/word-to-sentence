@@ -56,6 +56,13 @@ const VocabLearning = {
             }
         }
 
+        // 更新导航标题
+        const title = document.querySelector('.nav-title');
+        if (title) {
+            title.dataset.original = title.dataset.original || title.textContent;
+            title.textContent = '单词学习';
+        }
+
         const mainContent = document.querySelector('.main-content');
         if (mainContent) mainContent.style.display = 'none';
         root.classList.add('active');
@@ -66,6 +73,13 @@ const VocabLearning = {
         const root = document.getElementById('vocabLearningRoot');
         if (!root) return;
         root.classList.remove('active');
+
+        // 恢复导航标题
+        const title = document.querySelector('.nav-title');
+        if (title && title.dataset.original) {
+            title.textContent = title.dataset.original;
+        }
+
         const mainContent = document.querySelector('.main-content');
         if (mainContent) mainContent.style.display = '';
     },
