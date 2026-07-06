@@ -57,11 +57,10 @@
         </button>
         <span class="history-mode-label" id="historyModeLabel" style="display:none;"></span>
         <div class="nav-actions">
-            <button class="nav-btn" id="vocabLearningBtn" title="单词学习">
+            <button class="nav-vocab-btn" id="vocabLearningBtn" title="单词学习">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                    <path d="M2 17l10 5 10-5"></path>
-                    <path d="M2 12l10 5 10-5"></path>
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                 </svg>
             </button>
             <button class="nav-pastpapers-btn" id="pastPapersBtn" title="真题练习">
@@ -632,31 +631,239 @@
     <script src="js/writing.js"></script>
     <script src="js/learningEngine.js"></script>
     <script src="js/vocabLearning.js"></script>
-    <script src="js/dictationPractice.js"></script>
-    <script src="js/practiceModes.js"></script>
-    <script src="js/vocabDictionary.js"></script>
-    <script src="js/vocabQuickSwipe.js"></script>
-    <script src="js/vocabAdvanced.js"></script>
     <script src="js/app.js"></script>
     
-    <!-- 不背单词学习页面 -->
+    <!-- 单词学习页面 -->
     <div class="vocab-learning-root" id="vocabLearningRoot">
-        <div class="vl-header">
-            <div class="vl-header-left">
-                <span class="vl-header-title">单词学习</span>
-                <span class="vl-header-subtitle" id="vlHeaderSubtitle"></span>
+        <!-- 内容区 -->
+        <div class="vl-body" id="vlBody">
+            <!-- 首页视图 -->
+            <div class="vl-view vl-view-home active" id="vlHomeView">
+                <!-- 今日任务卡片 -->
+                <div class="vl-task-card" id="vlTaskCard">
+                    <div class="vl-task-header">
+                        <span class="vl-task-title">今日学习</span>
+                        <span class="vl-task-date" id="vlTodayDate"></span>
+                    </div>
+                    <div class="vl-task-stats">
+                        <div class="vl-task-stat">
+                            <div class="vl-task-stat-num" id="vlNewCount">0</div>
+                            <div class="vl-task-stat-label">新学</div>
+                        </div>
+                        <div class="vl-task-stat-divider"></div>
+                        <div class="vl-task-stat">
+                            <div class="vl-task-stat-num" id="vlReviewCount">0</div>
+                            <div class="vl-task-stat-label">复习</div>
+                        </div>
+                    </div>
+                    <button class="vl-start-btn" id="vlStartBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>开始学习</span>
+                    </button>
+                </div>
+                <!-- 学习统计 -->
+                <div class="vl-stats-row">
+                    <div class="vl-stat-item">
+                        <div class="vl-stat-num" id="vlTotalLearned">0</div>
+                        <div class="vl-stat-label">已学</div>
+                    </div>
+                    <div class="vl-stat-divider"></div>
+                    <div class="vl-stat-item">
+                        <div class="vl-stat-num" id="vlMasteredCount">0</div>
+                        <div class="vl-stat-label">已掌握</div>
+                    </div>
+                    <div class="vl-stat-divider"></div>
+                    <div class="vl-stat-item">
+                        <div class="vl-stat-num" id="vlStreakDays">0</div>
+                        <div class="vl-stat-label">连续天数</div>
+                    </div>
+                </div>
             </div>
-            <button class="vl-close-btn" id="vlCloseBtn">×</button>
+
+            <!-- 学习/复习卡片视图 -->
+            <div class="vl-view vl-view-study" id="vlStudyView">
+                <div class="vl-study-progress">
+                    <div class="vl-progress-bar">
+                        <div class="vl-progress-fill" id="vlProgressFill"></div>
+                    </div>
+                    <span class="vl-progress-text" id="vlProgressText">1/1</span>
+                </div>
+                <div class="vl-card-area" id="vlCardArea">
+                    <!-- 卡片内容由JS渲染 -->
+                </div>
+                <div class="vl-card-actions" id="vlCardActions">
+                    <!-- 操作按钮由JS渲染 -->
+                </div>
+            </div>
+
+            <!-- 学习结果视图 -->
+            <div class="vl-view vl-view-result" id="vlResultView">
+                <div class="vl-result-card" id="vlResultCard">
+                    <!-- 结果内容由JS渲染 -->
+                </div>
+            </div>
+
+            <!-- 单词本视图（仪表盘） -->
+            <div class="vl-view vl-view-words" id="vlWordsView">
+                <!-- 正在学习 -->
+                <div class="vl-dashboard-section">
+                    <div class="vl-dashboard-section-header">
+                        <span class="vl-dashboard-section-title">正在学习</span>
+                        <button class="vl-change-book-btn" id="vlChangeBookBtn">换本词书</button>
+                    </div>
+                    <div class="vl-learning-books-row" id="vlLearningBooksRow">
+                        <!-- 词书卡片由JS渲染 -->
+                    </div>
+                    <div class="vl-book-progress">
+                        <div class="vl-book-progress-bar">
+                            <div class="vl-book-progress-fill" id="vlBookProgressFill"></div>
+                        </div>
+                        <div class="vl-book-progress-text">
+                            <span id="vlBookLearned">0</span>
+                            <span class="vl-book-progress-divider"></span>
+                            <span>总词数 <span id="vlBookTotal">0</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 我的数据 -->
+                <div class="vl-dashboard-section">
+                    <div class="vl-dashboard-section-header">
+                        <span class="vl-dashboard-section-title">我的数据</span>
+                    </div>
+                    <div class="vl-stats-overview">
+                        <div class="vl-stats-overview-title">概览</div>
+                        <div class="vl-stats-grid">
+                            <div class="vl-stat-item">
+                                <div class="vl-stat-icon vl-stat-icon-today">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 20h9"></path>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="vl-stat-info">
+                                    <div class="vl-stat-num" id="vlStatToday">0</div>
+                                    <div class="vl-stat-label">今日学习&复习</div>
+                                </div>
+                            </div>
+                            <div class="vl-stat-item">
+                                <div class="vl-stat-icon vl-stat-icon-total">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="vl-stat-info">
+                                    <div class="vl-stat-num" id="vlStatTotal">0</div>
+                                    <div class="vl-stat-label">累计学习</div>
+                                </div>
+                            </div>
+                            <div class="vl-stat-item">
+                                <div class="vl-stat-icon vl-stat-icon-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="vl-stat-info">
+                                    <div class="vl-stat-num" id="vlStatTodayTime">0</div>
+                                    <div class="vl-stat-label">今日学习时长</div>
+                                </div>
+                            </div>
+                            <div class="vl-stat-item">
+                                <div class="vl-stat-icon vl-stat-icon-total-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                                    </svg>
+                                </div>
+                                <div class="vl-stat-info">
+                                    <div class="vl-stat-num" id="vlStatTotalTime">0</div>
+                                    <div class="vl-stat-label">累计学习时长</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 日历 -->
+                <div class="vl-dashboard-section">
+                    <div class="vl-dashboard-section-header">
+                        <span class="vl-dashboard-section-title">日历</span>
+                        <div class="vl-streak">
+                            连续签到 <span id="vlStreakDays">0</span> 天
+                        </div>
+                    </div>
+                    <div class="vl-calendar" id="vlCalendar">
+                        <!-- 日历由JS渲染 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 换本词书弹窗 -->
+            <div class="vl-book-modal" id="vlBookModal" style="display:none;">
+                <div class="vl-book-modal-mask" id="vlBookModalMask"></div>
+                <div class="vl-book-modal-content">
+                    <div class="vl-book-modal-header">
+                        <span class="vl-book-modal-title">选择词书</span>
+                        <button class="vl-book-modal-close" id="vlBookModalClose">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="vl-book-modal-body">
+                        <div class="vl-book-modal-section-title">内置词书</div>
+                        <div class="vl-book-modal-list" id="vlBookModalList">
+                            <!-- 词书列表由JS渲染 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="vl-body">
-            <div class="vl-nav-tabs">
-                <button class="vl-nav-tab active" data-tab="home">🏠 首页</button>
-                <button class="vl-nav-tab" data-tab="words">📖 单词本</button>
-                <button class="vl-nav-tab" data-tab="settings">⚙️ 设置</button>
+        <!-- 底部导航栏 -->
+        <div class="vl-tabbar">
+            <button class="vl-tabbar-item active" data-view="home" id="vlTabHome">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>首页</span>
+            </button>
+            <button class="vl-tabbar-item" data-view="words" id="vlTabWords">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>单词本</span>
+            </button>
+            <button class="vl-tabbar-item" data-view="settings" id="vlTabSettings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span>设置</span>
+            </button>
+        </div>
+        <!-- 设置面板（弹出层） -->
+        <div class="vl-settings-panel" id="vlSettingsPanel">
+            <div class="vl-settings-mask" id="vlSettingsMask"></div>
+            <div class="vl-settings-content">
+                <div class="vl-settings-header">
+                    <span class="vl-settings-title">学习设置</span>
+                    <button class="vl-settings-close" id="vlSettingsClose">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vl-settings-body" id="vlSettingsBody">
+                    <!-- 设置内容由JS渲染 -->
+                </div>
             </div>
-            <div class="vl-tab-content active" id="vlHomeContent"></div>
-            <div class="vl-tab-content" id="vlWordsContent"></div>
-            <div class="vl-tab-content" id="vlSettingsContent"></div>
         </div>
     </div>
     

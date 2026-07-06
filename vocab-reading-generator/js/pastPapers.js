@@ -121,11 +121,17 @@ const PastPapers = (() => {
 
     /**
      * 切换真题练习模式
+     * 点击当前激活的按钮 → 退出到主界面
+     * 点击未激活的按钮 → 关闭其他模块后进入本模块
      */
     function toggleMode() {
         if (isActive) {
             exitMode();
         } else {
+            // 模块互斥：关闭其他模块（静默退出，不恢复主界面）
+            if (window.VocabLearning && VocabLearning.isActive) {
+                VocabLearning.exitMode(true);
+            }
             enterMode();
         }
     }
@@ -175,26 +181,19 @@ const PastPapers = (() => {
         // 更新标题
         const title = document.querySelector('.nav-title');
         if (title) {
-            title.dataset.original = title.textContent;
+            if (!title.dataset.original) {
+                title.dataset.original = title.textContent;
+            }
             title.textContent = '真题练习';
         }
 
         renderHome();
     }
 
-    function exitMode() {
+    function exitMode(silent) {
         isActive = false;
         currentView = 'home';
         currentPaper = null;
-
-        const sidebar = document.getElementById('sidebarLeft');
-        if (sidebar) sidebar.style.display = '';
-
-        const mainContent = document.getElementById('mainContent');
-        if (mainContent) mainContent.style.display = '';
-
-        const actionBar = document.querySelector('.action-bar');
-        if (actionBar) actionBar.style.display = '';
 
         const container = document.getElementById('pastPapersContainer');
         if (container) container.style.display = 'none';
@@ -202,9 +201,20 @@ const PastPapers = (() => {
         const btn = document.getElementById('pastPapersBtn');
         if (btn) btn.classList.remove('active');
 
-        const title = document.querySelector('.nav-title');
-        if (title && title.dataset.original) {
-            title.textContent = title.dataset.original;
+        if (!silent) {
+            const sidebar = document.getElementById('sidebarLeft');
+            if (sidebar) sidebar.style.display = '';
+
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) mainContent.style.display = '';
+
+            const actionBar = document.querySelector('.action-bar');
+            if (actionBar) actionBar.style.display = '';
+
+            const title = document.querySelector('.nav-title');
+            if (title && title.dataset.original) {
+                title.textContent = title.dataset.original;
+            }
         }
     }
 
@@ -651,9 +661,13 @@ const PastPapers = (() => {
         init,
         toggleMode,
         enterMode,
-        exitMode
+        exitMode,
+        get isActive() { return isActive; }
     };
 })();
+
+// 暴露到 window 对象，供其他模块引用
+window.PastPapers = PastPapers;
 
 // DOMContentLoaded 时初始化
 if (document.readyState === 'loading') {

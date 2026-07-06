@@ -105,17 +105,99 @@ const LearningEngine = {
             return false;
         }
         const now = new Date().toISOString();
+        const state = { ...this.defaultWordState, createdAt: now };
         progress.words[word] = {
-            ...JSON.parse(JSON.stringify(this.defaultWordState)),
-            word: word,
+            ...state,
+            word,
             translations: translations || '',
-            phonetic: phonetic || '',
-            createdAt: now,
-            nextReview: this.calculateNextReview(progress.settings.curveId, 0)
+            phonetic: phonetic || ''
         };
         progress.stats.totalLearned++;
         this.saveProgress(progress);
         return true;
+    },
+
+    clearWords() {
+        const progress = this.loadProgress();
+        progress.words = {};
+        progress.stats = this._createEmptyStats();
+        this.saveProgress(progress);
+    },
+
+    /**
+     * 批量添加单词（一次IO，避免卡死）
+     * @param {Array} words - 单词数组 [{word, translations, phonetic}]
+     * @returns {number} 实际添加的数量
+     */
+    addWordsBatch(words) {
+        if (!words || words.length === 0) return 0;
+        const progress = this.loadProgress();
+        const now = new Date().toISOString();
+        const nextReview = this.calculateNextReview(progress.settings.curveId, 0);
+        let added = 0;
+        for (const w of words) {
+            const wordText = w.word || '';
+            if (!wordText || progress.words[wordText]) continue;
+            progress.words[wordText] = {
+                ...JSON.parse(JSON.stringify(this.defaultWordState)),
+                word: wordText,
+                translations: w.translations || '',
+                phonetic: w.phonetic || '',
+                createdAt: now,
+                nextReview: nextReview
+            };
+            added++;
+        }
+        progress.stats.totalLearned += added;
+        this.saveProgress(progress);
+        return added;
+    },
+
+    /**
+     * 从词书补充今日新词（仅加入学习队列，不算已学）
+     * @param {Array} bookWords - 词书单词列表
+     * @param {number} count - 需要补充的数量
+     * @returns {number} 实际补充的数量
+     */
+    supplementNewWords(bookWords, count) {
+        if (!bookWords || bookWords.length === 0 || count <= 0) return 0;
+        const progress = this.loadProgress();
+        const today = new Date().toISOString().split('T')[0];
+        const now = new Date().toISOString();
+
+        // 计算今天已添加的新词数
+        const todayAddedCount = Object.values(progress.words).filter(w => {
+            return w.status === 'new' && w.createdAt && w.createdAt.startsWith(today);
+        }).length;
+
+        const remaining = Math.max(0, count - todayAddedCount);
+        if (remaining === 0) return 0;
+
+        let added = 0;
+        for (const w of bookWords) {
+            if (added >= remaining) break;
+            const wordText = w.word || '';
+            if (!wordText || progress.words[wordText]) continue;
+            // 提取翻译文本
+            let transText = '';
+            if (Array.isArray(w.translations)) {
+                transText = w.translations.map(t => typeof t === 'string' ? t : (t.translation || '')).join('；');
+            } else if (typeof w.translations === 'string') {
+                transText = w.translations;
+            }
+            progress.words[wordText] = {
+                ...JSON.parse(JSON.stringify(this.defaultWordState)),
+                word: wordText,
+                translations: transText,
+                phonetic: w.phonetic || '',
+                createdAt: now,
+                nextReview: null  // 新词不需要nextReview，学过之后才设置
+            };
+            added++;
+        }
+        // 注意：不增加 totalLearned，这些词还没学
+        this.saveProgress(progress);
+        return added;
     },
 
     addWordsFromVocabBook(bookId) {
@@ -152,6 +234,7 @@ const LearningEngine = {
         if (!wordState) return;
 
         const settings = progress.settings;
+        const wasNew = wordState.status === 'new';
         wordState.lastReview = new Date().toISOString();
 
         if (isCorrect) {
@@ -163,7 +246,6 @@ const LearningEngine = {
             wordState.mastery = Math.min(1, wordState.mastery + 0.15);
             if (wordState.currentStage >= this.getCurve(wordState.curveId).intervals.length - 1) {
                 wordState.status = 'mastered';
-                progress.stats.totalMastered = Object.values(progress.words).filter(w => w.status === 'mastered').length;
             } else {
                 wordState.status = 'reviewing';
             }
@@ -178,6 +260,15 @@ const LearningEngine = {
         }
 
         wordState.nextReview = this.calculateNextReview(wordState.curveId, wordState.currentStage);
+
+        // 如果是从 new 状态第一次学习，增加 totalLearned
+        if (wasNew) {
+            progress.stats.totalLearned++;
+        }
+
+        // 更新已掌握数
+        progress.stats.totalMastered = Object.values(progress.words).filter(w => w.status === 'mastered').length;
+
         this._updateTodayStats(progress);
         this.saveProgress(progress);
     },
@@ -208,22 +299,23 @@ const LearningEngine = {
         count = count || progress.settings.dailyNewWords;
         const today = new Date().toISOString().split('T')[0];
         const newWords = [];
-        const todayAdded = [];
 
+        // 收集状态为 'new' 的单词，优先今天添加的
         for (const [word, state] of Object.entries(progress.words)) {
             if (state.status === 'new') {
                 newWords.push({ word, state });
             }
-            if (state.createdAt && state.createdAt.startsWith(today)) {
-                todayAdded.push(word);
-            }
         }
 
-        const alreadyAddedToday = todayAdded.length;
-        const remaining = Math.max(0, count - alreadyAddedToday);
+        // 排序：今天添加的优先，然后按创建时间排序
+        newWords.sort((a, b) => {
+            const aIsToday = a.state.createdAt && a.state.createdAt.startsWith(today) ? 0 : 1;
+            const bIsToday = b.state.createdAt && b.state.createdAt.startsWith(today) ? 0 : 1;
+            if (aIsToday !== bIsToday) return aIsToday - bIsToday;
+            return (a.state.createdAt || '').localeCompare(b.state.createdAt || '');
+        });
 
-        newWords.sort((a, b) => (a.state.createdAt || '').localeCompare(b.state.createdAt || ''));
-        return newWords.slice(0, remaining);
+        return newWords.slice(0, count);
     },
 
     getWordsForReview(progress) {
