@@ -358,13 +358,6 @@ const VocabLearning = (() => {
         const card = document.getElementById('vlWordCard');
         if (card) {
             card.addEventListener('click', handleCardClick);
-            const cardBack = card.querySelector('.vl-card-back');
-            if (cardBack) {
-                const contentHeight = cardBack.scrollHeight;
-                const maxHeight = window.innerHeight * 0.7;
-                const cardHeight = Math.min(contentHeight, maxHeight);
-                card.style.height = cardHeight + 'px';
-            }
         }
 
         const speakerBtn = document.getElementById('vlSpeakerBtn');
