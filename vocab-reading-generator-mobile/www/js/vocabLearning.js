@@ -283,7 +283,48 @@ const VocabLearning = (() => {
 
         const word = current.word || '';
         const phonetic = current.state?.phonetic || '';
-        const meaning = current.state?.translations || '暂无释义';
+        const translations = current.state?.translations || [];
+        const phrases = current.state?.phrases || [];
+
+        function buildMeaningHtml(trans) {
+            if (Array.isArray(trans) && trans.length > 0) {
+                return trans.map(t => {
+                    const type = t.type ? `<span class="vl-pos">${t.type}.</span>` : '';
+                    const text = t.translation || t || '';
+                    return `<div class="vl-meaning-item">${type}<span class="vl-meaning-text">${text}</span></div>`;
+                }).join('');
+            } else if (typeof trans === 'string' && trans) {
+                return `<div class="vl-meaning-item"><span class="vl-meaning-text">${trans}</span></div>`;
+            }
+            return '<div class="vl-meaning-item"><span class="vl-meaning-text">暂无释义</span></div>';
+        }
+
+        function buildPhrasesHtml(phraseList) {
+            if (!phraseList || phraseList.length === 0) return '';
+            const items = phraseList.slice(0, 5).map(p => `
+                <div class="vl-phrase-item">
+                    <div class="vl-phrase-en">${p.phrase || ''}</div>
+                    <div class="vl-phrase-cn">${p.translation || ''}</div>
+                </div>
+            `).join('');
+            return `
+                <div class="vl-phrases-section">
+                    <div class="vl-phrases-title">常用短语</div>
+                    ${items}
+                </div>
+            `;
+        }
+
+        const meaningHtml = buildMeaningHtml(translations);
+        const phrasesHtml = buildPhrasesHtml(phrases);
+
+        const speakerSvg = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+        `;
 
         cardArea.innerHTML = `
             <div class="vl-word-card" id="vlWordCard">
@@ -292,30 +333,19 @@ const VocabLearning = (() => {
                     ${phonetic ? `
                     <div class="vl-phonetic-row">
                         <span class="vl-word-phonetic">${phonetic}</span>
-                        <button class="vl-speaker-btn" id="vlSpeakerBtn" title="发音">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                            </svg>
-                        </button>
+                        <button class="vl-speaker-btn" id="vlSpeakerBtn" title="发音">${speakerSvg}</button>
                     </div>` : ''}
                     <div class="vl-card-hint">点击卡片查看释义</div>
                 </div>
                 <div class="vl-card-back">
-                    <div class="vl-word-text">${word}</div>
+                    <div class="vl-word-text vl-back-word">${word}</div>
                     ${phonetic ? `
                     <div class="vl-phonetic-row">
                         <span class="vl-word-phonetic">${phonetic}</span>
-                        <button class="vl-speaker-btn" id="vlSpeakerBtnBack" title="发音">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                            </svg>
-                        </button>
+                        <button class="vl-speaker-btn" id="vlSpeakerBtnBack" title="发音">${speakerSvg}</button>
                     </div>` : ''}
-                    <div class="vl-word-meaning">${meaning}</div>
+                    <div class="vl-word-meaning">${meaningHtml}</div>
+                    ${phrasesHtml}
                 </div>
             </div>
         `;
@@ -898,6 +928,20 @@ const VocabLearning = (() => {
                     </div>
                     <button class="vl-toggle ${settings.autoPlayAudio ? 'on' : ''}" id="vlAutoAudioToggle"></button>
                 </div>
+                <div class="vl-settings-row">
+                    <div>
+                        <div class="vl-settings-label">三级评价模式</div>
+                        <div class="vl-settings-desc">认识/模糊/不认识 三档评价</div>
+                    </div>
+                    <button class="vl-toggle ${settings.threeLevelReview ? 'on' : ''}" id="vlThreeLevelToggle"></button>
+                </div>
+                <div class="vl-settings-row">
+                    <div>
+                        <div class="vl-settings-label">拼写练习模式</div>
+                        <div class="vl-settings-desc">学习后进行单词拼写测试</div>
+                    </div>
+                    <button class="vl-toggle ${settings.dictationMode ? 'on' : ''}" id="vlDictationToggle"></button>
+                </div>
             </div>
             <div class="vl-settings-section">
                 <div class="vl-settings-section-title">数据管理</div>
@@ -935,6 +979,22 @@ const VocabLearning = (() => {
             toggle.addEventListener('click', function () {
                 const isOn = this.classList.toggle('on');
                 LearningEngine.updateSettings({ autoPlayAudio: isOn });
+            });
+        }
+
+        const threeLevelToggle = document.getElementById('vlThreeLevelToggle');
+        if (threeLevelToggle) {
+            threeLevelToggle.addEventListener('click', function () {
+                const isOn = this.classList.toggle('on');
+                LearningEngine.updateSettings({ threeLevelReview: isOn });
+            });
+        }
+
+        const dictationToggle = document.getElementById('vlDictationToggle');
+        if (dictationToggle) {
+            dictationToggle.addEventListener('click', function () {
+                const isOn = this.classList.toggle('on');
+                LearningEngine.updateSettings({ dictationMode: isOn });
             });
         }
 

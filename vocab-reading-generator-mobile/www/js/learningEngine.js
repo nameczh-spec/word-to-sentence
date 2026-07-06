@@ -80,7 +80,9 @@ const LearningEngine = {
             dailyNewWords: 20,
             dailyReviewLimit: 50,
             curveId: 'ebbinghaus',
-            autoPlayAudio: false
+            autoPlayAudio: false,
+            threeLevelReview: false,
+            dictationMode: false
         };
     },
 
@@ -165,7 +167,6 @@ const LearningEngine = {
         const today = new Date().toISOString().split('T')[0];
         const now = new Date().toISOString();
 
-        // 计算今天已添加的新词数
         const todayAddedCount = Object.values(progress.words).filter(w => {
             return w.status === 'new' && w.createdAt && w.createdAt.startsWith(today);
         }).length;
@@ -178,24 +179,17 @@ const LearningEngine = {
             if (added >= remaining) break;
             const wordText = w.word || '';
             if (!wordText || progress.words[wordText]) continue;
-            // 提取翻译文本
-            let transText = '';
-            if (Array.isArray(w.translations)) {
-                transText = w.translations.map(t => typeof t === 'string' ? t : (t.translation || '')).join('；');
-            } else if (typeof w.translations === 'string') {
-                transText = w.translations;
-            }
             progress.words[wordText] = {
                 ...JSON.parse(JSON.stringify(this.defaultWordState)),
                 word: wordText,
-                translations: transText,
+                translations: w.translations || '',
                 phonetic: w.phonetic || '',
+                phrases: w.phrases || [],
                 createdAt: now,
-                nextReview: null  // 新词不需要nextReview，学过之后才设置
+                nextReview: null
             };
             added++;
         }
-        // 注意：不增加 totalLearned，这些词还没学
         this.saveProgress(progress);
         return added;
     },
@@ -228,14 +222,17 @@ const LearningEngine = {
         return addedCount;
     },
 
-    recordReview(word, isCorrect) {
+    recordReview(word, result) {
         const progress = this.loadProgress();
         const wordState = progress.words[word];
         if (!wordState) return;
 
-        const settings = progress.settings;
         const wasNew = wordState.status === 'new';
         wordState.lastReview = new Date().toISOString();
+
+        const isCorrect = result === true || result === 'known' || result === 'correct';
+        const isFuzzy = result === 'fuzzy' || result === 'vague';
+        const isWrong = result === false || result === 'unknown' || result === 'wrong';
 
         if (isCorrect) {
             wordState.currentStage = Math.min(
@@ -249,6 +246,10 @@ const LearningEngine = {
             } else {
                 wordState.status = 'reviewing';
             }
+        } else if (isFuzzy) {
+            wordState.reviewCount++;
+            wordState.mastery = Math.max(0, wordState.mastery - 0.05);
+            wordState.status = 'reviewing';
         } else {
             wordState.errorCount++;
             wordState.currentStage = Math.max(0, wordState.currentStage - 1);
@@ -261,12 +262,10 @@ const LearningEngine = {
 
         wordState.nextReview = this.calculateNextReview(wordState.curveId, wordState.currentStage);
 
-        // 如果是从 new 状态第一次学习，增加 totalLearned
         if (wasNew) {
             progress.stats.totalLearned++;
         }
 
-        // 更新已掌握数
         progress.stats.totalMastered = Object.values(progress.words).filter(w => w.status === 'mastered').length;
 
         this._updateTodayStats(progress);
