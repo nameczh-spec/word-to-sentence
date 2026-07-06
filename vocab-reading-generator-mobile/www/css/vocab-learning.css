@@ -229,10 +229,10 @@
     width: 100%;
     max-width: 400px;
     min-height: 320px;
+    max-height: 70vh;
     background: var(--bg-card);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
-    padding: var(--spacing-xl) var(--spacing-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -253,18 +253,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
+    height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    box-sizing: border-box;
+    border-radius: var(--radius-xl);
+}
+
+.vl-card-front {
+    justify-content: center;
 }
 
 .vl-card-back {
-    transform: translate(-50%, -50%) rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.vl-card-back-fixed {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.vl-card-back-fixed .vl-word-meaning {
+    margin-bottom: 0;
 }
 
 .vl-word-text {
@@ -350,6 +368,10 @@
     margin-top: var(--spacing-md);
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 .vl-phrases-title {
@@ -357,11 +379,39 @@
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
     font-weight: 600;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.vl-phrases-list {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;
+    box-sizing: border-box;
+}
+
+.vl-phrases-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.vl-phrases-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.vl-phrases-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
 }
 
 .vl-phrase-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
     padding: 8px 0;
     border-bottom: 0.5px solid var(--border-light);
+    text-align: left;
 }
 
 .vl-phrase-item:last-child {
@@ -369,15 +419,20 @@
 }
 
 .vl-phrase-en {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-primary);
     font-family: var(--font-family-en);
-    margin-bottom: 2px;
+    flex: 1;
+    word-break: break-word;
 }
 
 .vl-phrase-cn {
     font-size: 13px;
     color: var(--text-secondary);
+    flex-shrink: 0;
+    max-width: 55%;
+    text-align: left;
+    word-break: break-word;
 }
 
 .vl-card-hint {

@@ -310,7 +310,9 @@ const VocabLearning = (() => {
             return `
                 <div class="vl-phrases-section">
                     <div class="vl-phrases-title">常用短语</div>
-                    ${items}
+                    <div class="vl-phrases-list">
+                        ${items}
+                    </div>
                 </div>
             `;
         }
@@ -338,13 +340,15 @@ const VocabLearning = (() => {
                     <div class="vl-card-hint">点击卡片查看释义</div>
                 </div>
                 <div class="vl-card-back">
-                    <div class="vl-word-text vl-back-word">${word}</div>
-                    ${phonetic ? `
-                    <div class="vl-phonetic-row">
-                        <span class="vl-word-phonetic">${phonetic}</span>
-                        <button class="vl-speaker-btn" id="vlSpeakerBtnBack" title="发音">${speakerSvg}</button>
-                    </div>` : ''}
-                    <div class="vl-word-meaning">${meaningHtml}</div>
+                    <div class="vl-card-back-fixed">
+                        <div class="vl-word-text vl-back-word">${word}</div>
+                        ${phonetic ? `
+                        <div class="vl-phonetic-row">
+                            <span class="vl-word-phonetic">${phonetic}</span>
+                            <button class="vl-speaker-btn" id="vlSpeakerBtnBack" title="发音">${speakerSvg}</button>
+                        </div>` : ''}
+                        <div class="vl-word-meaning">${meaningHtml}</div>
+                    </div>
                     ${phrasesHtml}
                 </div>
             </div>
