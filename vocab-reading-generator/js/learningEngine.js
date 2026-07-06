@@ -80,7 +80,9 @@ const LearningEngine = {
             dailyNewWords: 20,
             dailyReviewLimit: 50,
             curveId: 'ebbinghaus',
-            autoPlayAudio: false
+            autoPlayAudio: false,
+            threeLevelReview: false,
+            dictationMode: false
         };
     },
 

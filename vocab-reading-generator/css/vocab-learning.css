@@ -314,11 +314,70 @@
     height: 14px;
 }
 
+.vl-back-word {
+    font-size: 28px;
+}
+
 .vl-word-meaning {
-    font-size: 16px;
-    color: var(--text-primary);
-    line-height: 1.6;
+    width: 100%;
     margin-bottom: var(--spacing-md);
+}
+
+.vl-meaning-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.vl-pos {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-style: italic;
+    flex-shrink: 0;
+    min-width: 36px;
+}
+
+.vl-meaning-text {
+    flex: 1;
+}
+
+.vl-phrases-section {
+    width: 100%;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.vl-phrases-title {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.vl-phrase-item {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--border-light);
+}
+
+.vl-phrase-item:last-child {
+    border-bottom: none;
+}
+
+.vl-phrase-en {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-family: var(--font-family-en);
+    margin-bottom: 2px;
+}
+
+.vl-phrase-cn {
+    font-size: 13px;
+    color: var(--text-secondary);
 }
 
 .vl-card-hint {
@@ -401,8 +460,318 @@
     border: 1px solid var(--border-color);
 }
 
+.vl-btn-fuzzy {
+    background: linear-gradient(135deg, #f5a623, #f7b84e);
+    color: #fff;
+}
+
+.vl-btn-fuzzy:hover {
+    opacity: 0.9;
+}
+
 .vl-btn-flip:hover {
     background: var(--accent-subtle);
+}
+
+/* ========== 拼写练习模式 ========== */
+.vl-dictation-card {
+    background: transparent;
+    border: none;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    animation: vl-dictation-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes vl-dictation-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.vl-dictation-meaning {
+    font-size: 24px;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+.vl-dictation-phonetic {
+    font-size: 16px;
+    color: var(--text-tertiary);
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.vl-dictation-input-wrapper {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.vl-dictation-input {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    border-bottom: 3px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.25s ease;
+    letter-spacing: 1px;
+}
+
+.vl-dictation-input::placeholder {
+    color: var(--text-tertiary);
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.vl-dictation-input:focus {
+    border-color: var(--accent-color);
+}
+
+.vl-dictation-input.correct {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.vl-dictation-input.wrong {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+    animation: vl-shake 0.4s ease;
+}
+
+@keyframes vl-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+.vl-dictation-hint {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+
+/* ========== 模式切换器 ========== */
+.vl-dictation-mode-switch {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.vl-mode-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vl-mode-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.vl-mode-btn.active {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+.vl-dictation-direction-switch {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.vl-dir-btn {
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: transparent;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vl-dir-btn:hover {
+    color: var(--text-primary);
+}
+
+.vl-dir-btn.active {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-color);
+}
+
+/* ========== 横线本模式 ========== */
+.vl-notebook-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    animation: vl-dictation-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vl-notebook-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-primary);
+}
+
+.vl-notebook-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.vl-notebook-subtitle {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+.vl-notebook-content {
+    padding: 8px 0;
+}
+
+.vl-notebook-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px dashed var(--border-color);
+    transition: background 0.15s ease;
+}
+
+.vl-notebook-row:last-child {
+    border-bottom: none;
+}
+
+.vl-notebook-row:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.vl-notebook-cell {
+    flex: 1;
+}
+
+.vl-notebook-word {
+    text-align: right;
+}
+
+.vl-notebook-meaning {
+    text-align: left;
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.vl-notebook-word-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.vl-notebook-phonetic {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.vl-notebook-input {
+    width: 100%;
+    padding: 6px 0;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.vl-notebook-input::placeholder {
+    color: var(--text-tertiary);
+    font-weight: 400;
+}
+
+.vl-notebook-input:focus {
+    border-color: var(--accent-color);
+}
+
+.vl-notebook-input.correct {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.vl-notebook-input.wrong {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.vl-notebook-textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    outline: none;
+    resize: none;
+    transition: all 0.2s ease;
+    line-height: 1.5;
+}
+
+.vl-notebook-textarea::placeholder {
+    color: var(--text-tertiary);
+    font-weight: 400;
+}
+
+.vl-notebook-textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.vl-notebook-textarea.correct {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.vl-notebook-textarea.wrong {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.vl-notebook-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-primary);
+}
+
+.vl-notebook-hint {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
 }
 
 /* ========== 结果视图 ========== */

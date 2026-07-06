@@ -358,6 +358,13 @@ const VocabLearning = (() => {
         const card = document.getElementById('vlWordCard');
         if (card) {
             card.addEventListener('click', handleCardClick);
+            const cardBack = card.querySelector('.vl-card-back');
+            if (cardBack) {
+                const contentHeight = cardBack.scrollHeight;
+                const maxHeight = window.innerHeight * 0.7;
+                const cardHeight = Math.min(contentHeight, maxHeight);
+                card.style.height = cardHeight + 'px';
+            }
         }
 
         const speakerBtn = document.getElementById('vlSpeakerBtn');
@@ -389,31 +396,44 @@ const VocabLearning = (() => {
         const actionsEl = document.getElementById('vlCardActions');
         if (!actionsEl) return;
 
-        if (!isCardFlipped) {
-            actionsEl.innerHTML = `
-                <button class="vl-action-btn vl-btn-correct" id="vlCorrectBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>认识</span>
-                </button>
-            `;
+        const settings = LearningEngine.getSettings();
+        const useThreeLevel = settings?.threeLevelReview;
 
-            const correctBtn = document.getElementById('vlCorrectBtn');
-            if (correctBtn) correctBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                handleCorrect();
-            });
+        const nextSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>`;
+        const correctSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        const fuzzySvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
+        const mistakeSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+
+        if (!isCardFlipped) {
+            if (useThreeLevel) {
+                actionsEl.innerHTML = `
+                    <button class="vl-action-btn vl-btn-correct" id="vlCorrectBtn">${correctSvg}<span>认识</span></button>
+                    <button class="vl-action-btn vl-btn-fuzzy" id="vlFuzzyBtn">${fuzzySvg}<span>模糊</span></button>
+                `;
+                const correctBtn = document.getElementById('vlCorrectBtn');
+                if (correctBtn) correctBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handleCorrect();
+                });
+                const fuzzyBtn = document.getElementById('vlFuzzyBtn');
+                if (fuzzyBtn) fuzzyBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handleFuzzy();
+                });
+            } else {
+                actionsEl.innerHTML = `
+                    <button class="vl-action-btn vl-btn-correct" id="vlCorrectBtn">${correctSvg}<span>认识</span></button>
+                `;
+                const correctBtn = document.getElementById('vlCorrectBtn');
+                if (correctBtn) correctBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handleCorrect();
+                });
+            }
         } else if (flippedBy === 'card') {
             actionsEl.innerHTML = `
-                <button class="vl-action-btn vl-btn-next" id="vlNextBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 18l6-6-6-6"></path>
-                    </svg>
-                    <span>下一个单词</span>
-                </button>
+                <button class="vl-action-btn vl-btn-next" id="vlNextBtn">${nextSvg}<span>下一个单词</span></button>
             `;
-
             const nextBtn = document.getElementById('vlNextBtn');
             if (nextBtn) nextBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -421,31 +441,27 @@ const VocabLearning = (() => {
             });
         } else if (flippedBy === 'correct') {
             actionsEl.innerHTML = `
-                <button class="vl-action-btn vl-btn-next" id="vlNextBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 18l6-6-6-6"></path>
-                    </svg>
-                    <span>下一个</span>
-                </button>
-                <button class="vl-action-btn vl-btn-mistake" id="vlMistakeBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span>记错了</span>
-                </button>
+                <button class="vl-action-btn vl-btn-next" id="vlNextBtn">${nextSvg}<span>下一个</span></button>
+                <button class="vl-action-btn vl-btn-mistake" id="vlMistakeBtn">${mistakeSvg}<span>记错了</span></button>
             `;
-
             const nextBtn = document.getElementById('vlNextBtn');
             if (nextBtn) nextBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 handleConfirmCorrect();
             });
-
             const mistakeBtn = document.getElementById('vlMistakeBtn');
             if (mistakeBtn) mistakeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 handleMistake();
+            });
+        } else if (flippedBy === 'fuzzy') {
+            actionsEl.innerHTML = `
+                <button class="vl-action-btn vl-btn-next" id="vlNextBtn">${nextSvg}<span>下一个</span></button>
+            `;
+            const nextBtn = document.getElementById('vlNextBtn');
+            if (nextBtn) nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextWord();
             });
         }
     }
@@ -486,6 +502,16 @@ const VocabLearning = (() => {
     function handleMistake() {
         LearningEngine.recordReview(studyWords[studyIndex].word, false);
         nextWord();
+    }
+
+    /**
+     * 处理"模糊"
+     */
+    function handleFuzzy() {
+        flippedBy = 'fuzzy';
+        flipCard();
+        LearningEngine.recordReview(studyWords[studyIndex].word, 'fuzzy');
+        renderStudyActions();
     }
 
     /**
@@ -533,6 +559,14 @@ const VocabLearning = (() => {
      * 显示学习结果
      */
     function showResult() {
+        const settings = LearningEngine.getSettings();
+        const useDictation = settings?.dictationMode;
+
+        if (useDictation && studyWords.length > 0) {
+            startDictationPractice();
+            return;
+        }
+
         switchView('result');
 
         const pct = studyTotal > 0 ? Math.round((studyCorrect / studyTotal) * 100) : 0;
@@ -579,6 +613,289 @@ const VocabLearning = (() => {
 
         const continueBtn = document.getElementById('vlResultContinueBtn');
         if (continueBtn) continueBtn.addEventListener('click', startStudy);
+    }
+
+    /**
+     * 开始拼写练习
+     */
+    function startDictationPractice() {
+        switchView('study');
+
+        const cardArea = document.getElementById('vlCardArea');
+        const actionsEl = document.getElementById('vlCardActions');
+        if (!cardArea || !actionsEl) return;
+
+        const dictWords = studyWords.map(w => ({
+            word: w.word,
+            translations: w.state?.translations || [],
+            phonetic: w.state?.phonetic || ''
+        }));
+
+        const settings = LearningEngine.getSettings();
+        const currentMode = settings.dictationSubMode || 'single';
+        const currentDirection = settings.dictationDirection || 'word';
+        let currentIndex = 0;
+        let dictCorrect = 0;
+
+        function renderDictationCard() {
+            if (currentMode === 'single') {
+                renderSingleMode();
+            } else {
+                renderNotebookMode();
+            }
+        }
+
+        function renderSingleMode() {
+            if (currentIndex >= dictWords.length) {
+                showDictationResult();
+                return;
+            }
+
+            const current = dictWords[currentIndex];
+            const progress = ((currentIndex + 1) / dictWords.length) * 100;
+
+            const fillEl = document.getElementById('vlProgressFill');
+            const textEl = document.getElementById('vlProgressText');
+            if (fillEl) fillEl.style.width = progress + '%';
+            if (textEl) textEl.textContent = `${currentIndex + 1}/${dictWords.length}`;
+
+            const meanings = Array.isArray(current.translations) ?
+                current.translations.map(t => t.translation || t).join('；') :
+                (current.translations || '');
+
+            if (currentDirection === 'word') {
+                cardArea.innerHTML = `
+                    <div class="vl-dictation-card">
+                        <div class="vl-dictation-meaning">${meanings || '请默写该单词'}</div>
+                        <div class="vl-dictation-input-wrapper">
+                            <input type="text" class="vl-dictation-input" id="vlDictationInput" placeholder="输入单词" autocomplete="off">
+                        </div>
+                        <div class="vl-dictation-hint">按回车键确认</div>
+                    </div>
+                `;
+            } else {
+                cardArea.innerHTML = `
+                    <div class="vl-dictation-card">
+                        <div class="vl-dictation-word">${current.word}</div>
+                        ${current.phonetic ? `<div class="vl-dictation-phonetic">${current.phonetic}</div>` : ''}
+                        <div class="vl-dictation-input-wrapper">
+                            <input type="text" class="vl-dictation-input" id="vlDictationInput" placeholder="输入释义" autocomplete="off">
+                        </div>
+                        <div class="vl-dictation-hint">按回车键确认</div>
+                    </div>
+                `;
+            }
+
+            actionsEl.innerHTML = `
+                <button class="vl-action-btn vl-btn-next" id="vlDictationSubmitBtn">提交</button>
+            `;
+
+            const input = document.getElementById('vlDictationInput');
+            if (input) {
+                input.focus();
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        checkSingleAnswer();
+                    }
+                });
+            }
+
+            const submitBtn = document.getElementById('vlDictationSubmitBtn');
+            if (submitBtn) submitBtn.addEventListener('click', checkSingleAnswer);
+        }
+
+        function checkSingleAnswer() {
+            const input = document.getElementById('vlDictationInput');
+            if (!input) return;
+
+            const userAnswer = input.value.trim().toLowerCase();
+            const current = dictWords[currentIndex];
+
+            let correctAnswer;
+            if (currentDirection === 'word') {
+                correctAnswer = current.word.toLowerCase();
+            } else {
+                const meanings = Array.isArray(current.translations) ?
+                    current.translations.map(t => t.translation || t).join('；') :
+                    (current.translations || '');
+                correctAnswer = meanings.toLowerCase();
+            }
+
+            if (userAnswer === correctAnswer) {
+                dictCorrect++;
+                input.classList.add('correct');
+            } else {
+                input.classList.add('wrong');
+                if (currentDirection === 'word') {
+                    input.value = `${input.value} (正确: ${current.word})`;
+                }
+            }
+
+            setTimeout(() => {
+                currentIndex++;
+                renderDictationCard();
+            }, 1000);
+        }
+
+        function renderNotebookMode() {
+            const batchSize = 10;
+            const startIndex = currentIndex;
+            const endIndex = Math.min(startIndex + batchSize, dictWords.length);
+            const batchWords = dictWords.slice(startIndex, endIndex);
+
+            if (batchWords.length === 0) {
+                showDictationResult();
+                return;
+            }
+
+            const progress = ((endIndex) / dictWords.length) * 100;
+
+            const fillEl = document.getElementById('vlProgressFill');
+            const textEl = document.getElementById('vlProgressText');
+            if (fillEl) fillEl.style.width = progress + '%';
+            if (textEl) textEl.textContent = `${endIndex}/${dictWords.length}`;
+
+            let rowsHtml = '';
+            batchWords.forEach((word, idx) => {
+                const meanings = Array.isArray(word.translations) ?
+                    word.translations.map(t => t.translation || t).join('；') :
+                    (word.translations || '');
+
+                const isLast = idx === batchWords.length - 1;
+
+                if (currentDirection === 'word') {
+                    rowsHtml += `
+                        <div class="vl-nb-row ${isLast ? 'last' : ''}">
+                            <div class="vl-nb-col vl-nb-word-col">
+                                <input type="text" class="vl-nb-input" data-index="${startIndex + idx}" placeholder="拼写单词">
+                            </div>
+                            <div class="vl-nb-col vl-nb-meaning-col">
+                                <span class="vl-nb-meaning-text">${meanings}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    rowsHtml += `
+                        <div class="vl-nb-row ${isLast ? 'last' : ''}">
+                            <div class="vl-nb-col vl-nb-word-col">
+                                <span class="vl-nb-word-text">${word.word}</span>
+                            </div>
+                            <div class="vl-nb-col vl-nb-meaning-col">
+                                <input type="text" class="vl-nb-input" data-index="${startIndex + idx}" placeholder="默写释义">
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            cardArea.innerHTML = `
+                <div class="vl-notebook">
+                    <div class="vl-notebook-paper">
+                        <div class="vl-notebook-lines">
+                            ${rowsHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            actionsEl.innerHTML = `
+                <button class="vl-action-btn vl-btn-next" id="vlDictationSubmitBtn">提交答案</button>
+            `;
+
+            const submitBtn = document.getElementById('vlDictationSubmitBtn');
+            if (submitBtn) submitBtn.addEventListener('click', checkNotebookAnswers);
+        }
+
+        function checkNotebookAnswers() {
+            const batchSize = 10;
+            const startIndex = currentIndex;
+            const endIndex = Math.min(startIndex + batchSize, dictWords.length);
+
+            const inputs = document.querySelectorAll('.vl-nb-input');
+            inputs.forEach((input) => {
+                const actualIndex = parseInt(input.dataset.index);
+                if (actualIndex >= dictWords.length) return;
+
+                const userAnswer = input.value.trim().toLowerCase();
+                const word = dictWords[actualIndex];
+
+                let correctAnswer;
+                if (currentDirection === 'word') {
+                    correctAnswer = word.word.toLowerCase();
+                } else {
+                    const meanings = Array.isArray(word.translations) ?
+                        word.translations.map(t => t.translation || t).join('；') :
+                        (word.translations || '');
+                    correctAnswer = meanings.toLowerCase();
+                }
+
+                if (userAnswer === correctAnswer) {
+                    dictCorrect++;
+                    input.classList.add('correct');
+                } else {
+                    input.classList.add('wrong');
+                    if (currentDirection === 'word') {
+                        input.value = `${input.value} (正确: ${word.word})`;
+                    }
+                }
+            });
+
+            setTimeout(() => {
+                currentIndex = endIndex;
+                renderDictationCard();
+            }, 1500);
+        }
+
+        function showDictationResult() {
+            switchView('result');
+
+            const pct = dictWords.length > 0 ? Math.round((dictCorrect / dictWords.length) * 100) : 0;
+            const wrongCount = dictWords.length - dictCorrect;
+
+            const iconClass = pct >= 80 ? 'success' : 'normal';
+            const titleText = pct >= 80 ? '拼写完美！' : pct >= 50 ? '继续加油！' : '需要多练习';
+            const descText = `拼写正确率 ${pct}%`;
+
+            const resultCard = document.getElementById('vlResultCard');
+            if (!resultCard) return;
+
+            resultCard.innerHTML = `
+                <div class="vl-result-icon ${iconClass}">
+                    ${pct >= 80 ?
+                        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>' :
+                        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>'
+                    }
+                </div>
+                <div class="vl-result-title">${titleText}</div>
+                <div class="vl-result-desc">${descText}</div>
+                <div class="vl-result-stats">
+                    <div class="vl-result-stat">
+                        <div class="vl-result-stat-num correct">${dictCorrect}</div>
+                        <div class="vl-result-stat-label">正确</div>
+                    </div>
+                    <div class="vl-result-stat">
+                        <div class="vl-result-stat-num wrong">${wrongCount}</div>
+                        <div class="vl-result-stat-label">错误</div>
+                    </div>
+                    <div class="vl-result-stat">
+                        <div class="vl-result-stat-num">${dictWords.length}</div>
+                        <div class="vl-result-stat-label">总数</div>
+                    </div>
+                </div>
+                <div class="vl-result-actions">
+                    <button class="vl-result-btn vl-result-btn-secondary" id="vlResultHomeBtn">返回首页</button>
+                    <button class="vl-result-btn vl-result-btn-primary" id="vlResultContinueBtn">继续学习</button>
+                </div>
+            `;
+
+            const homeBtn = document.getElementById('vlResultHomeBtn');
+            if (homeBtn) homeBtn.addEventListener('click', renderHome);
+
+            const continueBtn = document.getElementById('vlResultContinueBtn');
+            if (continueBtn) continueBtn.addEventListener('click', startStudy);
+        }
+
+        renderDictationCard();
     }
 
     /**
@@ -942,6 +1259,22 @@ const VocabLearning = (() => {
                     </div>
                     <button class="vl-toggle ${settings.dictationMode ? 'on' : ''}" id="vlDictationToggle"></button>
                 </div>
+                <div class="vl-settings-sub-row" id="vlDictationSubSettings" style="${settings.dictationMode ? '' : 'display:none;'}">
+                    <div class="vl-settings-row">
+                        <div class="vl-settings-label">练习模式</div>
+                        <div class="vl-settings-segment">
+                            <button class="vl-segment-btn ${(!settings.dictationSubMode || settings.dictationSubMode === 'single') ? 'active' : ''}" data-mode="single">单字模式</button>
+                            <button class="vl-segment-btn ${settings.dictationSubMode === 'notebook' ? 'active' : ''}" data-mode="notebook">横线本模式</button>
+                        </div>
+                    </div>
+                    <div class="vl-settings-row" id="vlDirectionRow" style="${settings.dictationSubMode === 'notebook' ? '' : 'display:none;'}">
+                        <div class="vl-settings-label">练习方向</div>
+                        <div class="vl-settings-segment">
+                            <button class="vl-segment-btn ${(!settings.dictationDirection || settings.dictationDirection === 'word') ? 'active' : ''}" data-dir="word">拼写单词</button>
+                            <button class="vl-segment-btn ${settings.dictationDirection === 'meaning' ? 'active' : ''}" data-dir="meaning">默写释义</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="vl-settings-section">
                 <div class="vl-settings-section-title">数据管理</div>
@@ -995,8 +1328,36 @@ const VocabLearning = (() => {
             dictationToggle.addEventListener('click', function () {
                 const isOn = this.classList.toggle('on');
                 LearningEngine.updateSettings({ dictationMode: isOn });
+                const subSettings = document.getElementById('vlDictationSubSettings');
+                if (subSettings) {
+                    subSettings.style.display = isOn ? '' : 'none';
+                }
             });
         }
+
+        const subModeBtns = document.querySelectorAll('#vlDictationSubSettings .vl-segment-btn[data-mode]');
+        subModeBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const mode = this.dataset.mode;
+                LearningEngine.updateSettings({ dictationSubMode: mode });
+                subModeBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const dirRow = document.getElementById('vlDirectionRow');
+                if (dirRow) {
+                    dirRow.style.display = mode === 'notebook' ? '' : 'none';
+                }
+            });
+        });
+
+        const dirBtns = document.querySelectorAll('#vlDirectionRow .vl-segment-btn[data-dir]');
+        dirBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const dir = this.dataset.dir;
+                LearningEngine.updateSettings({ dictationDirection: dir });
+                dirBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
 
         const exportBtn = document.getElementById('vlExportBtn');
         if (exportBtn) {

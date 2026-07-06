@@ -82,7 +82,9 @@ const LearningEngine = {
             curveId: 'ebbinghaus',
             autoPlayAudio: false,
             threeLevelReview: false,
-            dictationMode: false
+            dictationMode: false,
+            dictationSubMode: 'single',
+            dictationDirection: 'word'
         };
     },
 

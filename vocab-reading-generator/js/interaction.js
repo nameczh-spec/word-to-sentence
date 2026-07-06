@@ -92,7 +92,8 @@ const InteractionManager = {
         const openBtn = document.getElementById('openReviewBtn');
         const closeBtn = document.getElementById('closeReviewBtn');
         
-        // 创建遮罩（如果不存在）
+        if (!reviewPanel) return;
+        
         let overlay = document.getElementById('reviewOverlay');
         if (!overlay) {
             overlay = document.createElement('div');
@@ -101,22 +102,21 @@ const InteractionManager = {
             document.body.appendChild(overlay);
         }
         
-        // 打开复习面板
-        openBtn.addEventListener('click', () => {
-            this.openReviewPanel();
-        });
+        if (openBtn) {
+            openBtn.addEventListener('click', () => {
+                this.openReviewPanel();
+            });
+        }
         
-        // 关闭复习面板
-        closeBtn.addEventListener('click', () => {
-            this.closeReviewPanel();
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                this.closeReviewPanel();
+            });
+        }
         
-        // 点击遮罩关闭
         overlay.addEventListener('click', () => {
             this.closeReviewPanel();
         });
-        
-        // ESC键关闭已统一在 initSettingsPanel 中处理
     },
 
     /**
