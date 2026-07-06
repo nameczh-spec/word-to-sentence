@@ -1562,6 +1562,53 @@
     gap: 14px;
 }
 
+.pp-translation-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    flex-shrink: 0;
+}
+
+.pp-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.pp-nav-btn:hover:not(:disabled) {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.pp-nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pp-nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.pp-nav-info {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    min-width: 100px;
+    text-align: center;
+}
+
 .pp-translation-chinese {
     font-size: 15px;
     line-height: 2;

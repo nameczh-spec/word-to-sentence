@@ -706,11 +706,13 @@ const Translation = (() => {
         const content = document.getElementById('ppReaderContent');
         if (!content) return;
 
+        const cleanText = sentence.text.replace(/\s*\(\s*$/, '').trim();
+
         content.innerHTML = `
             <div class="pp-translation">
                 <div class="pp-translation-article">
                     <h3 class="pp-article-title">原文（句子 ${sentence.num}）</h3>
-                    <div class="pp-translation-text">${escapeHtml(sentence.text)}</div>
+                    <div class="pp-translation-text">${escapeHtml(cleanText)}</div>
                 </div>
 
                 <div class="pp-translation-accordion">
