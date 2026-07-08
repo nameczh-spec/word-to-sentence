@@ -766,33 +766,70 @@ const PastPaperReader = (() => {
     /**
      * 查询单词释义（复用 vocabSearch）
      */
-    function lookupWord(word, element) {
-        // 优先用 VocabSearch（有道代理）
-        if (window.VocabSearch && typeof window.VocabSearch.lookupWordOnline === 'function') {
-            window.VocabSearch.lookupWordOnline(word).then(result => {
-                if (result && result.meaning) {
-                    showWordPopup(word, result.meaning, element);
-                } else {
-                    // fallback 到词库
-                    const local = window.VocabSearch.searchWord(word);
-                    if (local && local.meaning) {
-                        showWordPopup(word, local.meaning, element);
-                    } else {
-                        showWordPopup(word, '暂无释义', element);
-                    }
-                }
-            }).catch(() => {
-                const local = window.VocabSearch.searchWord(word);
-                if (local && local.meaning) {
-                    showWordPopup(word, local.meaning, element);
-                } else {
-                    showWordPopup(word, '查询失败', element);
-                }
-            });
+    async function lookupWord(word, element) {
+        if (!window.VocabSearch) {
+            showWordPopup(word, '查询功能不可用', element);
             return;
         }
 
-        // 无 VocabSearch 时的简单提示
+        const localResult = window.VocabSearch.searchWords(word);
+        if (localResult && localResult.length > 0) {
+            const firstMatch = localResult[0];
+            let meaning = '';
+            if (firstMatch.data && firstMatch.data.length > 0) {
+                const data = firstMatch.data[0];
+                if (data.entries && data.entries.length > 0) {
+                    for (const entry of data.entries) {
+                        if (entry.partOfSpeech) {
+                            meaning += entry.partOfSpeech + ' ';
+                        }
+                        if (entry.definitions && entry.definitions.length > 0) {
+                            meaning += entry.definitions.map(d => d.definition).join('；') + '；';
+                        }
+                    }
+                } else if (data.meaning) {
+                    meaning = data.meaning;
+                }
+            } else if (firstMatch.phonetic) {
+                meaning = firstMatch.phonetic;
+            }
+            showWordPopup(word, meaning || '暂无释义', element);
+            return;
+        }
+
+        const enableNonImportedLookup = localStorage.getItem('enableNonImportedLookup') === 'true';
+        if (!enableNonImportedLookup) {
+            showWordPopup(word, '非导入词在线查询未开启', element);
+            return;
+        }
+
+        if (typeof window.VocabSearch.lookupWordOnline === 'function') {
+            try {
+                const result = await window.VocabSearch.lookupWordOnline(word);
+                if (result && result.entries && result.entries.length > 0) {
+                    let meaning = '';
+                    if (result.phonetic) {
+                        meaning += '[' + result.phonetic + '] ';
+                    }
+                    for (const entry of result.entries) {
+                        if (entry.partOfSpeech) {
+                            meaning += entry.partOfSpeech + ' ';
+                        }
+                        if (entry.definitions && entry.definitions.length > 0) {
+                            meaning += entry.definitions.map(d => d.definition).join('；') + '；';
+                        }
+                    }
+                    showWordPopup(word, meaning || '暂无释义', element);
+                } else {
+                    showWordPopup(word, '暂无释义', element);
+                }
+            } catch (error) {
+                console.error(`[lookupWord] 在线查询失败: ${error.message}`);
+                showWordPopup(word, '查询失败，请检查代理服务', element);
+            }
+            return;
+        }
+
         showWordPopup(word, '查询功能不可用', element);
     }
 

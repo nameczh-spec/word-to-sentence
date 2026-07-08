@@ -114,66 +114,139 @@ const VocabSearch = {
     },
 
     /**
-     * 调用有道词典API获取释义（通过项目专属代理）
+     * 在线词典查询（有道词典API）
      * @param {string} word - 单词
      */
     async fetchApiData(word) {
         if (!word) return;
-        
-        // 取消上一次未完成的请求，避免竞争条件
-        if (this._abortController) {
-            this._abortController.abort();
-        }
-        this._abortController = new AbortController();
-        
+
         this.apiLoading = true;
         this.apiError = null;
         this.apiData = null;
-        
-        // 使用项目专属代理接口（可配置）
-        const baseUrl = typeof ConfigManager !== 'undefined' && ConfigManager.getApiProxyUrl
-            ? ConfigManager.getApiProxyUrl()
-            : 'http://localhost:3000';
-        const apiUrl = `${baseUrl}/api/youdao?q=${encodeURIComponent(word)}`;
-        
+        this.updateMeaningPanelWithApi();
+
         try {
-            console.log(`[VocabSearch] 正在调用有道词典API（通过代理）: ${apiUrl}`);
-            
-            // 10秒超时
-            const timeoutId = setTimeout(() => {
-                if (this._abortController) this._abortController.abort();
-            }, 10000);
-            
-            const response = await fetch(apiUrl, {
-                signal: this._abortController.signal,
+            // 通过本地代理查询有道词典（避免跨域限制）
+            const url = `http://localhost:3000/dict?q=${encodeURIComponent(word.toLowerCase())}`;
+            console.log(`[VocabSearch] 正在查询有道词典(代理): ${word}`);
+
+            const response = await fetch(url, {
+                method: 'GET',
                 headers: {
-                    'Accept': 'application/json',
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                    'Accept': 'application/json'
                 }
             });
-            
-            clearTimeout(timeoutId);
-            
+
             if (!response.ok) {
-                throw new Error(`HTTP错误: ${response.status}`);
+                throw new Error(`HTTP ${response.status}`);
             }
-            
+
             const data = await response.json();
-            console.log(`[VocabSearch] 有道词典API返回数据:`, data);
-            
-            // 解析返回的数据
-            const parsedData = this.parseApiData(data);
-            if (parsedData && parsedData.word) {
-                this.apiData = parsedData;
-                console.log(`[VocabSearch] API数据解析成功`);
+
+            // 解析有道返回的数据
+            const parsed = this.parseYoudaoJsonApi(data);
+            if (parsed && parsed.entries && parsed.entries.length > 0) {
+                this.apiData = parsed;
+                this.apiError = null;
+                console.log(`[VocabSearch] 有道词典查询成功: ${word}, 找到 ${parsed.entries.length} 个条目`);
+            } else {
+                this.apiData = null;
+                this.apiError = '未找到释义';
+                console.log(`[VocabSearch] 有道词典查询成功但无释义: ${word}`);
             }
         } catch (e) {
-            this.apiError = e.message;
-            console.error(`[VocabSearch] 有道词典API请求失败: ${e.message}`);
+            this.apiData = null;
+            this.apiError = `查询失败: ${e.message}`;
+            console.error(`[VocabSearch] 有道词典查询失败: ${word}, 错误: ${e.message}`);
         } finally {
             this.apiLoading = false;
             this.updateMeaningPanelWithApi();
         }
+    },
+
+    /**
+     * 解析有道词典 jsonapi 返回的数据
+     * @param {Object} data - API返回的原始数据
+     * @returns {Object|null} 格式化后的数据 {word, entries}
+     */
+    parseYoudaoJsonApi(data) {
+        if (!data) return null;
+
+        const entries = [];
+        const queryWord = data.ec?.word?.[0]?.returnphrase || data.word || '';
+
+        // 1. 从 ec (英汉) 数据中提取释义
+        if (data.ec && data.ec.word) {
+            for (const w of data.ec.word) {
+                if (w.trs) {
+                    for (const tr of w.trs) {
+                        const pos = tr.pos || tr.tr?.[0]?.pos || '';
+                        const explains = [];
+                        if (tr.tr) {
+                            for (const t of tr.tr) {
+                                if (t.l && t.l.i && t.l.i[0]) {
+                                    explains.push(t.l.i[0]);
+                                }
+                            }
+                        }
+                        if (explains.length > 0) {
+                            entries.push({
+                                entry: w.returnphrase || queryWord,
+                                explain: `${pos ? pos + ' ' : ''}${explains.join('；')}`
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2. 从 ce (汉英) 或 simple 数据中提取
+        if (entries.length === 0 && data.simple && data.simple.query) {
+            const simpleWord = data.simple.query;
+            if (data.simple.word) {
+                for (const w of data.simple.word) {
+                    if (w.trs) {
+                        for (const tr of w.trs) {
+                            const pos = tr.pos || '';
+                            const explains = [];
+                            if (tr.tr) {
+                                for (const t of tr.tr) {
+                                    if (t.l && t.l.i && t.l.i[0]) {
+                                        explains.push(t.l.i[0]);
+                                    }
+                                }
+                            }
+                            if (explains.length > 0) {
+                                entries.push({
+                                    entry: simpleWord,
+                                    explain: `${pos ? pos + ' ' : ''}${explains.join('；')}`
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. 从 web_trans (网络释义) 中提取补充
+        if (entries.length === 0 && data.web_trans && data.web_trans.web_translation) {
+            const webTrans = data.web_trans.web_translation;
+            for (const wt of webTrans) {
+                if (wt.trans) {
+                    entries.push({
+                        entry: wt.key || queryWord,
+                        explain: wt.trans
+                    });
+                }
+            }
+        }
+
+        if (entries.length === 0) return null;
+
+        return {
+            word: queryWord,
+            entries: entries
+        };
     },
 
     /**
@@ -206,45 +279,27 @@ const VocabSearch = {
         if (!explain) return [];
         
         const meanings = [];
-        const posPattern = /([nvadj]\.)/g;
-        const parts = explain.split(posPattern);
+        const lines = explain.split('\n');
         
-        let currentPos = '';
-        let currentDefinitions = [];
-        
-        for (let i = 0; i < parts.length; i++) {
-            const part = parts[i].trim();
+        for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
             
-            // 匹配词性标记
-            if (part === 'n.' || part === 'v.' || part === 'adj.' || part === 'adv.') {
-                // 如果之前有未完成的词性组，先保存
-                if (currentPos && currentDefinitions.length > 0) {
+            // 按行解析：每行格式为 "词性. 释义1；释义2；释义3"
+            const match = trimmed.match(/^([a-z]+\.)(.*)$/i);
+            if (match) {
+                const pos = match[1].trim();
+                const defs = match[2].split('；').map(d => d.trim()).filter(d => d);
+                if (defs.length > 0) {
                     meanings.push({
-                        partOfSpeech: currentPos,
-                        definitions: currentDefinitions.map(d => ({
+                        partOfSpeech: pos,
+                        definitions: defs.map(d => ({
                             definition: d,
                             example: ''
                         }))
                     });
                 }
-                currentPos = part;
-                currentDefinitions = [];
-            } else if (part && currentPos) {
-                // 解析释义部分（按分号分割）
-                const defs = part.split('；').map(d => d.trim()).filter(d => d);
-                currentDefinitions.push(...defs);
             }
-        }
-        
-        // 保存最后一个词性组
-        if (currentPos && currentDefinitions.length > 0) {
-            meanings.push({
-                partOfSpeech: currentPos,
-                definitions: currentDefinitions.map(d => ({
-                    definition: d,
-                    example: ''
-                }))
-            });
         }
         
         return meanings;
@@ -276,6 +331,54 @@ const VocabSearch = {
         }
         
         return meanings;
+    },
+
+    /**
+     * 在线查询单词释义（通过有道词典代理）
+     * @param {string} word - 要查询的单词
+     * @returns {Promise<Object|null>} 返回单词数据，失败返回null
+     */
+    async lookupWordOnline(word) {
+        if (!word || word.trim() === '') {
+            return null;
+        }
+
+        const url = `http://localhost:3000/api/youdao?q=${encodeURIComponent(word.trim())}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                timeout: 5000
+            });
+
+            if (!response.ok) {
+                console.error(`[VocabSearch] 在线查询失败，状态码: ${response.status}`);
+                return null;
+            }
+
+            const data = await response.json();
+
+            if (!data || !data.data || !data.data.entries || data.data.entries.length === 0) {
+                console.warn(`[VocabSearch] 单词 "${word}" 未找到释义`);
+                return null;
+            }
+
+            const entry = data.data.entries[0];
+            const wordData = {
+                word: data.data.query || word,
+                phonetic: entry.phonetic || '',
+                entries: this.parseYoudaoMeanings(entry)
+            };
+
+            return wordData;
+
+        } catch (error) {
+            console.error(`[VocabSearch] 在线查询发生错误: ${error.message}`);
+            return null;
+        }
     },
 
     /**
@@ -1368,34 +1471,40 @@ const VocabSearch = {
      */
     _renderMergedMeaningItems(container, items) {
         this.selectedMeanings = [];
-        
+
         // 获取考研词源的名称（用于默认勾选）
         const kaoyanName = this._availableSources.find(s => s.type === 'kaoyan')?.name || '';
-        
+
         const html = items.map((item, index) => {
             const isChecked = item.sources && item.sources.includes(kaoyanName);
             if (isChecked) {
                 this.selectedMeanings.push(item);
             }
-            
+
             const sourceTags = item.sources && item.sources.length > 0
                 ? `<span class="meaning-sources">${item.sources.map(s => `<span class="meaning-source">${s}</span>`).join('')}</span>`
                 : '';
-            
+
+            // 将同一词性下的多个义项按 "；" 拆分为独立行
+            const senses = item.text.split('；').map(s => s.trim()).filter(s => s);
+            const sensesHtml = senses.map((sense, sIdx) =>
+                `<div class="meaning-sense-line" data-sense-index="${sIdx}">${sense}</div>`
+            ).join('');
+
             return `
                 <div class="meaning-item ${kaoyanName && item.sources && item.sources.includes(kaoyanName) ? 'kaoyan-highlight' : ''}" data-index="${index}">
                     <div class="meaning-checkbox ${isChecked ? 'checked' : ''}" data-index="${index}"></div>
                     <div class="meaning-item-content">
                         <span class="meaning-pos">${item.pos || ''}</span>
-                        <span class="meaning-text">${item.text}</span>
+                        <span class="meaning-text">${sensesHtml}</span>
                     </div>
                     ${sourceTags}
                 </div>
             `;
         }).join('');
-        
+
         container.innerHTML = html;
-        
+
         container.querySelectorAll('.meaning-checkbox').forEach((checkbox) => {
             checkbox.addEventListener('click', (e) => {
                 e.stopPropagation();
