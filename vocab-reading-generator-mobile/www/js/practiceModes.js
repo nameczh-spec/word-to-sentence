@@ -116,21 +116,38 @@ const PracticeModes = {
             result.innerHTML = `<span class="ps-correct">✓ 正确！</span>`;
             this._correctCount++;
             this._results.push({ word: correctWord, userAnswer, isCorrect: true, skipped: false });
+
+            input.disabled = true;
+            document.getElementById('psHintBtn').disabled = true;
+            document.getElementById('psSkipBtn').disabled = true;
+
+            setTimeout(() => {
+                this._currentIndex++;
+                this._updateProgress();
+                this._renderSpellingCard();
+            }, 1200);
         } else {
             const msg = isClose ? `接近！正确答案是: ${correctWord}` : `✗ 错误，正确答案是: ${correctWord}`;
             result.innerHTML = `<span class="ps-wrong">${msg}</span>`;
             this._results.push({ word: correctWord, userAnswer, isCorrect: false, skipped: false });
+
+            if (typeof LearningEngine !== 'undefined') {
+                LearningEngine.recordReview(correctWord, 'wrong');
+            }
+
+            input.disabled = true;
+            document.getElementById('psHintBtn').disabled = true;
+            document.getElementById('psSkipBtn').disabled = true;
+
+            setTimeout(() => {
+                input.value = '';
+                input.disabled = false;
+                result.innerHTML = '';
+                input.focus();
+                document.getElementById('psHintBtn').disabled = false;
+                document.getElementById('psSkipBtn').disabled = false;
+            }, 1200);
         }
-
-        input.disabled = true;
-        document.getElementById('psHintBtn').disabled = true;
-        document.getElementById('psSkipBtn').disabled = true;
-
-        setTimeout(() => {
-            this._currentIndex++;
-            this._updateProgress();
-            this._renderSpellingCard();
-        }, 1200);
     },
 
     _showContextPage() {
