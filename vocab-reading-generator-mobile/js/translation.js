@@ -919,6 +919,10 @@ const Translation = (() => {
     }
 
     function generatePassageAnalysis(text) {
+        const section = translationSections[0];
+        if (section && section.analysis) {
+            return section.analysis;
+        }
         return `
             <div class="pp-analysis-section">
                 <h4>篇章分析</h4>
