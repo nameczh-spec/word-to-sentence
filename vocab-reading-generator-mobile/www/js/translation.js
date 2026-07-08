@@ -593,76 +593,106 @@ const Translation = (() => {
         }
 
         const section = translationSections[0];
-        const totalSentences = section.sentences.length;
+        const isSentenceMode = !!section.sentences && section.sentences.length > 0;
 
-        container.innerHTML = `
-            <div class="pp-reader">
-                <div class="pp-reader-header">
-                    <button class="pp-back-btn" id="ppBackBtn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5"></path>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                        返回
-                    </button>
-                    <div class="pp-reader-title">
-                        <h2>${paper.year} ${paper.type}</h2>
-                        <span class="pp-reader-subtitle">翻译</span>
+        if (isSentenceMode) {
+            const totalSentences = section.sentences.length;
+
+            container.innerHTML = `
+                <div class="pp-reader">
+                    <div class="pp-reader-header">
+                        <button class="pp-back-btn" id="ppBackBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5"></path>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            返回
+                        </button>
+                        <div class="pp-reader-title">
+                            <h2>${paper.year} ${paper.type}</h2>
+                            <span class="pp-reader-subtitle">翻译</span>
+                        </div>
+                        <div class="pp-reader-actions">
+                        </div>
                     </div>
-                    <div class="pp-reader-actions">
+
+                    <div class="pp-tab-bar" id="ppTabBar">
+                        ${section.sentences.map((s, i) =>
+                            `<button class="pp-tab-btn ${i === 0 ? 'active' : ''}" data-index="${i}">句子 ${s.num}</button>`
+                        ).join('')}
+                    </div>
+
+                    <div class="pp-reader-content" id="ppReaderContent">
+                    </div>
+
+                    <div class="pp-translation-nav">
+                        <button class="pp-nav-btn" id="ppPrevBtn" disabled>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6"></path>
+                            </svg>
+                            上一句
+                        </button>
+                        <span class="pp-nav-info" id="ppNavInfo">第 1 句 / 共 ${totalSentences} 句</span>
+                        <button class="pp-nav-btn" id="ppNextBtn" ${totalSentences <= 1 ? 'disabled' : ''}>
+                            下一句
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
+            `;
 
-                <div class="pp-tab-bar" id="ppTabBar">
-                    ${section.sentences.map((s, i) =>
-                        `<button class="pp-tab-btn ${i === 0 ? 'active' : ''}" data-index="${i}">句子 ${s.num}</button>`
-                    ).join('')}
-                </div>
+            document.getElementById('ppBackBtn').addEventListener('click', onBack);
 
-                <div class="pp-reader-content" id="ppReaderContent">
-                </div>
-
-                <div class="pp-translation-nav">
-                    <button class="pp-nav-btn" id="ppPrevBtn" disabled>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M15 18l-6-6 6-6"></path>
-                        </svg>
-                        上一句
-                    </button>
-                    <span class="pp-nav-info" id="ppNavInfo">第 1 句 / 共 ${totalSentences} 句</span>
-                    <button class="pp-nav-btn" id="ppNextBtn" ${totalSentences <= 1 ? 'disabled' : ''}>
-                        下一句
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        `;
-
-        document.getElementById('ppBackBtn').addEventListener('click', onBack);
-
-        document.getElementById('ppTabBar').querySelectorAll('.pp-tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const idx = parseInt(btn.dataset.index);
-                switchSection(idx);
+            document.getElementById('ppTabBar').querySelectorAll('.pp-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = parseInt(btn.dataset.index);
+                    switchSection(idx);
+                });
             });
-        });
 
-        document.getElementById('ppPrevBtn').addEventListener('click', () => {
-            if (currentSectionIndex > 0) {
-                switchSection(currentSectionIndex - 1);
-            }
-        });
+            document.getElementById('ppPrevBtn').addEventListener('click', () => {
+                if (currentSectionIndex > 0) {
+                    switchSection(currentSectionIndex - 1);
+                }
+            });
 
-        document.getElementById('ppNextBtn').addEventListener('click', () => {
-            const section = translationSections[0];
-            if (currentSectionIndex < section.sentences.length - 1) {
-                switchSection(currentSectionIndex + 1);
-            }
-        });
+            document.getElementById('ppNextBtn').addEventListener('click', () => {
+                const section = translationSections[0];
+                if (currentSectionIndex < section.sentences.length - 1) {
+                    switchSection(currentSectionIndex + 1);
+                }
+            });
 
-        renderSection(0);
+            renderSection(0);
+        } else {
+            container.innerHTML = `
+                <div class="pp-reader">
+                    <div class="pp-reader-header">
+                        <button class="pp-back-btn" id="ppBackBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5"></path>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            返回
+                        </button>
+                        <div class="pp-reader-title">
+                            <h2>${paper.year} ${paper.type}</h2>
+                            <span class="pp-reader-subtitle">翻译</span>
+                        </div>
+                        <div class="pp-reader-actions">
+                        </div>
+                    </div>
+
+                    <div class="pp-reader-content" id="ppReaderContent">
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('ppBackBtn').addEventListener('click', onBack);
+            renderPassage();
+        }
     }
 
     function switchSection(index) {
@@ -693,6 +723,65 @@ const Translation = (() => {
         }
         if (navInfo) {
             navInfo.textContent = `第 ${currentSectionIndex + 1} 句 / 共 ${section.sentences.length} 句`;
+        }
+    }
+
+    function renderPassage() {
+        const section = translationSections[0];
+        if (!section) return;
+
+        const content = document.getElementById('ppReaderContent');
+        if (!content) return;
+
+        const passageText = section.passage || section.rawText || '';
+
+        content.innerHTML = `
+            <div class="pp-translation">
+                <div class="pp-translation-article">
+                    <h3 class="pp-article-title">原文</h3>
+                    <div class="pp-translation-text">${escapeHtml(passageText)}</div>
+                </div>
+
+                <div class="pp-translation-accordion">
+                    <div class="pp-ls-item">
+                        <button class="pp-ls-toggle" id="translationToggle">
+                            <span>参考译文</span>
+                            <span class="pp-ls-arrow">▼</span>
+                        </button>
+                        <div class="pp-ls-detail" id="translationDetail" style="display:none;">
+                            <div class="pp-translation-chinese">${generatePassageTranslation(passageText)}</div>
+                        </div>
+                    </div>
+
+                    <div class="pp-ls-item">
+                        <button class="pp-ls-toggle" id="analysisToggle">
+                            <span>翻译解析</span>
+                            <span class="pp-ls-arrow">▼</span>
+                        </button>
+                        <div class="pp-ls-detail" id="analysisDetail" style="display:none;">
+                            ${generatePassageAnalysis(passageText)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const translationToggle = document.getElementById('translationToggle');
+        const translationDetail = document.getElementById('translationDetail');
+        if (translationToggle && translationDetail) {
+            translationToggle.addEventListener('click', () => {
+                translationToggle.classList.toggle('open');
+                translationDetail.style.display = translationToggle.classList.contains('open') ? 'block' : 'none';
+            });
+        }
+
+        const analysisToggle = document.getElementById('analysisToggle');
+        const analysisDetail = document.getElementById('analysisDetail');
+        if (analysisToggle && analysisDetail) {
+            analysisToggle.addEventListener('click', () => {
+                analysisToggle.classList.toggle('open');
+                analysisDetail.style.display = analysisToggle.classList.contains('open') ? 'block' : 'none';
+            });
         }
     }
 
@@ -813,10 +902,37 @@ const Translation = (() => {
                     <strong>3. 修饰成分</strong>：分析定语、状语、补语等修饰成分及其功能。
                 </div>
                 <div class="pp-analysis-item">
-                    <strong>4. 特殊结构</strong：注意强调句、倒装句、省略句等特殊句式。
+                    <strong>4. 特殊结构</strong>：注意强调句、倒装句、省略句等特殊句式。
                 </div>
                 <h4>翻译建议</h4>
                 <p>建议先理解句子整体意思，再逐句分析语法结构，最后组织成通顺的中文表达。遇到复杂长句时，可以先拆分再整合。</p>
+            </div>
+        `;
+    }
+
+    function generatePassageTranslation(text) {
+        return '暂未提供参考译文。建议先通读全文理解大意，再逐句翻译，最后通读润色，确保译文通顺自然。';
+    }
+
+    function generatePassageAnalysis(text) {
+        return `
+            <div class="pp-analysis-section">
+                <h4>篇章分析</h4>
+                <p>该篇章尚未收录详细解析。建议从以下角度进行分析：</p>
+                <div class="pp-analysis-item">
+                    <strong>1. 文章主题</strong>：通读全文，把握文章的中心思想和核心话题。
+                </div>
+                <div class="pp-analysis-item">
+                    <strong>2. 段落结构</strong>：分析各段落的功能和逻辑关系，梳理文章的行文脉络。
+                </div>
+                <div class="pp-analysis-item">
+                    <strong>3. 重点词汇</strong>：标记文中的高频词汇、核心术语和固定搭配。
+                </div>
+                <div class="pp-analysis-item">
+                    <strong>4. 长难句</strong>：找出文中的复杂长句，分析其语法结构和翻译要点。
+                </div>
+                <h4>翻译建议</h4>
+                <p>英语二翻译为整篇文章翻译，建议采用"通读—翻译—润色"三步法：先通读全文理解大意，再逐句翻译注意衔接，最后通读润色确保译文流畅自然，符合中文表达习惯。</p>
             </div>
         `;
     }
