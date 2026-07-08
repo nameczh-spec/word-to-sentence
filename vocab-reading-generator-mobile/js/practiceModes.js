@@ -117,6 +117,10 @@ const PracticeModes = {
             this._correctCount++;
             this._results.push({ word: correctWord, userAnswer, isCorrect: true, skipped: false });
 
+            if (typeof LearningEngine !== 'undefined') {
+                LearningEngine.recordReview(correctWord, true);
+            }
+
             input.disabled = true;
             document.getElementById('psHintBtn').disabled = true;
             document.getElementById('psSkipBtn').disabled = true;

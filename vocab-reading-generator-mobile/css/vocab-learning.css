@@ -292,6 +292,7 @@
 
 .vl-card-back {
     transform: rotateY(180deg);
+    justify-content: center;
 }
 
 .vl-card-back-fixed {

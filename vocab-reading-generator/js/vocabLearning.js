@@ -12,7 +12,6 @@ const VocabLearning = (() => {
     let studyTotal = 0;
     let isCardFlipped = false;
     let flippedBy = ''; // '' | 'card' | 'correct'  翻转方式：点击卡片 / 点击认识按钮
-    let studyMode = 'mixed'; // 'new' | 'review' | 'mixed' 学习模式
     let _initialized = false;
     let _voicesReady = false;
     let _englishVoice = null;
@@ -177,7 +176,7 @@ const VocabLearning = (() => {
         switchView('home');
 
         const stats = LearningEngine.getStats();
-        const dueCount = LearningEngine.getDueCount();
+        const reviewCount = LearningEngine.getTodayReviewWords().length;
         const newCount = LearningEngine.getTodayNewWords().length;
         const learningCount = LearningEngine.getLearningCount();
         const masteredCount = LearningEngine.getMasteredCount();
@@ -186,7 +185,7 @@ const VocabLearning = (() => {
         const newEl = document.getElementById('vlNewCount');
         const reviewEl = document.getElementById('vlReviewCount');
         if (newEl) newEl.textContent = newCount;
-        if (reviewEl) reviewEl.textContent = dueCount;
+        if (reviewEl) reviewEl.textContent = reviewCount;
 
         // 更新日期
         const dateEl = document.getElementById('vlTodayDate');
@@ -256,7 +255,6 @@ const VocabLearning = (() => {
         studyCorrect = 0;
         studyTotal = studyWords.length;
         isCardFlipped = false;
-        studyMode = 'new'; // 标记为学习新单词模式
 
         switchView('study');
         renderCard();
@@ -291,7 +289,6 @@ const VocabLearning = (() => {
         studyCorrect = 0;
         studyTotal = studyWords.length;
         isCardFlipped = false;
-        studyMode = 'review'; // 标记为复习模式
 
         switchView('study');
         renderCard();
@@ -348,7 +345,6 @@ const VocabLearning = (() => {
         studyCorrect = 0;
         studyTotal = studyWords.length;
         isCardFlipped = false;
-        studyMode = 'mixed';
 
         switchView('study');
         renderCard();
