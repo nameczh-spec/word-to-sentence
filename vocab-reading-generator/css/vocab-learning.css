@@ -103,12 +103,18 @@
 }
 
 /* ========== 开始学习按钮 ========== */
+.vl-start-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
 .vl-start-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    width: 100%;
+    flex: 1;
     padding: 14px;
     border: none;
     border-radius: var(--radius-md);
@@ -118,7 +124,6 @@
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-top: var(--spacing-md);
 }
 
 .vl-start-btn:hover {
@@ -132,6 +137,22 @@
 .vl-start-btn svg {
     width: 20px;
     height: 20px;
+}
+
+.vl-btn-new {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.vl-btn-new:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+}
+
+.vl-btn-review {
+    background: linear-gradient(135deg, #2196F3, #1e88e5);
+}
+
+.vl-btn-review:hover {
+    background: linear-gradient(135deg, #1e88e5, #1976d2);
 }
 
 /* ========== 首页 - 统计行 ========== */

@@ -12,6 +12,7 @@ const VocabLearning = (() => {
     let studyTotal = 0;
     let isCardFlipped = false;
     let flippedBy = ''; // '' | 'card' | 'correct'  翻转方式：点击卡片 / 点击认识按钮
+    let studyMode = 'mixed'; // 'new' | 'review' | 'mixed' 学习模式
     let _initialized = false;
     let _voicesReady = false;
     let _englishVoice = null;
@@ -206,7 +207,98 @@ const VocabLearning = (() => {
     }
 
     /**
-     * 开始学习/复习
+     * 开始学习新单词
+     */
+    async function startStudyNew() {
+        const settings = LearningEngine.getSettings();
+        const selectedBookId = settings?.selectedBookId;
+
+        if (!selectedBookId) {
+            if (window.InteractionManager) {
+                InteractionManager.showToast('请先选择词书', 'info');
+            }
+            return;
+        }
+
+        // 加载词书单词到缓存
+        let bookWords = _bookCache[selectedBookId];
+        if (!bookWords) {
+            const book = BUILTIN_BOOKS.find(b => b.id === selectedBookId);
+            if (book) {
+                bookWords = await loadBookWords(book.path);
+                _bookCache[selectedBookId] = bookWords;
+            }
+        }
+
+        if (!bookWords || bookWords.length === 0) {
+            if (window.InteractionManager) {
+                InteractionManager.showToast('词书加载失败', 'error');
+            }
+            return;
+        }
+
+        // 补充今日新词到学习队列
+        const dailyNew = settings.dailyNewWords || 20;
+        LearningEngine.supplementNewWords(bookWords, dailyNew);
+
+        // 只获取今日新单词
+        const newWords = LearningEngine.getTodayNewWords();
+        studyWords = [...newWords];
+
+        if (studyWords.length === 0) {
+            if (window.InteractionManager) {
+                InteractionManager.showToast('暂无新单词可学习', 'info');
+            }
+            return;
+        }
+
+        studyIndex = 0;
+        studyCorrect = 0;
+        studyTotal = studyWords.length;
+        isCardFlipped = false;
+        studyMode = 'new'; // 标记为学习新单词模式
+
+        switchView('study');
+        renderCard();
+    }
+
+    /**
+     * 开始复习旧单词
+     */
+    async function startStudyReview() {
+        const settings = LearningEngine.getSettings();
+        const selectedBookId = settings?.selectedBookId;
+
+        if (!selectedBookId) {
+            if (window.InteractionManager) {
+                InteractionManager.showToast('请先选择词书', 'info');
+            }
+            return;
+        }
+
+        // 只获取今日需要复习的单词
+        const reviewWords = LearningEngine.getTodayReviewWords();
+        studyWords = [...reviewWords];
+
+        if (studyWords.length === 0) {
+            if (window.InteractionManager) {
+                InteractionManager.showToast('暂无需要复习的单词', 'info');
+            }
+            return;
+        }
+
+        studyIndex = 0;
+        studyCorrect = 0;
+        studyTotal = studyWords.length;
+        isCardFlipped = false;
+        studyMode = 'review'; // 标记为复习模式
+
+        switchView('study');
+        renderCard();
+    }
+
+    /**
+     * 开始学习/复习（合并模式，保留原功能）
      */
     async function startStudy() {
         const settings = LearningEngine.getSettings();
@@ -256,6 +348,7 @@ const VocabLearning = (() => {
         studyCorrect = 0;
         studyTotal = studyWords.length;
         isCardFlipped = false;
+        studyMode = 'mixed';
 
         switchView('study');
         renderCard();
@@ -1432,10 +1525,16 @@ const VocabLearning = (() => {
      * 绑定事件
      */
     function _bindEvents() {
-        // 开始学习按钮
-        const startBtn = document.getElementById('vlStartBtn');
-        if (startBtn) {
-            startBtn.addEventListener('click', startStudy);
+        // 开始学习按钮（学习新单词）
+        const startNewBtn = document.getElementById('vlStartNewBtn');
+        if (startNewBtn) {
+            startNewBtn.addEventListener('click', startStudyNew);
+        }
+
+        // 开始复习按钮（复习旧单词）
+        const startReviewBtn = document.getElementById('vlStartReviewBtn');
+        if (startReviewBtn) {
+            startReviewBtn.addEventListener('click', startStudyReview);
         }
 
         // 底部导航栏
@@ -1482,7 +1581,9 @@ const VocabLearning = (() => {
         exitMode,
         renderHome,
         get isActive() { return isActive; },
-        startStudy
+        startStudy,
+        startStudyNew,
+        startStudyReview
     };
 })();
 
