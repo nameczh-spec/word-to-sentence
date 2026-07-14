@@ -120,21 +120,39 @@ const VocabSearch = {
     async fetchApiData(word) {
         if (!word) return;
 
+        // 取消上一次未完成的请求，避免竞争条件
+        if (this._abortController) {
+            this._abortController.abort();
+        }
+        this._abortController = new AbortController();
+
         this.apiLoading = true;
         this.apiError = null;
         this.apiData = null;
         this.updateMeaningPanelWithApi();
 
         try {
-            const url = `http://localhost:3000/api/youdao?q=${encodeURIComponent(word.toLowerCase())}`;
+            // 使用项目专属代理接口（可配置）
+            const baseUrl = typeof ConfigManager !== 'undefined' && ConfigManager.getApiProxyUrl
+                ? ConfigManager.getApiProxyUrl()
+                : 'http://localhost:3000';
+            const url = `${baseUrl}/api/youdao?q=${encodeURIComponent(word.toLowerCase())}`;
             console.log(`[VocabSearch] 正在查询有道词典(代理): ${word}`);
 
+            // 10秒超时
+            const timeoutId = setTimeout(() => {
+                if (this._abortController) this._abortController.abort();
+            }, 10000);
+
             const response = await fetch(url, {
-                method: 'GET',
+                signal: this._abortController.signal,
                 headers: {
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
                 }
             });
+
+            clearTimeout(timeoutId);
 
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);
@@ -357,16 +375,34 @@ const VocabSearch = {
             return null;
         }
 
-        const url = `http://localhost:3000/api/youdao?q=${encodeURIComponent(word.trim())}`;
+        // 取消上一次未完成的请求（独立的控制器，避免和 fetchApiData 互相干扰）
+        if (this._lookupAbortController) {
+            this._lookupAbortController.abort();
+        }
+        this._lookupAbortController = new AbortController();
+
+        const baseUrl = typeof ConfigManager !== 'undefined' && ConfigManager.getApiProxyUrl
+            ? ConfigManager.getApiProxyUrl()
+            : 'http://localhost:3000';
+        const url = `${baseUrl}/api/youdao?q=${encodeURIComponent(word.trim())}`;
 
         try {
             console.log(`[VocabSearch] lookupWordOnline: ${word}`);
+
+            // 10秒超时
+            const timeoutId = setTimeout(() => {
+                if (this._lookupAbortController) this._lookupAbortController.abort();
+            }, 10000);
+
             const response = await fetch(url, {
-                method: 'GET',
+                signal: this._lookupAbortController.signal,
                 headers: {
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
                 }
             });
+
+            clearTimeout(timeoutId);
 
             if (!response.ok) {
                 console.error(`[VocabSearch] lookupWordOnline 失败，状态码: ${response.status}`);
