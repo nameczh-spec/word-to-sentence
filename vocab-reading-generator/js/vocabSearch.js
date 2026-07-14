@@ -126,8 +126,7 @@ const VocabSearch = {
         this.updateMeaningPanelWithApi();
 
         try {
-            // 通过本地代理查询有道词典（避免跨域限制）
-            const url = `http://localhost:3000/dict?q=${encodeURIComponent(word.toLowerCase())}`;
+            const url = `http://localhost:3000/api/youdao?q=${encodeURIComponent(word.toLowerCase())}`;
             console.log(`[VocabSearch] 正在查询有道词典(代理): ${word}`);
 
             const response = await fetch(url, {
@@ -143,12 +142,27 @@ const VocabSearch = {
 
             const data = await response.json();
 
-            // 解析有道返回的数据
-            const parsed = this.parseYoudaoJsonApi(data);
-            if (parsed && parsed.entries && parsed.entries.length > 0) {
-                this.apiData = parsed;
-                this.apiError = null;
-                console.log(`[VocabSearch] 有道词典查询成功: ${word}, 找到 ${parsed.entries.length} 个条目`);
+            if (data && data.data && data.data.entries && data.data.entries.length > 0) {
+                const entries = [];
+                const queryWord = data.data.query || word;
+                for (const entry of data.data.entries) {
+                    entries.push({
+                        entry: entry.entry || queryWord,
+                        explain: entry.explain || ''
+                    });
+                }
+                if (entries.length > 0) {
+                    this.apiData = {
+                        word: queryWord,
+                        entries: entries
+                    };
+                    this.apiError = null;
+                    console.log(`[VocabSearch] 有道词典查询成功: ${word}, 找到 ${entries.length} 个条目`);
+                } else {
+                    this.apiData = null;
+                    this.apiError = '未找到释义';
+                    console.log(`[VocabSearch] 有道词典查询成功但无释义: ${word}`);
+                }
             } else {
                 this.apiData = null;
                 this.apiError = '未找到释义';
@@ -346,37 +360,58 @@ const VocabSearch = {
         const url = `http://localhost:3000/api/youdao?q=${encodeURIComponent(word.trim())}`;
 
         try {
+            console.log(`[VocabSearch] lookupWordOnline: ${word}`);
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json'
-                },
-                timeout: 5000
+                }
             });
 
             if (!response.ok) {
-                console.error(`[VocabSearch] 在线查询失败，状态码: ${response.status}`);
+                console.error(`[VocabSearch] lookupWordOnline 失败，状态码: ${response.status}`);
                 return null;
             }
 
             const data = await response.json();
 
             if (!data || !data.data || !data.data.entries || data.data.entries.length === 0) {
-                console.warn(`[VocabSearch] 单词 "${word}" 未找到释义`);
+                console.warn(`[VocabSearch] lookupWordOnline 未找到释义: ${word}`);
                 return null;
             }
 
-            const entry = data.data.entries[0];
-            const wordData = {
-                word: data.data.query || word,
-                phonetic: entry.phonetic || '',
-                entries: this.parseYoudaoMeanings(entry)
+            const entries = [];
+            const queryWord = data.data.query || word;
+
+            for (const entry of data.data.entries) {
+                const explain = entry.explain || '';
+                const parsed = this.parseProxyMeanings(explain);
+                if (parsed.length > 0) {
+                    for (const p of parsed) {
+                        entries.push(p);
+                    }
+                } else if (explain) {
+                    entries.push({
+                        partOfSpeech: '',
+                        definitions: [{ definition: explain, example: '' }]
+                    });
+                }
+            }
+
+            if (entries.length === 0) {
+                return null;
+            }
+
+            console.log(`[VocabSearch] lookupWordOnline 成功: ${word}, ${entries.length} 条释义`);
+
+            return {
+                word: queryWord,
+                phonetic: '',
+                entries: entries
             };
 
-            return wordData;
-
         } catch (error) {
-            console.error(`[VocabSearch] 在线查询发生错误: ${error.message}`);
+            console.error(`[VocabSearch] lookupWordOnline 发生错误: ${error.message}`);
             return null;
         }
     },

@@ -347,8 +347,8 @@ database /ˈdeɪtəbeɪs/ n. 数据库；资料库
 
         // 真题练习导航 - 互斥处理（实际toggle由pastPapers.js内部init处理）
         document.getElementById('pastPapersBtn').addEventListener('click', () => {
-            if (window.VocabLearning && VocabLearning.isActive()) {
-                VocabLearning.hide();
+            if (window.VocabLearning && VocabLearning.isActive) {
+                VocabLearning.exitMode(true);
             }
         });
 

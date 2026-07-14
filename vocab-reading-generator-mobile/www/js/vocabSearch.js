@@ -334,54 +334,6 @@ const VocabSearch = {
     },
 
     /**
-     * 在线查询单词释义（通过有道词典代理）
-     * @param {string} word - 要查询的单词
-     * @returns {Promise<Object|null>} 返回单词数据，失败返回null
-     */
-    async lookupWordOnline(word) {
-        if (!word || word.trim() === '') {
-            return null;
-        }
-
-        const url = `http://localhost:3000/api/youdao?q=${encodeURIComponent(word.trim())}`;
-
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                timeout: 5000
-            });
-
-            if (!response.ok) {
-                console.error(`[VocabSearch] 在线查询失败，状态码: ${response.status}`);
-                return null;
-            }
-
-            const data = await response.json();
-
-            if (!data || !data.data || !data.data.entries || data.data.entries.length === 0) {
-                console.warn(`[VocabSearch] 单词 "${word}" 未找到释义`);
-                return null;
-            }
-
-            const entry = data.data.entries[0];
-            const wordData = {
-                word: data.data.query || word,
-                phonetic: entry.phonetic || '',
-                entries: this.parseYoudaoMeanings(entry)
-            };
-
-            return wordData;
-
-        } catch (error) {
-            console.error(`[VocabSearch] 在线查询发生错误: ${error.message}`);
-            return null;
-        }
-    },
-
-    /**
      * 绑定事件
      */
     bindEvents() {
